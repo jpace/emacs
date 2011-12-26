@@ -1,6 +1,11 @@
 ;;* Jeff Pace's Vainglorious .emacs file;;
 ;;* VARIABLES
 
+(concat user-emacs-directory
+        (convert-standard-filename "lisp/")
+        (convert-standard-filename "lisp/vendor")
+        )
+
 (setq
  enable-local-eval             t
  indent-tabs-mode              nil	; not using tabs
@@ -35,6 +40,7 @@
  mouse-avoidance-mode          'banish	; move mouse ptr out while typing.
  load-path (cons "~/lib/lisp" load-path) ; add my stuff to the load path
  load-path (cons  "~/System/Emacs" load-path)
+ load-path (cons  "~/System/Emacs/vendor" load-path)
  
  display-time-24hr-format      t	; military time
  frame-title-format            "%b - Emacs" ; full name (dir + file)
@@ -50,14 +56,10 @@
 (setq jep:this-is-xemacs (not (null (string-match "XEmacs" (emacs-version)))))
 (setq jep:this-is-gnuemacs (string-match "GNU Emacs" (emacs-version)))
 
-;; (setq message-log-max nil)
-
 (setq special-display-buffer-names	; treat the compilation buffer as special
       (append `("*compilation*")))
 ;;
-;;** JEP code
-(load "refill")                         ; automatic refilling of paragraphs
-(load "quip")                           ; support for quote files (%%\ntext\n%%\ntext\n%%)
+;;** my code
 (load "fileext")			; extensions to file commands
 (load "javaext")			; extensions for Java code
 (load "c++ext")				; extensions for C++ code
@@ -66,16 +68,13 @@
 ;; (load "listbuf")			; improvement over electric-buffer-list
 
 (load "debug-statements")		; for inserting debugging statements.
-(load "webm-env")			; environment at work
+(load "work-env" t)			; environment at work
 
 (load "upcase-char")			; 
 
 ;; (defalias 'list-buffers 'listbuf)
 
-;; Enable wheelmouse support by default
-(require 'mwheel)
-
-;; For multiple buffers with the same name, instead of, for example
+;; For multiple buffers with the same basename, instead of, for example
 ;; "Foo.txt<2>", this displays "Foo.txt<bar>".
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
@@ -164,8 +163,6 @@
 (load "perlext")
 (load "rubyext")
 (load "pythonext")
-
-(load "keys")				; key shortcuts
 
 ;;** CC mode settings
 (load "ccmode-settings")                ; customization for C* and Java files
@@ -553,7 +550,6 @@ highlights the compilation messages."
 ;; Local Variables:
 ;; mode: Emacs-Lisp
 ;; outline-regexp: ";;\\*+"
-;; eval:(outl-mouse-minor-mode 1)
 ;; End:
 ;; ============================
 
@@ -598,6 +594,9 @@ highlights the compilation messages."
 (ergoemacs-mode 1)
 
 (menu-bar-enable-clipboard)
+
+;; my keybindings override those unset in ergoemacs, so it has to load afterward.
+(load "keys")
 
 ;; (defconst ergoemacs-kill-ring-save-key (kbd 
 
