@@ -1,10 +1,8 @@
 ;;* Jeff Pace's Vainglorious .emacs file;;
 ;;* VARIABLES
 
-(concat user-emacs-directory
-        (convert-standard-filename "lisp/")
-        (convert-standard-filename "lisp/vendor")
-        )
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.emacs.d/lisp/vendor")
 
 (setq
  enable-local-eval             t
@@ -39,8 +37,6 @@
  show-paren-mode               t	; makes parentheses match in color.
  mouse-avoidance-mode          'banish	; move mouse ptr out while typing.
  load-path (cons "~/lib/lisp" load-path) ; add my stuff to the load path
- load-path (cons  "~/System/Emacs" load-path)
- load-path (cons  "~/System/Emacs/vendor" load-path)
  
  display-time-24hr-format      t	; military time
  frame-title-format            "%b - Emacs" ; full name (dir + file)
@@ -60,17 +56,29 @@
       (append `("*compilation*")))
 ;;
 ;;** my code
-(load "fileext")			; extensions to file commands
-(load "javaext")			; extensions for Java code
-(load "c++ext")				; extensions for C++ code
-(load "cext")				; extensions for C code
-
-;; (load "listbuf")			; improvement over electric-buffer-list
-
+(load "fileext")
+(load "javaext")
+(load "c++ext")
+(load "cext")
+(load "perlext")
+(load "rubyext")
 (load "debug-statements")		; for inserting debugging statements.
 (load "work-env" t)			; environment at work
+(load "upcase-char")
+(load "ccmode-settings")                ; customization for C* and Java files
 
-(load "upcase-char")			; 
+(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US
+
+;; load ErgoEmacs keybinding
+(load "~/.emacs.d/ergoemacs-keybindings-5.3.9/ergoemacs-mode")
+
+;; turn on minor mode ergoemacs-mode
+(ergoemacs-mode 1)
+
+(menu-bar-enable-clipboard)
+
+;; my keybindings override those unset in ergoemacs, so it has to load afterward.
+(load "keys")
 
 ;; (defalias 'list-buffers 'listbuf)
 
@@ -160,13 +168,6 @@
       (cons (lambda () (yes-or-no-p "Really kill Emacs? "))
 	    kill-emacs-query-functions))
 
-(load "perlext")
-(load "rubyext")
-(load "pythonext")
-
-;;** CC mode settings
-(load "ccmode-settings")                ; customization for C* and Java files
-
 ;;** Java mode
 ;; Set tab width explicitly for text mode
 (add-hook 'java-mode-hook
@@ -224,9 +225,6 @@
 		("\\.hpp$"      . c++-mode)
 		("\\.hh$"	. c++-mode)
 		("\\.inl$"	. c++-mode) ; inline files (templates)
-
-		;; Ada
-		("\\.a$"	. ada-mode)
 
 		;; emacs/lisp
 		(".emacs"	. emacs-lisp-mode)
@@ -469,7 +467,6 @@ highlights the compilation messages."
   (interactive "*")
   (insert (format-time-string jep:insert-date-format (current-time))))
 
-
 (load "color-theme")			; in living color!
 (load "color-theme-soren")		; my theme
 (load "modeline")			; my modeline
@@ -503,39 +500,10 @@ highlights the compilation messages."
 	      (font-lock-mode 1)
 	      (font-lock-fontify-buffer)))
 
-;; =================================================================
-;; Saving Emacs Sessions - Useful when you have a bunch of source
-;; files open and you don't want to go and manually open each
-;; one, especially when they are in various directories. Page 377
-;; of the GNU Emacs Manual says: "The first time you save the state
-;; of the Emacs session, you must do it manually, with the command
-;; M-x desktop-save. Once you have dome that, exiting Emacs will
-;; save the state again -- not only the present Emacs session, but
-;; also subsequent sessions. You can also save the state at any
-;; time, without exiting Emacs, by typing M-x desktop-save again.
-;; =================================================================
-
 (load "desktop")
 ;; no warnings for missing files:
 (setq-default desktop-missing-file-warning nil)
 (desktop-save-mode 1)
-
-;; =================================================================
-;; Useful notes and other stuff
-;; =================================================================
-
-;; How to record and display a keyboard macro
-
-;; Just open a buffer and type C-x (   Then start typing in your macro.
-;; Once you are finished defining your macro type C-x ) 
-;; Then type M-x name-last-kbd-macro. This will allow you to call your
-;; macro whatever you want. Next open up your .emacs file and position
-;; your cursor where you want the code for the macro to appear.  
-;; Type M-x insert-kbd-macro and type in the name.  The code will
-;; automatically be generated.
-
-;; =================================================================
-;; =================================================================
 
 ;;;; end of .emacs
 (custom-set-faces
@@ -584,21 +552,6 @@ highlights the compilation messages."
 (add-hook 'dired-load-hook
   (lambda ()
     (set-variable 'dired-use-ls-dired nil)))
-
-(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US
-
-;; load ErgoEmacs keybinding
-(load "~/.emacs.d/ergoemacs-keybindings-5.3.9/ergoemacs-mode")
-
-;; turn on minor mode ergoemacs-mode
-(ergoemacs-mode 1)
-
-(menu-bar-enable-clipboard)
-
-;; my keybindings override those unset in ergoemacs, so it has to load afterward.
-(load "keys")
-
-;; (defconst ergoemacs-kill-ring-save-key (kbd 
 
 ;(set-face-font 'default  "-adobe-courier-medium-r-normal--12-*-*-*-*-*-*-*")
 ;(set-face-font 'modeline "-adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso8859-1")
