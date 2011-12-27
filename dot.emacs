@@ -36,8 +36,6 @@
  apropos-do-all                t	; Thorough and slow.
  show-paren-mode               t	; makes parentheses match in color.
  mouse-avoidance-mode          'banish	; move mouse ptr out while typing.
-; load-path (cons "~/lib/lisp" load-path) ; add my stuff to the load path
- 
  display-time-24hr-format      t	; military time
  frame-title-format            "%b - Emacs" ; full name (dir + file)
  icon-title-format             "%f - Emacs" ; short name (file only)

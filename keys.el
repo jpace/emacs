@@ -15,7 +15,7 @@
 (global-set-key "\M-w"     'clipboard-kill-ring-save)
 (global-set-key "\C-w"     'clipboard-kill-region)
 
-(global-set-key "\M-m"     'capitalize-word)
+(global-set-key "\M-m"     'capitalize-word) ; 
 (global-set-key "\M-M"     'upcase-word)
 (global-set-key "\M->"     'forward-sentence)
 (global-set-key "\M-<"     'backward-sentence)
@@ -26,11 +26,11 @@
 
 ;; (read-kbd-macro "ESC q <C-down>"))
 (global-set-key [f3]       'jep:fill-and-forward)
+(global-set-key [(control f3)]  'jep:reindent-buffer)
 (global-set-key [f4]       'call-last-kbd-macro)
 (global-set-key [f5]       'compile)
 (global-set-key [f6]       'previous-error)
 (global-set-key [f7]       'next-error)
-(global-set-key [(control f3)]  'jep:reindent-buffer)
 
 (global-set-key [f8]           'jep:space-indent-and-forward)
 (global-set-key [(control f8)] 'jep:space-indent)
@@ -65,16 +65,16 @@
 
 ;; For ease, both ctrl-y and alt-y use this keymap.
 
-(define-key global-map "\C-y" jep:keymap)
 (define-key global-map "\M-y" jep:keymap)
+(define-key global-map "\C-y" jep:keymap)
 
 (define-key jep:keymap "2"    'make-frame)
 (define-key jep:keymap "O"    'jep:toggle-read-only)
 (define-key jep:keymap "R"    'revert-buffer)
 
 (define-key jep:keymap "\C-a" 'iso-accents-mode)
-(define-key jep:keymap "\C-b" 'jep:point-to-bottom)
-(define-key jep:keymap "\C-c" 'compare-windows)
+(define-key jep:keymap "\M-b" 'jep:point-to-bottom)
+(define-key jep:keymap "\M-c" 'compare-windows)
 (define-key jep:keymap "\C-f" 're-search-forward)
 (define-key jep:keymap "\C-k" 'compile)
 (define-key jep:keymap "\C-l" 'jep:find-file-from-list)
