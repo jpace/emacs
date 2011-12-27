@@ -36,7 +36,7 @@
  apropos-do-all                t	; Thorough and slow.
  show-paren-mode               t	; makes parentheses match in color.
  mouse-avoidance-mode          'banish	; move mouse ptr out while typing.
- load-path (cons "~/lib/lisp" load-path) ; add my stuff to the load path
+; load-path (cons "~/lib/lisp" load-path) ; add my stuff to the load path
  
  display-time-24hr-format      t	; military time
  frame-title-format            "%b - Emacs" ; full name (dir + file)
@@ -66,6 +66,7 @@
 (load "work-env" t)			; environment at work
 (load "upcase-char")
 (load "ccmode-settings")                ; customization for C* and Java files
+(load "text-functions")
 
 (setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US
 
@@ -79,6 +80,12 @@
 
 ;; my keybindings override those unset in ergoemacs, so it has to load afterward.
 (load "keys")
+
+(load "color-theme")			; in living color!
+(load "color-theme-soren")		; my theme
+(load "modeline")			; my modeline
+
+(color-theme-soren)
 
 ;; (defalias 'list-buffers 'listbuf)
 
@@ -467,18 +474,12 @@ highlights the compilation messages."
   (interactive "*")
   (insert (format-time-string jep:insert-date-format (current-time))))
 
-(load "color-theme")			; in living color!
-(load "color-theme-soren")		; my theme
-(load "modeline")			; my modeline
-
-(color-theme-soren)
-
 (defconst Electric-buffer-menu-mode-font-lock-keywords
    (purecopy
     (list
      '("^ MR Buffer.*"                 . font-lock-preprocessor-face) ;hdr 1
 	'("^ -- ------.*"              . font-lock-preprocessor-face) ;hdr 2
-	'("^\\(....Man: .*\\)" 1 font-lock-variable-name-face t) ;Manpg (new)
+	'("^\\(....Man: .*\\)"         1 font-lock-variable-name-face t) ;Manpg (new)
 	'("^[. ][*][^%].[^*].*"        . font-lock-comment-face)	;Mod x temp
 	'("^....[*]Buffer List[*].*"   . font-lock-doc-string-face) ;Buffer list
 	'("^\\(....[*]shell.*\\)"      1 font-lock-reference-face t) ;shell buff
