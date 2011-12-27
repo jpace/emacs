@@ -1,7 +1,7 @@
 ;;;; keys.el -- global key bindings
 
 ;; meta and control keys
-(global-set-key [(meta g)] 'goto-line)
+(global-set-key "\M-="     'goto-line)
 (global-set-key "\C-l"     'electric-buffer-list)
 (global-set-key "\e#"      'query-replace-regexp)
 (global-set-key "\M-*"     'query-replace-regexp)

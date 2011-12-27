@@ -69,7 +69,7 @@
 (setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US
 
 ;; load ErgoEmacs keybinding
-(load "~/.emacs.d/ergoemacs-keybindings-5.3.9/ergoemacs-mode")
+(load "ergoemacs-keybindings-5.3.9/ergoemacs-mode")
 
 ;; turn on minor mode ergoemacs-mode
 (ergoemacs-mode 1)
