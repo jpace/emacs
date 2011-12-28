@@ -1,5 +1,4 @@
 ;;* Jeff Pace's Vainglorious .emacs file;;
-;;* VARIABLES
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/vendor")
