@@ -45,4 +45,4 @@
     (insert fn)
     ))
 
-(provide 'jep:fileext)
+(provide 'jep:file)

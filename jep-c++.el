@@ -2,7 +2,7 @@
 ;;; functions in support of C++ code
 ;;; author: jeugenepace at gmail dot com
 
-(require 'jep:fileext)
+(require 'jep:file)
 
 (message "Loading C++ extensions...")
 
@@ -260,4 +260,4 @@ denotes whether to create the file, if it does not exist."
 
 (message "C++ extensions loaded.")
 
-(provide 'jep:c++ext)
+(provide 'jep:c++)

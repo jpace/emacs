@@ -1,6 +1,5 @@
 ;;; Perl extensions
-;;; author: jpace@erols.com
-;;; $Id: perlext.el,v 1.3 2002/07/24 15:27:30 jpace Exp $
+;;; author: jeugenpace at gmail dot com
 
 ;; perl mode for complex data structures (Emacs chokes on the format)
 (defun perl-ds-mode ()
@@ -41,4 +40,4 @@
 	  "use strict;\n"
 	  "\n"))
 
-(provide 'jep:perlext)
+(provide 'jep:perl)

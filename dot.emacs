@@ -53,25 +53,25 @@
       (append `("*compilation*")))
 ;;
 ;;** my code
-(load "fileext")
-(load "javaext")
-(load "c++ext")
-(load "cext")
-(load "perlext")
-(load "rubyext")
+(load "jep-file")
+(load "jep-java")
+(load "jep-c++")
+(load "jep-c")
+(load "jep-perl")
+(load "jep-ruby")
 (load "debug-statements")		; for inserting debugging statements.
 (load "work-env" t)			; environment at work
 (load "upcase-char")
-(load "ccmode-settings")                ; customization for C* and Java files
-(load "text-functions")
+(load "jep-ccmode")			; customization for C* and Java files
+(load "jep-text")
 
-(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US
-
-;; load ErgoEmacs keybinding
+;; there are some useful functions in ergoemacs, but I don't use all of the
+;; keybindings
+(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us")
 (load "ergoemacs-keybindings-5.3.9/ergoemacs-mode")
-
-;; turn on minor mode ergoemacs-mode
-(ergoemacs-mode 1)
+;; (ergoemacs-mode nil)
+(cua-mode)				; ctrl-C (copy), -X (cut), -V (paste), -Z (undo)
+;; but not ctrl-O (open) or ctrl-S (save)
 
 (menu-bar-enable-clipboard)
 

@@ -1,5 +1,6 @@
 ;;; Ruby extensions
 
+
 ;; Ruby mode
 (add-hook 'ruby-mode-hook 
 	  '(lambda()
@@ -16,4 +17,4 @@
 	  "require 'riel'\n"
 	  "\n"))
 
-(provide 'jep:rubyext)
+(provide 'jep:ruby)

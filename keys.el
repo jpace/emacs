@@ -2,7 +2,11 @@
 
 ;; meta and control keys
 (global-set-key "\M-="     'goto-line)
+(global-set-key "\M-g"     'goto-line)
+
 (global-set-key "\C-l"     'electric-buffer-list)
+(global-set-key "\C-x\C-b" 'electric-buffer-list)
+
 (global-set-key "\e#"      'query-replace-regexp)
 (global-set-key "\M-*"     'query-replace-regexp)
 (global-set-key "\M-\C-f"  'font-lock-fontify-buffer)
@@ -20,6 +24,8 @@
 (global-set-key "\M->"     'forward-sentence)
 (global-set-key "\M-<"     'backward-sentence)
 (global-set-key "\M-,"     'downcase-word)
+
+(global-set-key "\M-V"     'yank-pop)
 
 ;; Not relying on the function keys as much, since they're tending to collide
 ;; with various window managers.
@@ -65,8 +71,8 @@
 
 ;; For ease, both ctrl-y and alt-y use this keymap.
 
-(define-key global-map "\M-y" jep:keymap)
-(define-key global-map "\C-y" jep:keymap)
+(define-key global-map "\M-j" jep:keymap)
+(define-key global-map "\C-j" jep:keymap)
 
 (define-key jep:keymap "2"    'make-frame)
 (define-key jep:keymap "O"    'jep:toggle-read-only)

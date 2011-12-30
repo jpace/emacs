@@ -1,8 +1,8 @@
 ;;; ccmode_settings -- settings for C, C++, Objective-C, CORBA IDL, and Java
 ;;; files, for usage with CC Mode.
-;;; author: jpace@erols.com
+;;; author: jeugenepace at gmail dot com
 
-(defconst my-c-style
+(defconst jep-c-style
   '((c-basic-offset                    . 4)
     (c-recognize-knr-p                 . t)
     (c-hanging-comment-ender-p         . nil)
@@ -24,17 +24,17 @@
                                           (inline-open       . 0)
 					  (case-label        . +)
 					  (block-open        . 0)
-					  (knr-argdecl-intro . 5) ;not that I ever do K&R args any more
+					  (knr-argdecl-intro . 5) ; not that I ever do K&R args any more
 					  ))
     (c-echo-syntactic-information-p . t) ; Do I care what it thinks?
     )
-  "My C Programming Style")
+  "JPace C Programming Style")
 
-(defun my-c-mode-common-hook ()
+(defun jep-c-mode-common-hook ()
   ;; Add my personal style and set it for the current buffer.  Give it a nice
   ;; egotistical name instead of something nonoffensive.
-  (c-add-style "JPACE" my-c-style t)
-  ;; Offset customizations not in my-c-style
+  (c-add-style "JPACE" jep-c-style t)
+  ;; Offset customizations not in jep-c-style
   (c-set-offset 'stream-op 'c-lineup-streamop) ; for << alignment with cout, cerr
   (c-set-offset 'member-init-intro '++)	; huh?
 
@@ -48,6 +48,6 @@
   (c-toggle-hungry-state 1)		; it's Hungry Jack hungry
   (define-key c-mode-map "\C-m" 'newline-and-indent)
   )
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+(add-hook 'c-mode-common-hook 'jep-c-mode-common-hook)
 
-;;;; end of ccmode_settings.el
+;;;; end of jep-ccmode.el

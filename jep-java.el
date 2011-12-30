@@ -314,4 +314,4 @@
 
 (message "Java extensions loaded.")
 
-(provide 'jep:javaext)
+(provide 'jep:java)
