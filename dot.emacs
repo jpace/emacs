@@ -59,9 +59,8 @@
 (load "jep-c")
 (load "jep-perl")
 (load "jep-ruby")
-(load "debug-statements")		; for inserting debugging statements.
+(load "jep-debug")			; for inserting debugging statements.
 (load "work-env" t)			; environment at work
-(load "upcase-char")
 (load "jep-ccmode")			; customization for C* and Java files
 (load "jep-text")
 

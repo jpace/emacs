@@ -63,5 +63,13 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 
+(defun jep:upcase-char ()
+  "Capitalizes the current character and moves right."
+
+  (interactive)
+  (let ((start (point)))
+    (forward-char 1)
+    (upcase-region start (point))))
+
 (provide 'text-functions)
 ;;; text-functions.el ends here
