@@ -552,3 +552,9 @@ highlights the compilation messages."
 
 ;(set-face-font 'default  "-adobe-courier-medium-r-normal--12-*-*-*-*-*-*-*")
 ;(set-face-font 'modeline "-adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso8859-1")
+
+(add-to-list 'load-path "~/.emacs.d/lisp/vendor/yasnippet")
+(require 'yasnippet) ;; not yasnippet-bundle
+
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/lisp/vendor/yasnippet/snippets")

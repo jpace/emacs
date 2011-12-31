@@ -312,6 +312,19 @@
   (c-indent-line-or-region)
   )
 
+;; from https://raw.github.com/dacap/home/master/.emacs
+(defun jep:java-sort-imports ()
+  "* Sorts the imports in the current buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward "^import " nil t)
+      (set-mark (line-beginning-position))
+      (forward-line)
+      (while (re-search-forward "^import " (line-end-position) t)
+	(forward-line))
+      (sort-lines nil (mark) (point)))))
+
 (message "Java extensions loaded.")
 
 (provide 'jep:java)

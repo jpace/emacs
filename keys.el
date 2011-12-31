@@ -123,4 +123,6 @@
 
 (define-key jep:keymap "B"    'jep:file-insert-basename)
 
+(define-key jep:keymap "\C-i"  'jep:java-sort-imports)
+
 ;;;; end of keys.el
