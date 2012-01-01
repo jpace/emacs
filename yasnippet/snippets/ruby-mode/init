@@ -1,0 +1,6 @@
+# name : initialize
+# key: init
+# --
+def initialize args
+  $0
+end

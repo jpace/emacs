@@ -555,6 +555,7 @@ highlights the compilation messages."
 
 (add-to-list 'load-path "~/.emacs.d/lisp/vendor/yasnippet")
 (require 'yasnippet) ;; not yasnippet-bundle
+(yas/global-mode 1)
 
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/lisp/vendor/yasnippet/snippets")
+(setq yas/snippet-dirs "~/.emacs.d/lisp/vendor/yasnippet/snippets")

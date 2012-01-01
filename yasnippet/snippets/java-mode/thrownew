@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: thrownew
+# key: thn
+# --
+throw new
