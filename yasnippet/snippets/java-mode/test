@@ -1,0 +1,6 @@
+# name : public void testX() { }
+# key: test
+# --
+public void test${1:Foo}() {
+    $0
+}

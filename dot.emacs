@@ -554,8 +554,10 @@ highlights the compilation messages."
 ;(set-face-font 'modeline "-adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso8859-1")
 
 (add-to-list 'load-path "~/.emacs.d/lisp/vendor/yasnippet")
+(setq yas/snippet-dirs (list "~/.emacs.d/lisp/yasnippet/snippets" "~/.emacs.d/lisp/vendor/yasnippet/snippets"))
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/global-mode 1)
 
-(yas/initialize)
-(setq yas/snippet-dirs "~/.emacs.d/lisp/vendor/yasnippet/snippets")
+;; (yas/initialize)
+
+;; yasnippet complains if ~/.emacs.d/snippets does not exist
