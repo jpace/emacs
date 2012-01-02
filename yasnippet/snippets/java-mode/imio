@@ -1,0 +1,4 @@
+# name : import java.io.
+# key: imio
+# --
+import java.io.$1;$0
