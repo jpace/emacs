@@ -281,13 +281,11 @@
 		(""		. text-mode) ; default
 		) auto-mode-alist))
 
-;;; use groovy-mode when file ends in .groovy or has #!/bin/groovy at start
 (autoload 'groovy-mode "groovy-mode" "Groovy editing mode." t)
 
 (add-to-list 'auto-mode-alist        '("\.groovy$" . groovy-mode))
 (add-to-list 'interpreter-mode-alist '("groovy"    . groovy-mode))
 
-;;
 ;;** font-lock
 ;; Font-locking faces set-up
 ;; Switch on font-lock for every mode which supports it.
