@@ -71,5 +71,37 @@
     (forward-char 1)
     (upcase-region start (point))))
 
+(defun jep:text-camel-to-snake-case (var)
+  "*Converts the variable from camelCase to snake_case"
+  
+  (let ((case-replace t)
+	(case-fold-search nil))
+    (downcase (replace-regexp-in-string "\\(\\(?:[A-Z]\\|[0-9]+\\)\\)" "_\\1" var t nil))))
+
+(defun jep:text-snake-to-camel-case (const)
+  "*Converts the variable from snake_case to camelCase"
+  
+  (let ((case-replace t)
+	(case-fold-search nil))
+    (replace-regexp-in-string "_\\([a-z0-9]\\)" "\\U\\1" (downcase const) t nil)))
+
+(defun jep:text-toggle-camel-and-snake-case ()
+  "*Toggles between camelCase and snake_case.
+"
+  (interactive)
+  (re-search-backward "[^A-Za-z0-9_]")
+  (forward-char 1)
+  (let ((start (point))
+	(case-fold-search nil))
+    (re-search-forward "[^A-Za-z0-9_]")
+    (backward-char 1)
+    (kill-region start (point))
+    (setq 
+     var  (current-kill 0)
+     repl (if (string-match "[A-Z]" var)
+	      (jep:text-camel-to-snake-case var)
+	    (jep:text-snake-to-camel-case var)))
+    (insert repl)))
+
 (provide 'text-functions)
 ;;; text-functions.el ends here

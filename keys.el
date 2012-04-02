@@ -98,6 +98,9 @@
 (define-key jep:keymap "5"    'jep:java-insert-print-break-line)
 (define-key jep:keymap "\C-v" 'jep:java-toggle-variable-and-constant)
 
+(define-key jep:keymap "\C-y" 'jep:text-toggle-camel-and-snake-case)
+(define-key jep:keymap "\M-y" 'jep:text-toggle-camel-and-snake-case)
+
 (define-key jep:keymap "k"    'delete-frame)
 (define-key jep:keymap "l"    'list-matching-lines)
 (define-key jep:keymap "o"    'jep:other-frame)
