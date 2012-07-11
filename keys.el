@@ -4,8 +4,10 @@
 (global-set-key "\M-="     'goto-line)
 (global-set-key "\M-g"     'goto-line)
 
-(global-set-key "\C-l"     'electric-buffer-list)
-(global-set-key "\C-x\C-b" 'electric-buffer-list)
+;; (global-set-key "\C-l"     'electric-buffer-list)
+;; (global-set-key "\C-x\C-b" 'electric-buffer-list)
+(global-set-key "\C-l"     'buffer-menu)
+(global-set-key "\C-x\C-b" 'buffer-menu)
 
 (global-set-key "\e#"      'query-replace-regexp)
 (global-set-key "\M-*"     'query-replace-regexp)
