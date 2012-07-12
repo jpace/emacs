@@ -63,6 +63,7 @@
 (load "work-env" t)			; environment at work
 (load "jep-ccmode")			; customization for C* and Java files
 (load "jep-text")
+(load "jep-ibuffer")
 
 ;; there are some useful functions in ergoemacs, but I don't use all of the
 ;; keybindings
