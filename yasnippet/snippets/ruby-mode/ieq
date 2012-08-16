@@ -1,0 +1,4 @@
+# name :assign_instance_variable
+# key: ieq
+# --
+@$1 = $1
