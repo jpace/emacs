@@ -4,8 +4,10 @@
 (global-set-key "\M-="     'goto-line)
 (global-set-key "\M-g"     'goto-line)
 
-(global-set-key "\C-l"     'electric-buffer-list)
-(global-set-key "\C-x\C-b" 'electric-buffer-list)
+;; (global-set-key "\C-l"     'electric-buffer-list)
+;; (global-set-key "\C-x\C-b" 'electric-buffer-list)
+(global-set-key "\C-l"     'ibuffer)
+(global-set-key "\C-x\C-b" 'ibuffer)
 
 (global-set-key "\e#"      'query-replace-regexp)
 (global-set-key "\M-*"     'query-replace-regexp)
@@ -97,6 +99,9 @@
 (define-key jep:keymap "i"    'jep:java-insert-print-intro-line)
 (define-key jep:keymap "5"    'jep:java-insert-print-break-line)
 (define-key jep:keymap "\C-v" 'jep:java-toggle-variable-and-constant)
+
+(define-key jep:keymap "\C-y" 'jep:text-toggle-camel-and-snake-case)
+(define-key jep:keymap "\M-y" 'jep:text-toggle-camel-and-snake-case)
 
 (define-key jep:keymap "k"    'delete-frame)
 (define-key jep:keymap "l"    'list-matching-lines)
