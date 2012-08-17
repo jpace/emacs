@@ -1,0 +1,4 @@
+# name : assert_equals
+# key: aeq
+# --
+assert_equals ${0:expected}, ${1:actual}

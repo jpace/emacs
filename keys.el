@@ -109,7 +109,10 @@
 (define-key jep:keymap "q"    'query-replace)
 (define-key jep:keymap "r"    'replace-string)
 (define-key jep:keymap "s"    'sort-lines)
-(define-key jep:keymap "t"    'jep:java-toggle-between-test-and-source)
+;; (define-key jep:keymap "t"    'jep:java-toggle-between-test-and-source)
+
+(define-key jep:keymap "t"    'jep:ruby-toggle-between-test-and-source)
+
 (define-key jep:keymap "u"    'jep:upcase-char)
 
 (define-key jep:keymap "<"    'isearch-backward-regexp)
