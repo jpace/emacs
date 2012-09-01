@@ -167,29 +167,6 @@
     )
   )
 
-(defun jep:java-get-file-companion-orig (file)
-  "Returns the companion test/source file of the given file."
-  (let* ((companion (jep:java-get-file-test-companion file)))
-
-    (if (companion)
-	companion
-      (progn
-	(setq companion (jep:java-get-file-source-companion file))
-	(if (companion)
-	    (progn 
-	      (message "1companion: %s", companion)
-	      )
-	  (progn
-	    (message "1no companion")
-	    nil
-	)
-	  )
-	)
-      nil
-      )
-    )
-  )
-
 (defun jep:java-basename ()
   "Returns the file name, minus the directory and suffix."
   (let* ((bn (buffer-name))
@@ -212,8 +189,10 @@
 (defvar jep:java-test-source-patterns 
   '(("^\\(/Depot/work/project/trunk\\)/tests/junit\\(.*\\)Test.java" "\\1\\2.java")
     ("^\\(/Depot/work/project/trunk\\)/\\(.*\\).java"                "\\1/tests/junit/\\2Test.java")
-    ("^\\(.*/\\)\\(source\\|src\\)"                                  "\\1test/\\2")
-    ("^\\(.*/\\)\\(test\\)/"                                         "\\1")))
+
+    ; maven laytout, src/main/java/.../Foo.java <=> src/test/java/.../TestFoo.java:
+    ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+.java\\)$"             "\\1test\\2/Test\\3")
+    ("^\\(.*/src/\\)test\\(/java/.*\\)/Test\\(\\w+.java\\)$"         "\\1main\\2/\\3")))
 
 (defun jep:java-get-counterpart (fname patterns)
   (let (pattern lhs rhs)
@@ -231,6 +210,13 @@
   
   (interactive)
   (jep:java-get-counterpart fname jep:java-test-source-patterns))
+
+(defun jep:java-show-counterpart ()
+  "*Toggles between a test and source Java file."
+  
+  (interactive)
+  (let ((other (jep:java-find-counterpart (buffer-file-name))))
+    (message (concat "other file " other))))
        
 (defun jep:java-toggle-between-test-and-source ()
   "*Toggles between a test and source Java file."
@@ -301,7 +287,7 @@
 	    (jep:java-variable-to-constant var)))
     (insert repl)))
 
-(defun jep:xxx-java-if-stmt-add-braces ()
+(defun jep:java-if-stmt-add-braces ()
   "*Goes to next if statement and adds braces.
 "
   (interactive)
@@ -324,6 +310,16 @@
       (while (re-search-forward "^import " (line-end-position) t)
 	(forward-line))
       (sort-lines nil (mark) (point)))))
+
+
+(add-hook 'java-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-j t") 'jep:java-toggle-between-test-and-source)
+	    (local-set-key (kbd "M-j t") 'jep:java-toggle-between-test-and-source)
+
+	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
+	    )
+	  )
 
 (message "Java extensions loaded.")
 

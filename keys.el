@@ -111,7 +111,7 @@
 (define-key jep:keymap "s"    'sort-lines)
 ;; (define-key jep:keymap "t"    'jep:java-toggle-between-test-and-source)
 
-(define-key jep:keymap "t"    'jep:ruby-toggle-between-test-and-source)
+;; (define-key jep:keymap "t"    'jep:ruby-toggle-between-test-and-source)
 
 (define-key jep:keymap "u"    'jep:upcase-char)
 

@@ -1,4 +1,4 @@
-# name : assert_equals
+# name : assert_equal
 # key: aeq
 # --
-assert_equals ${0:expected}, ${1:actual}
+assert_equal ${0:expected}, ${1:actual}

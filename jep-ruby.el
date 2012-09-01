@@ -59,4 +59,11 @@
 	  (switch-to-buffer buf)
 	(switch-to-buffer (find-file-noselect other))))))
 
+(add-hook 'ruby-mode-hook
+	  (lambda ()
+	    ;; (local-set-key (kbd "C-j t") 'jep:ruby-toggle-between-test-and-source)
+	    (local-set-key (kbd "M-j t") 'jep:ruby-toggle-between-test-and-source)
+	    )
+	  )
+
 (provide 'jep:ruby)
