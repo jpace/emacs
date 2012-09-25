@@ -6,15 +6,13 @@
 (defun jep:java-insert-print-break-line (char)
   "Inserts a line that prints 55 of the same characters. For debugging Java code."
   (interactive "cCharacter: ")
-  (insert char)
-  )
+  (insert char))
 
 (defun jep:java-insert-print-intro-line (char)
   "Inserts a line that prints 55 of the same characters. For debugging Java code."
   (interactive "cCharacter: ")
   (insert "System.out.println(\"")
-  (insert char)
-  )
+  (insert char))
 
 (defun jep:java-insert-log-variable (str)
   "Inserts a line that prints a variable to the log."
@@ -23,8 +21,7 @@
   (insert str)
   (insert ": \" + ")
   (insert str)
-  (insert ");\n")
-  )
+  (insert ");\n"))
 
 (defun jep:java-insert-get-set (type name)
   "Inserts getFoo and setFoo functions for foo."
@@ -40,8 +37,7 @@
       (insert "    {\n")
       (insert "        _" name " = " name ";\n")
       (insert "    }\n")
-      (insert "    \n")
-      )))
+      (insert "    \n"))))
 
 (defun jep:java-new-class-without-main ()
   "Creates a new class, with a no-args constructor, and without a main function."
@@ -70,7 +66,6 @@
 	    "    }\n"
 	    "\n"
 	    "}\n")))
-
 
 (defun jep:java-new-junit-class ()
   "Creates a new class, with a no-args constructor and a main function."
@@ -110,8 +105,7 @@
 
   (let* 
       (pre post testfile srcfile srcdir
-	   (re "^\\(.*/\\)test/\\(.*\\)Test.java\\([^<]*\\)")
-	   )
+	   (re "^\\(.*/\\)test/\\(.*\\)Test.java\\([^<]*\\)"))
     
     (if (not (and (string-match re file)
 		  (match-end 1) (match-end 2)))
@@ -121,8 +115,7 @@
       (message "2pre: %s post: %s" pre post)
       (setq testfile (concat pre post ".java"))
       (message "1testfile: %s" testfile)
-      testfile
-      )))
+      testfile)))
 
 (defvar jep:java-test-to-source-substitutions 23
   "*Substitutions between test and source files")
@@ -133,8 +126,7 @@
 
   (let* 
       (pre post srcdir testfile
-	   (re "^\\(.*/\\)\\(source\\|src\\)\\(/.*\\).java\\([^<]*\\)")
-	   )
+	   (re "^\\(.*/\\)\\(source\\|src\\)\\(/.*\\).java\\([^<]*\\)"))
     
     (if (not (and (string-match re file)
 		  (match-end 1) (match-end 2)))
@@ -148,31 +140,23 @@
 	  nil
 	(setq testfile (concat pre "test/" srcdir post "Test.java"))
 	(message "1testfile: %s" testfile)
-	testfile
-	)
-      )
-    )
-  )
+	testfile))))
 
 (defun jep:java-get-file-companion (file)
   "Returns the companion test/source file of the given file."
   (interactive)
 
   (let* ((companion (jep:java-get-file-test-companion file)))
-    
     (message "1companion: %s" companion)
     (if (null companion)
 	(setq companion (jep:java-get-file-source-companion file)))
-    companion
-    )
-  )
+    companion))
 
 (defun jep:java-basename ()
   "Returns the file name, minus the directory and suffix."
   (let* ((bn (buffer-name))
          (namelist (jep:file-split bn))
-         fn
-         )
+         fn)
 
     (if (or (null namelist) (= 1 (length namelist)))
         nil
@@ -234,8 +218,7 @@
   (interactive)
   (let* ((bfn (buffer-file-name))
          (companion (jep:java-get-file-companion bfn))
-         fn
-         )
+         fn)
 
     ;; if we got a file to be loaded
     (if (null companion) 
@@ -252,8 +235,7 @@
 	    (switch-to-buffer (find-file-noselect companion))
 	  
 	  ;; doh!
-	  (message (concat "File " companion " does not exist."))
-	  )))))
+	  (message (concat "File " companion " does not exist.")))))))
 
 (defun jep:java-variable-to-constant (var)
   "*Converts the variable from camel case to a constant (uppercase and underscores)"
@@ -295,8 +277,7 @@
   (insert " {")
   (re-search-forward ";")
   (insert "\n}")
-  (c-indent-line-or-region)
-  )
+  (c-indent-line-or-region))
 
 ;; from https://raw.github.com/dacap/home/master/.emacs
 (defun jep:java-sort-imports ()
@@ -311,15 +292,11 @@
 	(forward-line))
       (sort-lines nil (mark) (point)))))
 
-
 (add-hook 'java-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-j t") 'jep:java-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j t") 'jep:java-toggle-between-test-and-source)
-
-	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
-	    )
-	  )
+	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)))
 
 (message "Java extensions loaded.")
 

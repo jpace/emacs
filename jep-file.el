@@ -12,21 +12,18 @@
                   (match-end 1) (match-end 2) ))
         nil
       (setq fn  (substring file (match-beginning 1) (match-end 1)))
-      (setq ext (substring file (match-beginning 2) (match-end 2)))
-      )
+      (setq ext (substring file (match-beginning 2) (match-end 2))))
 
     ; return a list containing the file name and the extension
     (if (and fn ext)
         (list fn ext)
-      nil)
-    ))
+      nil)))
 
 (defun jep:file-basename ()
   "Returns the file name, minus the directory and suffix."
   (let* ((bn (buffer-name))
          (namelist (jep:file-split bn))
-         fn
-         )
+         fn)
 
     (if (or (null namelist) (= 1 (length namelist)))
         nil
@@ -42,7 +39,6 @@
          )
     ;; Not doing a save-excursion, because we want to go to the end of what we
     ;; inserted.
-    (insert fn)
-    ))
+    (insert fn)))
 
 (provide 'jep:file)
