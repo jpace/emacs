@@ -47,14 +47,12 @@
   (beginning-of-line-text)
   (insert "    ")
   (end-of-line)
-  (forward-char)
-  )
+  (forward-char))
 
 (defun jep:space-indent-and-forward ()
   (interactive)
   (beginning-of-line-text)
-  (insert "    ")
-  )
+  (insert "    "))
 
 (defun jep:match-paren (arg)
   "Go to the matching parenthesis if on parenthesis otherwise insert %."
