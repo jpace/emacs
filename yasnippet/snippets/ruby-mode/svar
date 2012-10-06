@@ -1,0 +1,4 @@
+# name : set_variable
+# key: svar
+# --
+@$1 = $1
