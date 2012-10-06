@@ -41,4 +41,25 @@
     ;; inserted.
     (insert fn)))
 
+(defun jep:file-get-counterpart (fname patterns)
+  (let (pattern lhs rhs)
+    (progn 
+      (if (null patterns)
+	  nil
+	(setq pattern (car patterns))
+	(setq lhs     (nth 0 pattern))
+	(setq rhs     (nth 1 pattern))
+	(or (and (string-match lhs fname) (replace-regexp-in-string lhs rhs fname))
+	    (jep:file-get-counterpart fname (cdr patterns)))))))
+
+(defun jep:file-toggle-files (patterns)
+  "*Toggles between the current buffer and another file, based on the given patterns."
+  
+  (let ((other (jep:file-get-counterpart (buffer-file-name) patterns)))
+    (if (null other)
+	(message "no companion file")
+      (if (setq buf (get-buffer other))
+	  (switch-to-buffer buf)
+	(switch-to-buffer (find-file-noselect other))))))
+
 (provide 'jep:file)

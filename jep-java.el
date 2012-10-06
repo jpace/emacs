@@ -165,11 +165,6 @@
       (setq fn  (nth 0 namelist))
       fn)))
 
-(defun jep:java-toggle-test-file ()
-  "Switches from the current .java file to its unit test, if any."
-  (interactive)
-  (jep:java-switch-or-create-file t))
-
 (defvar jep:java-test-source-patterns 
   '(("^\\(/Depot/work/project/trunk\\)/tests/junit\\(.*\\)Test.java" "\\1\\2.java")
     ("^\\(/Depot/work/project/trunk\\)/\\(.*\\).java"                "\\1/tests/junit/\\2Test.java")
@@ -178,22 +173,11 @@
     ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+.java\\)$"             "\\1test\\2/Test\\3")
     ("^\\(.*/src/\\)test\\(/java/.*\\)/Test\\(\\w+.java\\)$"         "\\1main\\2/\\3")))
 
-(defun jep:java-get-counterpart (fname patterns)
-  (let (pattern lhs rhs)
-    (progn 
-      (if (null patterns)
-	  nil
-	(setq pattern (car patterns))
-	(setq lhs     (nth 0 pattern))
-	(setq rhs     (nth 1 pattern))
-	(or (and (string-match lhs fname) (replace-regexp-in-string lhs rhs fname))
-	    (jep:java-get-counterpart fname (cdr patterns)))))))
-
 (defun jep:java-find-counterpart (fname)
   "*Toggles between a test and source Java file."
   
   (interactive)
-  (jep:java-get-counterpart fname jep:java-test-source-patterns))
+  (jep:file-get-counterpart fname jep:java-test-source-patterns))
 
 (defun jep:java-show-counterpart ()
   "*Toggles between a test and source Java file."
@@ -201,41 +185,12 @@
   (interactive)
   (let ((other (jep:java-find-counterpart (buffer-file-name))))
     (message (concat "other file " other))))
-       
+
 (defun jep:java-toggle-between-test-and-source ()
   "*Toggles between a test and source Java file."
-  
-  (interactive)
-  (let ((other (jep:java-find-counterpart (buffer-file-name))))
-    (if (null other)
-	(message("no companion file"))
-      (if (setq buf (get-buffer other))
-	  (switch-to-buffer buf)
-	(switch-to-buffer (find-file-noselect other))))))
 
-(defun jep:java-switch-or-create-file (create)
-  "Switches from the current .java file to its unit test, if any."
   (interactive)
-  (let* ((bfn (buffer-file-name))
-         (companion (jep:java-get-file-companion bfn))
-         fn)
-
-    ;; if we got a file to be loaded
-    (if (null companion) 
-	;; (message "no companion file")
-	()
-      
-      ;; switch to the buffer if it's already loaded
-      (if (setq bp (get-buffer companion))
-	  ;; go to that file, companioning it if needed
-	  (switch-to-buffer bp)
-	
-	(if (or create (file-exists-p companion))
-	    ;; load it and switch to it
-	    (switch-to-buffer (find-file-noselect companion))
-	  
-	  ;; doh!
-	  (message (concat "File " companion " does not exist.")))))))
+  (jep:file-toggle-files jep:java-test-source-patterns))
 
 (defun jep:java-variable-to-constant (var)
   "*Converts the variable from camel case to a constant (uppercase and underscores)"
@@ -296,7 +251,8 @@
 	  (lambda ()
 	    (local-set-key (kbd "C-j t") 'jep:java-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j t") 'jep:java-toggle-between-test-and-source)
-	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)))
+	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
+	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)))
 
 (message "Java extensions loaded.")
 
