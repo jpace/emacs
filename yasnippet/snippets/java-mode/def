@@ -1,0 +1,7 @@
+# name: method declaration
+# contributor: jeugenepace@gmail.com
+# key: def
+# --
+public $1($2) {
+    $0
+}

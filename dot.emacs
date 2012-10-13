@@ -560,3 +560,10 @@ highlights the compilation messages."
 ;; (yas/initialize)
 
 ;; yasnippet complains if ~/.emacs.d/snippets does not exist
+
+;; Changes all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(require 'ido)
+(ido-mode 'both)
+
