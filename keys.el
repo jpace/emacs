@@ -21,7 +21,7 @@
 (global-set-key "\M-w"     'clipboard-kill-ring-save)
 (global-set-key "\C-w"     'clipboard-kill-region)
 
-(global-set-key "\M-m"     'capitalize-word) ; 
+(global-set-key "\M-m"     'capitalize-word)
 (global-set-key "\M-M"     'upcase-word)
 (global-set-key "\M->"     'forward-sentence)
 (global-set-key "\M-<"     'backward-sentence)
@@ -76,7 +76,6 @@
 (define-key global-map "\M-j" jep:keymap)
 (define-key global-map "\C-j" jep:keymap)
 
-(define-key jep:keymap "2"    'make-frame)
 (define-key jep:keymap "O"    'jep:toggle-read-only)
 (define-key jep:keymap "R"    'revert-buffer)
 
@@ -123,7 +122,5 @@
 (define-key jep:keymap [(tab)]          'jep:toggle-tab-width)
 
 (define-key jep:keymap "B"    'jep:file-insert-basename)
-
-(define-key jep:keymap "\C-i"  'jep:java-sort-imports)
 
 ;;;; end of keys.el

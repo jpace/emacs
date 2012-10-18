@@ -1,0 +1,10 @@
+# name: constructor
+# contributor: jeugenepace@gmail.com
+# key: init
+# --
+public `(file-name-nondirectory
+         (file-name-sans-extension
+	  (or (buffer-file-name)
+	   (buffer-name (current-buffer)))))`($1) {
+        $0
+    }

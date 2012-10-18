@@ -1,0 +1,6 @@
+# name : define_method
+# key: defend
+# --
+def $1
+  $0
+end

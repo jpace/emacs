@@ -1,0 +1,4 @@
+# name : set instance variable
+# key: svar
+# --
+this.$1 = $1;
