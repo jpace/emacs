@@ -557,6 +557,8 @@ highlights the compilation messages."
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/global-mode 1)
 
+(add-to-list 'auto-mode-alist '("yasnippet/snippets" . snippet-mode))
+
 ;; (yas/initialize)
 
 ;; yasnippet complains if ~/.emacs.d/snippets does not exist
