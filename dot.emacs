@@ -404,7 +404,7 @@ highlights the compilation messages."
 ;;============================================================
 (defun jep:insert-time-stamp ()
   (interactive)
-  (insert (time-stamp-string)))
+  (insert (current-time-stamp)))
 ;;
 ;;** jep:toggle-read-only
 ;;============================================================
