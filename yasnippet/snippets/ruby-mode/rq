@@ -1,4 +1,4 @@
 # name : require
 # key: rq
 # --
-require '$0'
+require '$1'$0

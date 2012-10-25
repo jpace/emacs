@@ -569,3 +569,4 @@ highlights the compilation messages."
 (require 'ido)
 (ido-mode 'both)
 
+(load (system-name) 'noerror)

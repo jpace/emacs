@@ -21,8 +21,14 @@
 		(filename . "org/incava/ijdkproj"))
 	       ("riel"
 		(filename . "org/incava/riel"))
+	       ("glark"
+		(filename . "org/incava/glark"))
+	       ("doctorj"
+		(filename . "org/incava/doctorj"))
 	       ("emacs"
-		(filename . "System/Emacs"))
+		(or
+		 (filename . ".emacs.d/lisp")
+		 (filename . "System/Emacs")))
 	       ("zsh"
 		(filename . "System/Zsh"))
 	       ("jdk"
