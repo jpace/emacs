@@ -568,5 +568,6 @@ highlights the compilation messages."
 
 (require 'ido)
 (ido-mode 'both)
+(setq confirm-nonexistent-file-or-buffer nil)
 
 (load (system-name) 'noerror)

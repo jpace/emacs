@@ -14,7 +14,7 @@
       (setq fn  (substring file (match-beginning 1) (match-end 1)))
       (setq ext (substring file (match-beginning 2) (match-end 2))))
 
-    ; return a list containing the file name and the extension
+    ;; return a list containing the file name and the extension
     (if (and fn ext)
         (list fn ext)
       nil)))
@@ -61,5 +61,10 @@
       (if (setq buf (get-buffer other))
 	  (switch-to-buffer buf)
 	(switch-to-buffer (find-file-noselect other))))))
+
+(defun jep:reindent-buffer ()
+  "Reindents the entire buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
 
 (provide 'jep:file)
