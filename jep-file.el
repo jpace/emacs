@@ -49,8 +49,11 @@
 	(setq pattern (car patterns))
 	(setq lhs     (nth 0 pattern))
 	(setq rhs     (nth 1 pattern))
-	(or (and (string-match lhs fname) (replace-regexp-in-string lhs rhs fname))
-	    (jep:file-get-counterpart fname (cdr patterns)))))))
+	(setq other   (and (string-match lhs fname) (replace-regexp-in-string lhs rhs fname)))
+	(message (concat "other>> " other " <<"))
+	(if (or (null other) (not (file-exists-p other)))
+	    (jep:file-get-counterpart fname (cdr patterns))
+	  other)))))
 
 (defun jep:file-toggle-files (patterns)
   "*Toggles between the current buffer and another file, based on the given patterns."
