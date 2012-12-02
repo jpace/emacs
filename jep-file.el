@@ -9,7 +9,7 @@
          ext)
 
     (if (not (and (string-match re file)
-                  (match-end 1) (match-end 2) ))
+                  (match-end 1) (match-end 2)))
         nil
       (setq fn  (substring file (match-beginning 1) (match-end 1)))
       (setq ext (substring file (match-beginning 2) (match-end 2))))
@@ -20,7 +20,8 @@
       nil)))
 
 (defun jep:file-basename ()
-  "Returns the file name, minus the directory and suffix."
+  "Returns the file name, minus the directory, extension, and trailing </tmp>,
+unlike file-name-sans-extension, which includes that."
   (let* ((bn (buffer-name))
          (namelist (jep:file-split bn))
          fn)
@@ -29,7 +30,7 @@
         nil
       
       ;; first in the name list is the file name; second is the extension
-      (setq fn  (nth 0 namelist))
+      (setq fn (nth 0 namelist))
       fn)))
 
 (defun jep:file-insert-basename ()
