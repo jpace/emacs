@@ -5,3 +5,7 @@ Tue Nov 27 20:21:18 2012
 Sat Dec  1 16:04:09 2012
 
   Improved toggling of differently organized Ruby projects.
+
+Mon Dec 17 20:36:52 2012
+
+  Added toggling of test/integration and lib Ruby files.

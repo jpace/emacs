@@ -23,6 +23,9 @@
     ("^\\(.*/\\)lib/\\(.*\\).rb"                            "\\1test/unit/\\2_test.rb")
     ("^\\(.*/\\)test/unit/\\(.*\\)_test.rb"                 "\\1lib/\\2.rb")
     
+    ("^\\(.*/\\)lib/\\(.*\\).rb"                            "\\1test/integration/\\2_test.rb")
+    ("^\\(.*/\\)test/integration/\\(.*\\)_test.rb"                 "\\1lib/\\2.rb")
+    
     ("^\\(.*/\\)lib/\\(.*\\).rb"                       "\\1test/\\2_test.rb")
     ("^\\(.*/\\)test/\\(.*\\)_test.rb"                 "\\1lib/\\2.rb")))
 
