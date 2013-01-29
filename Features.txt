@@ -9,3 +9,7 @@ Sat Dec  1 16:04:09 2012
 Mon Dec 17 20:36:52 2012
 
   Added toggling of test/integration and lib Ruby files.
+
+Tue Jan 29 14:44:12 2013
+
+  Added puts snippet for System.out.println.
