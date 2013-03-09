@@ -78,11 +78,11 @@
 ;; my keybindings override those unset in ergoemacs, so it has to load afterward.
 (load "keys")
 
-(load "color-theme")			; in living color!
-(load "color-theme-soren")		; my theme
+;; (load "color-theme")			; in living color!
+;; (load "color-theme-soren")		; my theme
 (load "modeline")			; my modeline
 
-(color-theme-soren)
+;; (color-theme-soren)
 
 ;; (defalias 'list-buffers 'listbuf)
 
@@ -571,3 +571,10 @@ highlights the compilation messages."
 (setq confirm-nonexistent-file-or-buffer nil)
 
 (load (system-name) 'noerror)
+
+;; scala
+(add-to-list 'load-path "~/.emacs.d/lisp/scala-mode")
+(add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
+(require 'scala-mode-auto)
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)

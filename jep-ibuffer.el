@@ -13,28 +13,40 @@
 	       ;;    (mode . mail-mode)
 	       ;;    ;; etc.; all your mail related modes
 	       ;;    ))
-	       ("pvn"
-		(filename . "org/incava/pvn"))
+	       ("asciitable"
+		(filename . "org/incava/asciitable"))
+	       ("bin"
+		(filename . "home/jpace/bin"))
+	       ("blog"
+		(filename . "org/incava/blog"))
 	       ("diffj"
 		(filename . "org/incava/diffj"))
-	       ("ijdk"
-		(filename . "org/incava/ijdkproj"))
-	       ("riel"
-		(filename . "org/incava/riel"))
-	       ("glark"
-		(filename . "org/incava/glark"))
 	       ("doctorj"
 		(filename . "org/incava/doctorj"))
 	       ("emacs"
 		(or
 		 (filename . ".emacs.d/lisp")
 		 (filename . "System/Emacs")))
-	       ("zsh"
-		(filename . "System/Zsh"))
+	       ("glark"
+		(filename . "org/incava/glark"))
+	       ("ijdk"
+		(filename . "org/incava/ijdkproj"))
+	       ("jagol"
+		(filename . "org/incava/jagolproj"))
 	       ("jdk"
 		(filename . "com/sun/java"))
-	       ("MyProject2"
-		(filename . "src/myproject2/"))
+	       ("logue"
+		(filename . "org/incava/logue"))
+	       ("pvn"
+		(filename . "org/incava/pvn"))
+	       ("riel"
+		(filename . "org/incava/riel"))
+	       ("svnx"
+		(filename . "org/incava/svnx"))
+	       ("synoption"
+		(filename . "org/incava/synoption"))
+	       ("zsh"
+		(filename . "System/Zsh"))
 	       ("Programming" ;; prog stuff not already in MyProjectX
 		(or
 		 (mode . c-mode)
