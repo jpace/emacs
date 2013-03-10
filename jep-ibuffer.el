@@ -39,6 +39,8 @@
 		(filename . "org/incava/logue"))
 	       ("pvn"
 		(filename . "org/incava/pvn"))
+	       ("ragol"
+		(filename . "org/incava/ragol"))
 	       ("riel"
 		(filename . "org/incava/riel"))
 	       ("svnx"
