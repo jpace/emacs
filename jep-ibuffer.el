@@ -5,8 +5,8 @@
 (setq ibuffer-saved-filter-groups
       (quote (("default"      
 	       ;; ("dired" (mode . dired-mode))
-	       ("Org" ;; all org-related buffers
-		(mode . org-mode))  
+	       ;; ("Org" ;; all org-related buffers
+	       ;;  (mode . org-mode))  
 	       ;; ("Mail"
 	       ;;   (or  ;; mail-related buffers
 	       ;;    (mode . message-mode)
@@ -41,6 +41,8 @@
 		(filename . "org/incava/pvn"))
 	       ("ragol"
 		(filename . "org/incava/ragol"))
+	       ("rails"
+		(filename . "org/incava/rails"))
 	       ("riel"
 		(filename . "org/incava/riel"))
 	       ("svnx"
