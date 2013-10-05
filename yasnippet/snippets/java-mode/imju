@@ -1,4 +1,4 @@
 # name : import java.util.
-# key: imut
+# key: imju
 # --
 import java.util.$1;$0

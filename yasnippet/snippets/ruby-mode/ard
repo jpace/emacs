@@ -1,4 +1,4 @@
 # name : attr_reader
-# key: ar
+# key: ard
 # --
 attr_reader :$0

@@ -1,0 +1,4 @@
+# name : import SAG
+# key: ims
+# --
+import com.softwareag.$1;$0

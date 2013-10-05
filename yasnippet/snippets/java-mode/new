@@ -1,5 +1,4 @@
 # name : Object obj = new Object(...)
 # key: new
 # --
-${1:Object} ${2:obj} = new $1($3);
-$0
+${1:Object} ${2:obj} = new $1($3);$0

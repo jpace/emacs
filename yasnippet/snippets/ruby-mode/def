@@ -1,5 +1,5 @@
 # name : define_method
-# key: defend
+# key: def
 # --
 def $1
   $0

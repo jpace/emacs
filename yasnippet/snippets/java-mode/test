@@ -2,5 +2,5 @@
 # key: test
 # --
 public void test${1:Foo}() {
-    $0
-}
+        $0
+    }

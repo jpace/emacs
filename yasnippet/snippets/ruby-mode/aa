@@ -1,4 +1,5 @@
-# name : attr_accessor
+# name : assert_equal
 # key: aa
 # --
-attr_accessor :$0
+assert_equal ${2:expected}, ${1:actual}
+$0

@@ -1,0 +1,4 @@
+# name : import WM
+# key: imw
+# --
+import com.wm.$1;$0

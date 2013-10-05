@@ -49,6 +49,8 @@
 		(filename . "org/incava/svnx"))
 	       ("synoption"
 		(filename . "org/incava/synoption"))
+	       ("wyrocznia"
+		(filename . "org/incava/wyrocznia"))
 	       ("zsh"
 		(filename . "System/Zsh"))
 	       ("Programming" ;; prog stuff not already in MyProjectX
