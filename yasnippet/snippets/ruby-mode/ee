@@ -1,5 +1,5 @@
 # name: each do |...| ... end
-# key: eablk
+# key: ee
 # --
 each do |${e}|
   $0

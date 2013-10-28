@@ -117,10 +117,12 @@
 
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
 
-(define-key jep:keymap [(control tab)]  'jep:toggle-tab-width)
-(define-key jep:keymap [(meta tab)]     'jep:toggle-tab-width)
-(define-key jep:keymap [(tab)]          'jep:toggle-tab-width)
+;; (define-key jep:keymap [(control tab)]  'jep:toggle-tab-width)
+;; (define-key jep:keymap [(meta tab)]     'jep:toggle-tab-width)
+;; (define-key jep:keymap [(tab)]          'jep:toggle-tab-width)
 
 (define-key jep:keymap "B"    'jep:file-insert-basename)
+
+(define-key jep:keymap [(tab)] 'jep:reindent-buffer)
 
 ;;;; end of keys.el

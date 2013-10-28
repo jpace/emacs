@@ -1,4 +1,4 @@
 # name: puts "var: #{var}"
-# key: putvar
+# key: pv
 # --
 puts "$1: #{$1}"$0

@@ -2,6 +2,6 @@
 # contributor: jeugenepace@gmail.com
 # key: def
 # --
-public $1($2) {
+public ${1:void} ${2:methodName}(${3:parameters}) {
     $0
 }

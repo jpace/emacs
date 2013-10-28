@@ -78,11 +78,11 @@
 ;; my keybindings override those unset in ergoemacs, so it has to load afterward.
 (load "keys")
 
-(load "color-theme")			; in living color!
-(load "color-theme-soren")		; my theme
+;; (load "color-theme")			; in living color!
+;; (load "color-theme-soren")		; my theme
 (load "modeline")			; my modeline
 
-(color-theme-soren)
+;; (color-theme-soren)
 
 ;; (defalias 'list-buffers 'listbuf)
 
@@ -501,12 +501,14 @@ highlights the compilation messages."
 (setq-default desktop-missing-file-warning nil)
 (desktop-save-mode 1)
 
+(global-auto-revert-mode 1)
+
 ;;;; end of .emacs
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#040408" :foreground "#E8E3E3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 ;;
 ;;* LOCAL VARIABLES
@@ -520,11 +522,12 @@ highlights the compilation messages."
 (setq minibuffer-max-depth nil)
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(cua-mode t nil (cua-base))
  '(display-time-mode t)
  '(font-lock-maximum-size 256000)
  '(load-home-init-file t t)
@@ -557,9 +560,30 @@ highlights the compilation messages."
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/global-mode 1)
 
+(add-to-list 'auto-mode-alist '("yasnippet/snippets" . snippet-mode))
+
 ;; (yas/initialize)
 
 ;; yasnippet complains if ~/.emacs.d/snippets does not exist
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
+
+(require 'ido)
+(ido-mode 'both)
+(setq confirm-nonexistent-file-or-buffer nil)
+
+(load (system-name) 'noerror)
+
+;; scala
+(add-to-list 'load-path "~/.emacs.d/lisp/scala-mode")
+(add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
+
+(require 'scala-mode-auto)
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/dropdown-prompt
+                             yas/ido-prompt
+                             yas/completing-prompt))

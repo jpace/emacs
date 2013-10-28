@@ -20,12 +20,21 @@
     ("^\\(/Depot/work/project/trunk\\)/\\(.*\\).java"                "\\1/tests/junit/\\2Test.java")
 
     ;; should support multiple conventions here ...
-    ("^\\(.*/\\)lib/\\(.*\\).rb"                            "\\1test/unit/\\2_test.rb")
-    ("^\\(.*/\\)test/unit/\\(.*\\)_test.rb"                 "\\1lib/\\2.rb")))
+    ("^\\(.*/\\)lib/\\(.*\\).rb"                       "\\1test/unit/\\2_test.rb")
+    ("^\\(.*/\\)test/unit/\\(.*\\)_test.rb"            "\\1lib/\\2.rb")
+    
+    ("^\\(.*/\\)lib/\\(.*\\).rb"                       "\\1test/integration/\\2_test.rb")
+    ("^\\(.*/\\)test/integration/\\(.*\\)_test.rb"     "\\1lib/\\2.rb")
+    
+    ("^\\(.*/\\)lib/\\(.*\\).rb"                       "\\1spec/\\2_spec.rb")
+    ("^\\(.*/\\)spec/\\(.*\\)_spec.rb"                 "\\1lib/\\2.rb")
+    
+    ("^\\(.*/\\)lib/\\(.*\\).rb"                       "\\1test/\\2_test.rb")
+    ("^\\(.*/\\)test/\\(.*\\)_test.rb"                 "\\1lib/\\2.rb")))
 
 (defvar jep:ruby-integration-test-source-patterns 
-  '(("^\\(.*/\\)lib/\\(.*\\).rb"                            "\\1test/integration/\\2_test.rb")
-    ("^\\(.*/\\)test/integration/\\(.*\\)_test.rb"          "\\1lib/\\2.rb")))
+  '(("^\\(.*/\\)lib/\\(.*\\).rb"                       "\\1test/integration/\\2_test.rb")
+    ("^\\(.*/\\)test/integration/\\(.*\\)_test.rb"     "\\1lib/\\2.rb")))
 
 (defun jep:ruby-find-counterpart (fname patterns)
   "*Toggles between a test and source Ruby file."  
@@ -35,8 +44,8 @@
   "*Shows the other file, for toggling between a test and source Ruby file."
   
   (interactive)
-  (let ((other (jep:file-find-counterpart (buffer-file-name) jep:ruby-test-source-patterns)))
-    (message (concat "other file " other))))
+  (let ((other (jep:file-get-counterpart (buffer-file-name) jep:ruby-test-source-patterns)))
+    (message (concat "other file >> " other " <<"))))
 
 (defun jep:ruby-toggle-between-test-and-source ()
   "*Toggles between a test and source Ruby file."
