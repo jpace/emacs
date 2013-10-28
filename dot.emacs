@@ -575,13 +575,14 @@ highlights the compilation messages."
 
 (load (system-name) 'noerror)
 
+;; home, not work:
 ;; scala
-(add-to-list 'load-path "~/.emacs.d/lisp/scala-mode")
-(add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
+;; (add-to-list 'load-path "~/.emacs.d/lisp/scala-mode")
+;; (add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
 
-(require 'scala-mode-auto)
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+;; (require 'scala-mode-auto)
+;; (require 'ensime)
+;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt

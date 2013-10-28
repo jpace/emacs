@@ -1,0 +1,4 @@
+# name : String.out.println("var: " + var);
+# key: pv
+# --
+System.out.println("$1: " + $1);$0
