@@ -575,14 +575,6 @@ highlights the compilation messages."
 
 (load (system-name) 'noerror)
 
-;; scala
-(add-to-list 'load-path "~/.emacs.d/lisp/scala-mode")
-(add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
-
-(require 'scala-mode-auto)
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt
                              yas/ido-prompt

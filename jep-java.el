@@ -23,27 +23,12 @@
   (insert str)
   (insert ");\n"))
 
-(defun jep:java-insert-get-set (type name)
-  "Inserts getFoo and setFoo functions for foo."
-  (interactive "sType: \nsName: ")
-  (let* ((cname (capitalize name)))
-    (progn
-      (insert "    public " type " get" cname "()\n")
-      (insert "    {\n")
-      (insert "        return _" name ";\n")
-      (insert "    }\n")
-      (insert "    \n")
-      (insert "    public " "void" " set" cname "(" type " " name ")\n")
-      (insert "    {\n")
-      (insert "        _" name " = " name ";\n")
-      (insert "    }\n")
-      (insert "    \n"))))
-
 (defun jep:java-new-class-without-main ()
   "Creates a new class, with a no-args constructor, and without a main function."
   (let ((name (jep:file-basename)))
-    (insert "package xxx;\n"
-	    "\n"
+    (insert "package ")
+    (insert (jep:java-current-buffer-to-package-name) ";\n")
+    (insert "\n"
 	    "import java.util.*;\n"
 	    "\n"
 	    "public class " name " {\n"
@@ -70,9 +55,9 @@
 (defun jep:java-new-junit-class ()
   "Creates a new class, with a no-args constructor and a main function."
   (let ((name (jep:file-basename)))
-    (insert "package xxx;\n"
-	    "\n"
-	    "import java.io.*;\n"
+    (insert "package ")
+    (insert (jep:java-current-buffer-to-package-name) ";\n")
+    (insert "import java.io.*;\n"
 	    "import java.util.*;\n"
 	    "import junit.framework.TestCase;\n"
 	    "\n"
@@ -253,6 +238,20 @@
 	    (local-set-key (kbd "M-j t") 'jep:java-toggle-between-test-and-source)
 	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
 	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)))
+
+(defun jep:java-path-to-package-name (path)
+  (replace-regexp-in-string "/" "." 
+			    (replace-regexp-in-string "/\\w+\.java" "" 
+						      (replace-regexp-in-string "^.*?\\(source\\|src/main/java\\|src/test/java\\)/" "" path))))
+
+(defun jep:java-current-buffer-to-package-name ()
+  (jep:java-path-to-package-name (buffer-file-name)))
+
+(defun jep:java-insert-package-name ()
+  "Adds the package statement, based on the file name."
+  (interactive)
+  (insert "package ")
+  (insert (jep:java-current-buffer-to-package-name) ";\n"))
 
 (message "Java extensions loaded.")
 
