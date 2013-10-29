@@ -124,5 +124,6 @@
 (define-key jep:keymap "B"    'jep:file-insert-basename)
 
 (define-key jep:keymap [(tab)] 'jep:reindent-buffer)
+(define-key jep:keymap "\t" 'jep:reindent-buffer)
 
 ;;;; end of keys.el
