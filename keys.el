@@ -43,11 +43,13 @@
 (global-set-key [f8]           'jep:space-indent-and-forward)
 (global-set-key [(control f8)] 'jep:space-indent)
 
-(global-set-key [home]     'beginning-of-line)
-(global-set-key [end]      'end-of-line)
+(global-set-key [home]     'beginning-of-buffer)
+(global-set-key [end]      'end-of-buffer)
 
-(global-set-key [(control home)]  'beginning-of-buffer)
-(global-set-key [(control end)]   'end-of-buffer)
+;; Putty sends odd characters, so these map them to the same commands:
+(global-set-key (kbd "ESC <home>")  'beginning-of-buffer)
+(global-set-key (kbd "ESC <select>")  'end-of-buffer)
+(global-set-key (kbd "<select>")  'end-of-buffer)
 
 (global-set-key [(meta left)]     'beginning-of-line)
 (global-set-key [(meta right)]    'end-of-line)
@@ -60,7 +62,6 @@
 (global-set-key [(meta down)]     'jep:move-down)
 
 (define-key global-map [(control backspace)] 'undo)
-(define-key global-map [(control =)]         'goto-line)
 
 (global-set-key [(control delete)]   'backward-kill-word)
 (global-set-key [(meta delete)]      'kill-word)
