@@ -568,6 +568,7 @@ highlights the compilation messages."
 
 (load (system-name) 'noerror)
 
+<<<<<<< HEAD
 ;; home, not work:
 ;; scala
 ;; (add-to-list 'load-path "~/.emacs.d/lisp/scala-mode")
@@ -577,6 +578,8 @@ highlights the compilation messages."
 ;; (require 'ensime)
 ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
+=======
+>>>>>>> b0cd49794db01f2a86195bedcc3f2fc18c4b9368
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt
                              yas/ido-prompt
