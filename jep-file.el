@@ -69,6 +69,6 @@ unlike file-name-sans-extension, which includes that."
 (defun jep:reindent-buffer ()
   "Reindents the entire buffer."
   (interactive)
-  (indent-region (point-min) (point-max)))
+  (save-excursion (indent-region (point-min) (point-max))))
 
 (provide 'jep:file)
