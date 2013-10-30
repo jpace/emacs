@@ -1,4 +1,4 @@
-;;* Jeff Pace's Vainglorious .emacs file;;
+;;* Jeff Pace's vainglorious .emacs file;;
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/vendor")
@@ -7,37 +7,27 @@
  enable-local-eval             t
  visible-bell                  nil	; turn off the annoying bell
  inhibit-startup-message       t	; ???
- line-number-mode              t	; show line numbers
  sentence-end-double-space     nil	; treat ". " as a sentence separator
  sentence-end                  "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*"
- scroll-step                   1	; scroll 1 line at a time
  auto-save-interval            2000	; save every 2000 operations
  auto-save-default             nil	; no autosaving
  gc-cons-threshold             500000	; garbage collection threshold
  default-fill-column           80
  default-major-node            'indented-text-mode
- column-number-mode            t	; show column numbers
  completion-ignored-extensions		; don't do file name completion on
  (append 
   (list "~" "\\.class" "\\.obj" "\\.o")	; backup files, .class files (Java), and object files (C/C++)
   completion-ignored-extensions)
- next-line-add-newlines        nil	; Disables down-arrow and C-n at the end
-					; of a buffer from adding a new line to
-					; that buffer.
-
- next-screen-context-lines     3	; Overlap between window-fulls when
-					; scrolling by pages.
 
  apropos-do-all                t	; Thorough and slow.
  show-paren-mode               t	; makes parentheses match in color.
- mouse-avoidance-mode          'banish	; move mouse ptr out while typing.
- display-time-24hr-format      t	; military time
- frame-title-format            "%b - Emacs" ; full name (dir + file)
- icon-title-format             "%f - Emacs" ; short name (file only)
  paragraph-separate            "[ 	\f]*$" ; CC mode mucks this up to actual blank lines (no chars)
  transient-mark-mode           t	; show regions as they are highlighted.
  find-file-compare-truenames   t	; Use the truename of the file, not the base name.
  )
+
+;; Changes all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;;
 ;;* INITIALIZATION
@@ -46,11 +36,12 @@
 (setq jep:this-is-xemacs (not (null (string-match "XEmacs" (emacs-version)))))
 (setq jep:this-is-gnuemacs (string-match "GNU Emacs" (emacs-version)))
 
-(setq special-display-buffer-names	; treat the compilation buffer as special
-      (append `("*compilation*")))
+(load "cua-config")
 
-;;
-;;** my code
+(menu-bar-enable-clipboard)
+
+(load "compilation-config")
+
 (load "tabs-config")
 (load "font-config")
 
@@ -66,17 +57,13 @@
 (load "jep-text")
 (load "jep-ibuffer")
 
-(load "cua-config")
-
-(menu-bar-enable-clipboard)
-
 ;; my keybindings override those unset in ergoemacs, so it has to load afterward.
 (load "keys")
 
+(load "modeline-config")		; my modeline
+
 ;; (load "color-theme")			; in living color!
 ;; (load "color-theme-soren")		; my theme
-(load "modeline")			; my modeline
-
 ;; (color-theme-soren)
 
 ;; For multiple buffers with the same basename, instead of, for example
@@ -168,16 +155,10 @@
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill nil)
 
-(add-hook 'xml-mode-hook 
-          (lambda () (auto-fill-mode -1)))
-
-(add-hook 'html-mode-hook 'turn-on-auto-fill nil)
+(load "xml-config")
+(load "html-config")
 
 ;;$$$ todo: add erb-mode, inheriting text-mode, without auto-fill
-
-;;*** HTML mode
-;; Just to keep from getting prompted every time I invoke HTML:
-(setq html-helper-address-string "<a href=\"mailto:jpace *at* incava *.* org\">Jeffrey E. Pace</a>")
 
 ;; Filename extensions for modes
 (setq auto-mode-alist
@@ -235,12 +216,6 @@
 		("^dot\\."      . sh-mode)
 		("^dot\\."      . sh-mode)
 
-		("\\..?html?$"  . html-mode)
-		("\\.dsp$"      . html-mode) ; server pages
-		("\\.php$"      . html-mode)
-
-		("\\.xml?$"     . xml-mode) ; XML
-
 		("\\.sql"       . sql-mode)  ; SQL
 
 		("\\.quotes$"   . quip-mode) ; quip
@@ -255,15 +230,6 @@
 
 (load "electric-buffer-config")
 
-;; This fontifies the compilation buffer when compilation exits.
-(defun my-compilation-finish-function (buf msg)
-  "This is called after the compilation exits.  Currently just
-highlights the compilation messages."
-  (save-excursion
-    (set-buffer buf)
-    (font-lock-fontify-buffer)))
-(setq compilation-finish-function 'my-compilation-finish-function)
-
 ;;; This installs the `saveplace' package and defines where the places
 ;;; in visited files are saved between sessions.
 (condition-case err
@@ -272,18 +238,6 @@ highlights the compilation messages."
    (message "Cannot save places %s" (cdr err))))
 (setq-default save-place t)		; save places in all files
 (setq save-place-file	 "~/.emacsloc")
-
-;; automatically advance one entry (day) in my journal, skipping to
-;; the next month (and year) if necessary, including making the
-;; appropriate directories.
-(defun get-todays-journal-entry ()
-  "Gets the file for today in the journal directory hierarchy."
-  (interactive)
-  (setq name (string-to-int (file-name-nondirectory (buffer-file-name))))
-  (setq dir  (file-name-directory (buffer-file-name)))
-  (setq dttm (decode-time))
-  (yes-or-no-p
-   (format "Journal entry: %d in %s <time %s>" name dir dttm)))
 
 (if jep:this-is-xemacs
     (load "xemacs-config"))
@@ -368,40 +322,15 @@ highlights the compilation messages."
  '(load-home-init-file t t)
  '(show-paren-mode t))
 
-(add-hook 'dired-load-hook
-  (lambda ()
-    (set-variable 'dired-use-ls-dired
-      (and (string-match "gnu" system-configuration)
-           ;; Only supported for XEmacs >= 21.5 and GNU Emacs >= 21.4 (I think)
-           (if (featurep 'xemacs)
-               (and
-		(fboundp 'emacs-version>=)
-		(emacs-version>= 21 5))
-             (and (boundp 'emacs-major-version)
-                  (boundp 'emacs-minor-version)
-                  (or (> emacs-major-version 21)
-                      (and (= emacs-major-version 21)
-                           (>= emacs-minor-version 4)))))))))
-
-(add-hook 'dired-load-hook
-  (lambda ()
-    (set-variable 'dired-use-ls-dired nil)))
+(load "dired-config")
 
 (load "snippet-config")
-
-;; Changes all yes/no questions to y/n type
-(fset 'yes-or-no-p 'y-or-n-p)
 
 (require 'ido)
 (ido-mode 'both)
 (setq confirm-nonexistent-file-or-buffer nil)
 
 (load (system-name) 'noerror)
-
-(require 'dropdown-list)
-(setq yas/prompt-functions '(yas/dropdown-prompt
-                             yas/ido-prompt
-                             yas/completing-prompt))
 
 (if window-system
     (custom-set-faces
