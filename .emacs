@@ -5,9 +5,6 @@
 
 (setq
  enable-local-eval             t
- indent-tabs-mode              nil	; not using tabs
- default-tab-width             8	; tab == 8 spaces
- tab-width                     8	; ditto
  visible-bell                  nil	; turn off the annoying bell
  inhibit-startup-message       t	; ???
  line-number-mode              t	; show line numbers
@@ -19,7 +16,6 @@
  gc-cons-threshold             500000	; garbage collection threshold
  default-fill-column           80
  default-major-node            'indented-text-mode
- font-lock-maximum-size        2000000	; fontify up to this size buffer
  column-number-mode            t	; show column numbers
  completion-ignored-extensions		; don't do file name completion on
  (append 
@@ -42,6 +38,7 @@
  transient-mark-mode           t	; show regions as they are highlighted.
  find-file-compare-truenames   t	; Use the truename of the file, not the base name.
  )
+
 ;;
 ;;* INITIALIZATION
 ;;** Emacs Version
@@ -51,8 +48,12 @@
 
 (setq special-display-buffer-names	; treat the compilation buffer as special
       (append `("*compilation*")))
+
 ;;
 ;;** my code
+(load "tabs-config")
+(load "font-config")
+
 (load "jep-file")
 (load "jep-java")
 (load "jep-c++")
@@ -65,13 +66,7 @@
 (load "jep-text")
 (load "jep-ibuffer")
 
-;; there are some useful functions in ergoemacs, but I don't use all of the
-;; keybindings
-(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us")
-(load "ergoemacs-keybindings-5.3.9/ergoemacs-mode")
-;; (ergoemacs-mode nil)
-(cua-mode)				; ctrl-C (copy), -X (cut), -V (paste), -Z (undo)
-;; but not ctrl-O (open) or ctrl-S (save)
+(load "cua-config")
 
 (menu-bar-enable-clipboard)
 
@@ -83,8 +78,6 @@
 (load "modeline")			; my modeline
 
 ;; (color-theme-soren)
-
-;; (defalias 'list-buffers 'listbuf)
 
 ;; For multiple buffers with the same basename, instead of, for example
 ;; "Foo.txt<2>", this displays "Foo.txt<bar>".
@@ -139,15 +132,6 @@
 	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file))
 	      auto-insert-alist))
 
-;; (add-hook 'find-file-not-found-hooks 'jep:new-file-hook)
-
-;; Set tab width explicitly for text mode
-(add-hook 'text-mode-hook
-	  '(lambda()
-	     (setq tab-width 8
-		   indent-tabs-mode t
-		   )))
-
 ;; Sets execute permission for saved files with '#!' in the first line.
 (add-hook 'after-save-hook
           '(lambda ()
@@ -171,19 +155,6 @@
 (setq kill-emacs-query-functions
       (cons (lambda () (yes-or-no-p "Really kill Emacs? "))
 	    kill-emacs-query-functions))
-
-;;** Java mode
-;; Set tab width explicitly for text mode
-(add-hook 'java-mode-hook
-	  '(lambda()
-	     (setq tab-width 4)))
-
-;; Make java mode support Java 1.5 annotations.
-;(require 'java-mode-indent-annotations)
-;(add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
-
-(cond (jep:this-is-gnuemacs
-       (display-time)))			; Display current time in mode line
 
 ;; these are normally disabled
 (put 'upcase-region    'disabled nil)
@@ -277,56 +248,12 @@
 		("\\.rb$"       . ruby-mode) ; Ruby
 		("Rakefile$"    . ruby-mode) ; Ruby
 
-		("\\.gradle$"   . groovy-mode) ; Gradle
-
 		(""		. text-mode) ; default
 		) auto-mode-alist))
 
-(autoload 'groovy-mode "groovy-mode" "Groovy editing mode." t)
+(load "groovy-config")
 
-(add-to-list 'auto-mode-alist        '("\.groovy$" . groovy-mode))
-(add-to-list 'interpreter-mode-alist '("groovy"    . groovy-mode))
-
-;;** font-lock
-;; Font-locking faces set-up
-;; Switch on font-lock for every mode which supports it.
-(cond ((fboundp 'global-font-lock-mode)
-       ;; Turn on font-lock in all modes that support it
-       (global-font-lock-mode t)
-       ;; Maximum colors
-       (setq font-lock-maximum-decoration t)))
-
-;; there seems to be inconsistency with the way colors are set in version 20,
-;; which is what the following is for:
-(cond ((fboundp 'global-font-lock-mode)
-       ;; Customize face attributes
-       (set-face-foreground 'font-lock-comment-face       "pink1")
-       ;;(set-face-background 'font-lock-comment-face       "LightGray")
-       
-       ;; Load the font-lock package.
-       (require 'font-lock)
-       ;; Maximum colors
-       (setq font-lock-maximum-decoration t)
-       ;; Turn on font-lock in all modes that support it
-       (global-font-lock-mode t)))
-
-(setq font-lock-maximum-decoration t)
-(setq font-lock-maximum-size
-      ;; I'm using files that are too big, apparently
-      ;; (if font-lock-maximum-decoration (* 70 1024) (* 150 1024)))
-      (if font-lock-maximum-decoration (* 70 2048) (* 150 2048)))
-;;
-;;** Electric Buffer Menu mode customization.
-(defun my-ebuf-stuff ()
-  "My own Electric Buffer Menu stuff.  Currently binds some
-convenience keys."
-  (define-key electric-buffer-menu-mode-map [up]       'previous-line)
-  (define-key electric-buffer-menu-mode-map [down]     'next-line)
-  (define-key electric-buffer-menu-mode-map [next]     'scroll-up)
-  (define-key electric-buffer-menu-mode-map [previous] 'scroll-down)
-  (define-key electric-buffer-menu-mode-map [left]     'scroll-right)
-  (define-key electric-buffer-menu-mode-map [right]    'scroll-left))
-(add-hook 'electric-buffer-menu-mode-hook 'my-ebuf-stuff)
+(load "electric-buffer-config")
 
 ;; This fontifies the compilation buffer when compilation exits.
 (defun my-compilation-finish-function (buf msg)
@@ -336,12 +263,6 @@ highlights the compilation messages."
     (set-buffer buf)
     (font-lock-fontify-buffer)))
 (setq compilation-finish-function 'my-compilation-finish-function)
-
-(defun eliminate-all-tabs ()
-  "Convert all tabs to spaces in the entire buffer."
-  (interactive "*")
-  (untabify (point-min) (point-max))
-  (message "TABS converted to SPACES"))
 
 ;;; This installs the `saveplace' package and defines where the places
 ;;; in visited files are saved between sessions.
@@ -364,25 +285,8 @@ highlights the compilation messages."
   (yes-or-no-p
    (format "Journal entry: %d in %s <time %s>" name dir dttm)))
 
-(cond (jep:this-is-xemacs
-       (defun jep:toggle-menubar ()
-	 (interactive)
-	 (set-specifier menubar-visible-p
-			(not (specifier-instance menubar-visible-p))))
-       (defun jep:toggle-modeline ()
-	 (interactive)
-	 (set-specifier has-modeline-p
-			(not (specifier-instance has-modeline-p))))
-       (defun jep:toggle-toolbar ()
-	 (interactive)
-	 (set-specifier default-toolbar-visible-p
-			(not (specifier-instance default-toolbar-visible-p))))
-       (global-set-key [(meta f12)] 'jep:toggle-modeline)
-       (global-set-key [(meta f11)] 'jep:toggle-menubar)
-       (global-set-key [(meta f10)] 'jep:toggle-toolbar)
-       (global-set-key [(control button3)] 'popup-menubar-menu)
-       (set-specifier default-toolbar-visible-p nil)
-       (set-specifier menubar-visible-p nil)))
+(if jep:this-is-xemacs
+    (load "xemacs-config"))
 
 ;;** jep:find-file-from-list
 ;;============================================================
@@ -423,40 +327,9 @@ highlights the compilation messages."
   (if case-fold-search
       (message "case sensitive search OFF")
     (message "case sensitive search ON")))
-;;
-;;** jep:point-to-top
-(defun jep:point-to-top ()
-  (interactive)
-  (recenter 0))
-;;
-;;** jep:point-to-bottom
-(defun jep:point-to-bottom ()
-  (interactive)
-  (recenter -1))
-;;
-;;** jep:move-up
-(defun jep:move-up ()
-  (interactive)
-  (scroll-up 1))
-;;
-;;** jep:move-up
-(defun jep:move-up ()
-  (interactive)
-  (scroll-up 1))
-;;
-;;** jep:move-down
-(defun jep:move-down ()
-  (interactive)
-  (scroll-down 1))
 
-;;
-;;** jep:toggle-tab-width
-(defun jep:toggle-tab-width ()
-  (interactive)
-  (if (= tab-width 4)
-      (setq tab-width 8)
-      (setq tab-width 4)
-      ))
+(load "nav-config")
+
 ;;
 ;;** jep:insert-data-format
 (defvar jep:insert-date-format "%A, %d %B %Y"
@@ -469,37 +342,7 @@ highlights the compilation messages."
   (interactive "*")
   (insert (format-time-string jep:insert-date-format (current-time))))
 
-(defconst Electric-buffer-menu-mode-font-lock-keywords
-   (purecopy
-    (list
-     '("^ MR Buffer.*"                 . font-lock-preprocessor-face) ;hdr 1
-	'("^ -- ------.*"              . font-lock-preprocessor-face) ;hdr 2
-	'("^\\(....Man: .*\\)"         1 font-lock-variable-name-face t) ;Manpg (new)
-	'("^[. ][*][^%].[^*].*"        . font-lock-comment-face)	;Mod x temp
-	'("^....[*]Buffer List[*].*"   . font-lock-doc-string-face) ;Buffer list
-	'("^\\(....[*]shell.*\\)"      1 font-lock-reference-face t) ;shell buff
-	'("^....[*].*"                 . font-lock-string-face) ;Temp buffer
-	'("^....[+].*"                 . font-lock-keyword-face) ;Mail buffer
-	'("^....[A-Za-z0-9/]*[-][+].*" . font-lock-keyword-face) ;Mail buffer
-	'(".*Dired.*"                  . font-lock-function-name-face)
-	'("^.*.java$"                  . ebuf-java-file)
-	'("^.*.rb$"                    . ebuf-ruby-file)
-	'("^.*.xml$"                   . ebuf-xml-file)
-	'("^.*.build.*.xml$"           . ebuf-ant-build-file)
-	'("^.*.text$"                  . ebuf-text-file)
-	'("^.*.sh$"                    . ebuf-shell-file)
-	'("^.*.el$"                    . ebuf-lisp-file)
-	)))
- ; This hook run after buffer formatted, so it is necessary to re-fontify it...
- (add-hook 'electric-buffer-menu-mode-hook
-	   '(lambda ()
-	      (font-lock-mode 1)
-	      (font-lock-fontify-buffer)))
-
-(load "desktop")
-;; no warnings for missing files:
-(setq-default desktop-missing-file-warning nil)
-(desktop-save-mode 1)
+(load "desktop-config")
 
 (global-auto-revert-mode 1)
 
@@ -522,7 +365,6 @@ highlights the compilation messages."
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(display-time-mode t)
- '(font-lock-maximum-size 256000)
  '(load-home-init-file t t)
  '(show-paren-mode t))
 
@@ -545,19 +387,7 @@ highlights the compilation messages."
   (lambda ()
     (set-variable 'dired-use-ls-dired nil)))
 
-;(set-face-font 'default  "-adobe-courier-medium-r-normal--12-*-*-*-*-*-*-*")
-;(set-face-font 'modeline "-adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso8859-1")
-
-(add-to-list 'load-path "~/.emacs.d/lisp/vendor/yasnippet")
-(setq yas/snippet-dirs (list "~/.emacs.d/lisp/yasnippet/snippets" "~/.emacs.d/lisp/vendor/yasnippet/snippets"))
-(require 'yasnippet) ;; not yasnippet-bundle
-(yas/global-mode 1)
-
-(add-to-list 'auto-mode-alist '("yasnippet/snippets" . snippet-mode))
-
-;; (yas/initialize)
-
-;; yasnippet complains if ~/.emacs.d/snippets does not exist
+(load "snippet-config")
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
