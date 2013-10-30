@@ -230,15 +230,6 @@
 
 (load "electric-buffer-config")
 
-;;; This installs the `saveplace' package and defines where the places
-;;; in visited files are saved between sessions.
-(condition-case err
-    (require 'saveplace)
-  (error
-   (message "Cannot save places %s" (cdr err))))
-(setq-default save-place t)		; save places in all files
-(setq save-place-file	 "~/.emacsloc")
-
 (if jep:this-is-xemacs
     (load "xemacs-config"))
 
@@ -323,7 +314,6 @@
  '(show-paren-mode t))
 
 (load "dired-config")
-
 (load "snippet-config")
 
 (require 'ido)

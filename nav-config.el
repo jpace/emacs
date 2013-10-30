@@ -24,6 +24,16 @@
 
 ;;; Code:
 
+(setq
+ scroll-step                   1	; scroll 1 line at a time
+ next-screen-context-lines     3	; Overlap between window-fulls when
+					; scrolling by pages.
+ mouse-avoidance-mode          'banish	; move mouse ptr out while typing.
+ next-line-add-newlines        nil	; Disables down-arrow and C-n at the end
+					; of a buffer from adding a new line to
+					; that buffer.
+ )
+
 ;;
 ;;** jep:point-to-top
 (defun jep:point-to-top ()

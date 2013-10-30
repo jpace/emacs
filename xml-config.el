@@ -27,7 +27,7 @@
 (add-hook 'xml-mode-hook 
           (lambda () (auto-fill-mode -1)))
 
-(add-to-list 'auto-mode-alist '("\\.xml?$" . xml-mode))
+(add-to-list 'auto-mode-alist '("\.xml?$" . xml-mode))
 
 (provide 'xml-config)
 ;;; xml-config.el ends here

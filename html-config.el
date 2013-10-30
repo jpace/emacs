@@ -29,9 +29,9 @@
 ;; Just to keep from getting prompted every time I invoke HTML:
 (setq html-helper-address-string "<a href=\"mailto:jpace *at* incava *.* org\">Jeffrey E. Pace</a>")
 
-(add-to-list 'auto-mode-alist '("\\.html?$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.dsp$" . html-mode)) ; server pages
-(add-to-list 'auto-mode-alist '("\\.php$" . html-mode))
+(add-to-list 'auto-mode-alist '("\.html?$" . html-mode))
+(add-to-list 'auto-mode-alist '("\.dsp$" . html-mode)) ; server pages
+(add-to-list 'auto-mode-alist '("\.php$" . html-mode))
 
 (provide 'html-config)
 ;;; html-config.el ends here

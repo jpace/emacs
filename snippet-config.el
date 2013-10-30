@@ -31,5 +31,10 @@
 
 (add-to-list 'auto-mode-alist '("yasnippet/snippets" . snippet-mode))
 
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/dropdown-prompt
+                             yas/ido-prompt
+                             yas/completing-prompt))
+
 (provide 'snippet-config)
 ;;; snippet-config.el ends here
