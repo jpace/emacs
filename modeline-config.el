@@ -31,6 +31,11 @@
 
 ;; Start with new default.
 (setq mode-line-format default-mode-line-format)
+(setq
+ display-time-24hr-format      t	; military time
+ frame-title-format            "%b - Emacs" ; full name (dir + file)
+ icon-title-format             "%f - Emacs" ; short name (file only)
+ )
 
 ;;; modeline fiddling
 ;; (setq default-mode-line-formatdddd

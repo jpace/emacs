@@ -3,6 +3,10 @@
 
 (message "Loading Java extensions...")
 
+(add-hook 'java-mode-hook
+	  '(lambda()
+	     (setq tab-width 4)))
+
 (defun jep:java-insert-print-break-line (char)
   "Inserts a line that prints 55 of the same characters. For debugging Java code."
   (interactive "cCharacter: ")
