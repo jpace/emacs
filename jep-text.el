@@ -101,6 +101,8 @@
 	    (jep:text-snake-to-camel-case var)))
     (insert repl)))
 
+(add-hook 'text-mode-hook 'turn-on-auto-fill nil)
+
 (add-to-list 'auto-mode-alist '("\.txt$" . text-mode))
 
 (provide 'text-functions)

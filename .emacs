@@ -3,43 +3,17 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/vendor")
 
-(setq
- enable-local-eval             t
- visible-bell                  nil	; turn off the annoying bell
- inhibit-startup-message       t	; ???
- sentence-end-double-space     nil	; treat ". " as a sentence separator
- sentence-end                  "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*"
- auto-save-interval            2000	; save every 2000 operations
- auto-save-default             nil	; no autosaving
- gc-cons-threshold             500000	; garbage collection threshold
- default-fill-column           80
- default-major-node            'indented-text-mode
- completion-ignored-extensions		; don't do file name completion on
- (append 
-  (list "~" "\\.class" "\\.obj" "\\.o")	; backup files, .class files (Java), and object files (C/C++)
-  completion-ignored-extensions)
-
- apropos-do-all                t	; Thorough and slow.
- show-paren-mode               t	; makes parentheses match in color.
- paragraph-separate            "[ 	\f]*$" ; CC mode mucks this up to actual blank lines (no chars)
- transient-mark-mode           t	; show regions as they are highlighted.
- find-file-compare-truenames   t	; Use the truename of the file, not the base name.
- )
-
-;; Changes all yes/no questions to y/n type
-(fset 'yes-or-no-p 'y-or-n-p)
-
 ;;
 ;;* INITIALIZATION
 ;;** Emacs Version
-;; Figure out which flavor of emacs we are running
 (setq jep:this-is-xemacs (not (null (string-match "XEmacs" (emacs-version)))))
 (setq jep:this-is-gnuemacs (string-match "GNU Emacs" (emacs-version)))
 
+(if jep:this-is-xemacs
+    (load "xemacs-config")
+  (load "emacs-config"))
+
 (load "cua-config")
-
-(menu-bar-enable-clipboard)
-
 (load "compilation-config")
 
 (load "tabs-config")
@@ -136,13 +110,6 @@
 ;;*** Use crypt++ for automatic switching between Unix and DOS files
 (require 'crypt++)
 
-;;** Confirm close
-;; Add Emacs close confirmation, since ctrl-x ctrl-c is too easy to hit
-;; accidentally
-(setq kill-emacs-query-functions
-      (cons (lambda () (yes-or-no-p "Really kill Emacs? "))
-	    kill-emacs-query-functions))
-
 ;; these are normally disabled
 (put 'upcase-region    'disabled nil)
 (put 'downcase-region  'disabled nil)
@@ -152,8 +119,6 @@
 (cond (jep:this-is-gnuemacs
        (shell)
        (process-kill-without-query (get-process "shell"))))
-
-(add-hook 'text-mode-hook 'turn-on-auto-fill nil)
 
 (load "xml-config")
 (load "html-config")
@@ -197,9 +162,6 @@
 (load "groovy-config")
 
 (load "electric-buffer-config")
-
-(if jep:this-is-xemacs
-    (load "xemacs-config"))
 
 ;;** jep:find-file-from-list
 ;;============================================================
