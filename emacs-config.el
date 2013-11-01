@@ -64,6 +64,23 @@
       (cons (lambda () (yes-or-no-p "Really kill Emacs? "))
 	    kill-emacs-query-functions))
 
+;; reload files when they change on disk (e.g., git checkout HEAD ...):
+(global-auto-revert-mode 1)
+
+;; Sets execute permission for saved files with '#!' in the first line.
+(add-hook 'after-save-hook
+          '(lambda ()
+             (progn
+               (and (save-excursion
+                      (save-restriction
+                        (widen)
+                        (goto-char (point-min))
+                        (save-match-data
+                          (looking-at "^#!"))))
+                    (shell-command (concat "chmod u+x " buffer-file-name))
+                    (message (concat "Saved as script: " buffer-file-name))
+                    ))))
+
 (server-start)
 
 (provide 'emacs-config)

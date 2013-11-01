@@ -71,4 +71,62 @@ unlike file-name-sans-extension, which includes that."
   (interactive)
   (indent-region (point-min) (point-max)))
 
+(defun jep:toggle-read-only ()
+  "Toggle the current buffer as read only."
+  (interactive)
+  (if buffer-read-only
+      (shell-command (concat "chmod u+w " (buffer-file-name)))
+    (shell-command (concat "chmod u-w " (buffer-file-name))))
+  (message "")
+  (toggle-read-only))
+
+;; $$$ this is apparently unused
+(defun jep:find-file-from-list ()
+  (interactive)
+  (let* ((bol (or (beginning-of-line) (point)))
+	 (eol (or (end-of-line) (point)))
+	 (line (buffer-substring bol eol))
+	 (file (or (and (string-match "^\\([^:]+\\):" line)
+			(substring line (match-beginning 1) (match-end 1)))
+		   line)))
+    (next-line 1)
+    (beginning-of-line)
+    (if (and file
+	     (file-readable-p file))
+	(find-file file))))
+
+;;*** find-file advice
+;; Prompt for a file that does not exist.
+(defadvice find-file (around confirm-new-file)
+  "Prompts to create the file, if it does not exist and there is no prefix"
+  "argument to find-file. Thus, C-u C-x C-f will skip the prompt."
+  (let ((file (ad-get-arg 0)))
+    (if (or (file-exists-p file)	; load it if it does exist, of course
+	    (or current-prefix-arg	; prefix argument bypasses the test
+		(or (not (interactive-p)) ; otherwise, ask to create it
+		    (yes-or-no-p
+		     (format "`%s' does not exist, create buffer? " file))
+		    )))
+	ad-do-it
+      )))
+
+(ad-activate 'find-file)
+
+;;*** Use crypt++ for automatic switching between Unix and DOS files
+(require 'crypt++)
+
+;; For multiple buffers with the same basename, instead of, for example
+;; "Foo.txt<2>", this displays "Foo.txt<bar>".
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+(add-hook 'find-file-hooks 'auto-insert)
+(load-library "autoinsert")
+(setq auto-insert-alist
+      (append '(((java-mode . "Java Mode") . jep:java-new-file))
+	      '(((c++-mode  . "C++ Mode")  . jep:c++-new-file))
+	      '(((perl-mode . "Perl Mode") . jep:perl-new-file))
+	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file))
+	      auto-insert-alist))
+
 (provide 'jep:file)

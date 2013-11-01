@@ -13,12 +13,12 @@
     (load "xemacs-config")
   (load "emacs-config"))
 
+;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (load "cua-config")
-(load "compilation-config")
 
+(load "compilation-config")
 (load "tabs-config")
 (load "font-config")
-
 (load "jep-file")
 (load "jep-java")
 (load "jep-c++")
@@ -31,22 +31,17 @@
 (load "jep-text")
 (load "jep-ibuffer")
 
-;; my keybindings override those unset in ergoemacs, so it has to load afterward.
+;; my keybindings override those unset in ergoemacs (cua), so it has to load afterward.
 (load "keys")
 
 (load "modeline-config")		; my modeline
 
+;; not working with Emacs 24.x:
 ;; (load "color-theme")			; in living color!
 ;; (load "color-theme-soren")		; my theme
 ;; (color-theme-soren)
 
-;; For multiple buffers with the same basename, instead of, for example
-;; "Foo.txt<2>", this displays "Foo.txt<bar>".
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-
 ;;
-;;** Code from others
 ;;*** Buffer switching
 ;; This allows c-tab and c-s-tab switching between buffers, cycling around
 ;; Author: Igor Boukanov <boukanov@fi.uib.no>
@@ -64,61 +59,11 @@
        (turn-on-font-lock)
        ))
 
-;;*** find-file advice
-;; Prompt for a file that does not exist.
-(defadvice find-file (around confirm-new-file)
-  "Prompts to create the file, if it does not exist and there is no prefix"
-  "argument to find-file. Thus, C-u C-x C-f will skip the prompt."
-  (let ((file (ad-get-arg 0)))
-    (if (or (file-exists-p file)	; load it if it does exist, of course
-	    (or current-prefix-arg	; prefix argument bypasses the test
-		(or (not (interactive-p)) ; otherwise, ask to create it
-		    (yes-or-no-p
-		     (format "`%s' does not exist, create buffer? " file))
-		    )))
-	ad-do-it
-      )))
-
-(ad-activate 'find-file)
-
-;;
-;;** New files
-;;*** Automatic insertions
-(add-hook 'find-file-hooks 'auto-insert)
-(load-library "autoinsert")
-(setq auto-insert-alist
-      (append '(((java-mode . "Java Mode") . jep:java-new-file))
-	      '(((c++-mode  . "C++ Mode")  . jep:c++-new-file))
-	      '(((perl-mode . "Perl Mode") . jep:perl-new-file))
-	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file))
-	      auto-insert-alist))
-
-;; Sets execute permission for saved files with '#!' in the first line.
-(add-hook 'after-save-hook
-          '(lambda ()
-             (progn
-               (and (save-excursion
-                      (save-restriction
-                        (widen)
-                        (goto-char (point-min))
-                        (save-match-data
-                          (looking-at "^#!"))))
-                    (shell-command (concat "chmod u+x " buffer-file-name))
-                    (message (concat "Saved as script: " buffer-file-name))
-                    ))))
-
-;;*** Use crypt++ for automatic switching between Unix and DOS files
-(require 'crypt++)
-
 ;; these are normally disabled
 (put 'upcase-region    'disabled nil)
 (put 'downcase-region  'disabled nil)
 (put 'eval-expression  'disabled nil)
 (put 'narrow-to-region 'disabled nil)
-
-(cond (jep:this-is-gnuemacs
-       (shell)
-       (process-kill-without-query (get-process "shell"))))
 
 (load "xml-config")
 (load "html-config")
@@ -163,37 +108,12 @@
 
 (load "electric-buffer-config")
 
-;;** jep:find-file-from-list
-;;============================================================
-(defun jep:find-file-from-list ()
-  (interactive)
-  (let* ((bol (or (beginning-of-line) (point)))
-	 (eol (or (end-of-line) (point)))
-	 (line (buffer-substring bol eol))
-	 (file (or (and (string-match "^\\([^:]+\\):" line)
-			(substring line (match-beginning 1) (match-end 1)))
-		   line)))
-    (next-line 1)
-    (beginning-of-line)
-    (if (and file
-	     (file-readable-p file))
-	(find-file file))))
 ;;
 ;;** jep:insert-time-stamp
 ;;============================================================
 (defun jep:insert-time-stamp ()
   (interactive)
   (insert (time-stamp-string)))
-;;
-;;** jep:toggle-read-only
-;;============================================================
-(defun jep:toggle-read-only ()
-  (interactive)
-  (if buffer-read-only
-      (shell-command (concat "chmod u+w " (buffer-file-name)))
-    (shell-command (concat "chmod u-x " (buffer-file-name))))
-  (message "")
-  (toggle-read-only))
 ;;
 ;;** jep:toggle-case-fold-search
 (defun jep:toggle-case-fold-search ()
@@ -218,8 +138,6 @@
   (insert (format-time-string jep:insert-date-format (current-time))))
 
 (load "desktop-config")
-
-(global-auto-revert-mode 1)
 
 ;;
 ;;* LOCAL VARIABLES
