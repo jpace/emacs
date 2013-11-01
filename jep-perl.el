@@ -40,4 +40,6 @@
 	  "use strict;\n"
 	  "\n"))
 
+(add-to-list 'auto-mode-alist '("\.p[lm]$" . perl-mode))
+
 (provide 'jep:perl)

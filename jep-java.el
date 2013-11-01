@@ -257,6 +257,8 @@
   (insert "package ")
   (insert (jep:java-current-buffer-to-package-name) ";\n"))
 
+(add-to-list 'auto-mode-alist '("\.java$" . java-mode))
+
 (message "Java extensions loaded.")
 
 (provide 'jep:java)

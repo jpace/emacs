@@ -101,5 +101,7 @@
 	    (jep:text-snake-to-camel-case var)))
     (insert repl)))
 
+(add-to-list 'auto-mode-alist '("\.txt$" . text-mode))
+
 (provide 'text-functions)
 ;;; text-functions.el ends here

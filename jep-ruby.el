@@ -65,4 +65,8 @@
 	    (local-set-key (kbd "M-j t") 'jep:ruby-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j i") 'jep:ruby-toggle-between-integration-test-and-source)))
 
+
+(add-to-list 'auto-mode-alist '("\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+
 (provide 'jep:ruby)

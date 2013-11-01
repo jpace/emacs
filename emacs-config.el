@@ -1,8 +1,8 @@
-;;; html-config.el --- html configuration
+;;; emacs-config.el --- General configuration for Emacs
 
-;; Copyright (C) 2013  Jeff
+;; Copyright (C) 2013  Jeff Pace
 
-;; Author: Jeff <jpace@eddie>
+;; Author: Jeff Pace <jpace@canopus>
 ;; Keywords: extensions
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -24,14 +24,11 @@
 
 ;;; Code:
 
-(add-hook 'html-mode-hook 'turn-on-auto-fill nil)
+(setq auto-mode-alist
+      (append auto-mode-alist
+	      '(("\.emacs" . emacs-lisp-mode)
+		("\.el"    . emacs-lisp-mode)
+		("\.lisp$" . lisp-mode))))
 
-;; Just to keep from getting prompted every time I invoke HTML:
-(setq html-helper-address-string "<a href=\"mailto:jpace *at* incava *.* org\">Jeffrey E. Pace</a>")
-
-(add-to-list 'auto-mode-alist '("\.html?$" . html-mode))
-(add-to-list 'auto-mode-alist '("\.dsp$" . html-mode))
-(add-to-list 'auto-mode-alist '("\.php$" . html-mode))
-
-(provide 'html-config)
-;;; html-config.el ends here
+(provide 'emacs-config)
+;;; emacs-config.el ends here

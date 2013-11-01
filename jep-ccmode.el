@@ -50,4 +50,26 @@
   )
 (add-hook 'c-mode-common-hook 'jep-c-mode-common-hook)
 
+(setq auto-mode-alist
+      (append auto-mode-alist
+	      '(
+		;; C
+		("\\.c$"	. c-mode)
+
+		;; C++
+		("\\.h$"	. c++-mode) ; let's assume C++ .h files
+
+		("\\.l$"	. c++-mode) ; lex
+		("\\.y$"	. c++-mode) ; yacc
+		("\\.idl$"	. c++-mode) ; IDL
+
+		("\\.C$"	. c++-mode)
+		("\\.H$"	. c++-mode)
+		("\\.cc$"	. c++-mode)
+		("\\.cpp$"      . c++-mode)
+		("\\.hpp$"      . c++-mode)
+		("\\.hh$"	. c++-mode)
+		("\\.inl$"	. c++-mode) ; inline files (templates)
+		)))
+
 ;;;; end of jep-ccmode.el

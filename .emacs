@@ -162,37 +162,11 @@
 
 ;; Filename extensions for modes
 (setq auto-mode-alist
-      (append '(("\\.txt$"	. text-mode)
-
-		;; C
-		("\\.c$"	. c-mode)
-
-		;; C++
-		("\\.h$"	. c++-mode) ; let's assume C++ .h files
-
-		("\\.l$"	. c++-mode) ; lex
-		("\\.y$"	. c++-mode) ; yacc
-		("\\.idl$"	. c++-mode) ; IDL
-
-		("\\.C$"	. c++-mode)
-		("\\.H$"	. c++-mode)
-		("\\.cc$"	. c++-mode)
-		("\\.cpp$"      . c++-mode)
-		("\\.hpp$"      . c++-mode)
-		("\\.hh$"	. c++-mode)
-		("\\.inl$"	. c++-mode) ; inline files (templates)
-
-		;; emacs/lisp
-		(".emacs"	. emacs-lisp-mode)
-		("\\.el"	. emacs-lisp-mode)
-		("\\.lisp$"	. lisp-mode)
-
+      (append auto-mode-alist
+	      '(
 		;; TeX
 		("\\.tex$"	. latex-mode)
 		("\\.sty$"	. latex-mode) ; TeX style files
-
-		;; perl
-		("\\.p[lm]?$"   . perl-mode)
 
 		("[Mm]akefile"  . makefile-mode)
 		("\\.mak$"      . makefile-mode)
@@ -202,9 +176,6 @@
 		("\\.awk$"      . awk-mode)
 		
 		("\\.tcl$"      . tcl-mode)
-
-		("\\.java$"     . java-mode)
-		("\\.jpp$"      . java-mode)
 
 		("\\.py$"       . python-mode)
 
@@ -220,11 +191,8 @@
 
 		("\\.quotes$"   . quip-mode) ; quip
 
-		("\\.rb$"       . ruby-mode)
-		("Rakefile$"    . ruby-mode)
-
-;; (""		. text-mode) ; default
-		) auto-mode-alist))
+		(""		. text-mode) ; default
+		)))
 
 (load "groovy-config")
 
