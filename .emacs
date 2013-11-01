@@ -220,10 +220,10 @@
 
 		("\\.quotes$"   . quip-mode) ; quip
 
-		("\\.rb$"       . ruby-mode) ; Ruby
-		("Rakefile$"    . ruby-mode) ; Ruby
+		("\\.rb$"       . ruby-mode)
+		("Rakefile$"    . ruby-mode)
 
-		(""		. text-mode) ; default
+;; (""		. text-mode) ; default
 		) auto-mode-alist))
 
 (load "groovy-config")
