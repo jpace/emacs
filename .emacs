@@ -3,9 +3,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/vendor")
 
-;;
-;;* INITIALIZATION
-;;** Emacs Version
 (setq jep:this-is-xemacs (not (null (string-match "XEmacs" (emacs-version)))))
 (setq jep:this-is-gnuemacs (string-match "GNU Emacs" (emacs-version)))
 
@@ -41,30 +38,7 @@
 ;; (load "color-theme-soren")		; my theme
 ;; (color-theme-soren)
 
-;;
-;;*** Buffer switching
-;; This allows c-tab and c-s-tab switching between buffers, cycling around
-;; Author: Igor Boukanov <boukanov@fi.uib.no>
-(require 'pc-bufsw)
-(cond (jep:this-is-gnuemacs
-       (pc-bufsw::bind-keys 
-	[C-tab]				; cycle to previous in buffer list
-	[C-S-iso-lefttab]		; cycle to next in buffer list
-	))
-      (jep:this-is-xemacs
-       (pc-bufsw::bind-keys 
-	[(control tab)]
-	[(control shift iso-lefttab)]
-	)
-       (turn-on-font-lock)
-       ))
-
-;; these are normally disabled
-(put 'upcase-region    'disabled nil)
-(put 'downcase-region  'disabled nil)
-(put 'eval-expression  'disabled nil)
-(put 'narrow-to-region 'disabled nil)
-
+(load "jep-buffer")
 (load "xml-config")
 (load "html-config")
 
@@ -105,7 +79,6 @@
 		)))
 
 (load "groovy-config")
-
 (load "electric-buffer-config")
 
 ;;
@@ -114,15 +87,8 @@
 (defun jep:insert-time-stamp ()
   (interactive)
   (insert (time-stamp-string)))
-;;
-;;** jep:toggle-case-fold-search
-(defun jep:toggle-case-fold-search ()
-  (interactive)
-  (setq case-fold-search (not case-fold-search))
-  (if case-fold-search
-      (message "case sensitive search OFF")
-    (message "case sensitive search ON")))
 
+(load "jep-search")
 (load "nav-config")
 
 ;;
@@ -155,11 +121,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(cua-mode t nil (cua-base))
- '(display-time-mode t)
- '(load-home-init-file t t)
- '(show-paren-mode t))
+ '(load-home-init-file t t))
 
 (load "dired-config")
 (load "snippet-config")

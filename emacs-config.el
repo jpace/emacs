@@ -81,6 +81,12 @@
                     (message (concat "Saved as script: " buffer-file-name))
                     ))))
 
+;; these are normally disabled
+(put 'upcase-region    'disabled nil)
+(put 'downcase-region  'disabled nil)
+(put 'eval-expression  'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+
 (server-start)
 
 (provide 'emacs-config)
