@@ -36,5 +36,9 @@ highlights the compilation messages."
     (font-lock-fontify-buffer)))
 (setq compilation-finish-function 'my-compilation-finish-function)
 
+(global-set-key [f5] 'compile)
+(global-set-key [f6] 'previous-error)
+(global-set-key [f7] 'next-error)
+
 (provide 'jep-compilation)
 ;;; jep-compilation.el ends here

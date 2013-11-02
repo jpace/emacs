@@ -1,4 +1,7 @@
-;;* Jeff Pace's tweaks for ibuffer.
+;;; jep-ibuffer.el --- Configuration for ibuffer
+
+;; Copyright (C) 2013  Jeff Pace
+
 ;; originally stolen from http://emacs-fu.blogspot.com/2010/02/dealing-with-many-buffers-ibuffer.html
 
 (require 'ibuffer) 
@@ -20,3 +23,10 @@
     ad-do-it
     (ibuffer-jump-to-buffer recent-buffer-name)))
 (ad-activate 'ibuffer)
+
+
+(global-set-key "\C-l"     'ibuffer)
+(global-set-key "\C-x\C-b" 'ibuffer)
+
+(provide 'jep-ibuffer)
+;;; jep-ibuffer.el ends here

@@ -27,12 +27,13 @@
 ;; fills the current paragraph and moves down
 
 (defun jep:fill-and-forward ()
+  "Fill the current paragraph and move to the next one."
   (interactive)
   (fill-paragraph nil)
-  (forward-paragraph))			; used to be 'forward-block-of-lines'
+  (forward-paragraph))
 
 (defun jep:reindent-buffer ()
-  "*Reindent each paragraph"
+  "*Reindent each paragraph."
   (interactive)
   (while (not (eobp))
     (jep:fill-and-forward)))
@@ -55,7 +56,7 @@
   (insert "    "))
 
 (defun jep:match-paren (arg)
-  "Go to the matching parenthesis if on parenthesis otherwise insert %."
+  "Go to the matching parenthesis if on parenthesis, otherwise insert %."
   (interactive "p")
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
@@ -63,7 +64,6 @@
 
 (defun jep:upcase-char ()
   "Capitalizes the current character and moves right."
-
   (interactive)
   (let ((start (point)))
     (forward-char 1)
@@ -71,21 +71,19 @@
 
 (defun jep:text-camel-to-snake-case (var)
   "*Converts the variable from camelCase to snake_case"
-  
   (let ((case-replace t)
 	(case-fold-search nil))
     (downcase (replace-regexp-in-string "\\(\\(?:[A-Z]\\|[0-9]+\\)\\)" "_\\1" var t nil))))
 
 (defun jep:text-snake-to-camel-case (const)
   "*Converts the variable from snake_case to camelCase"
-  
   (let ((case-replace t)
 	(case-fold-search nil))
+    ; this is broken; "\U\1" from Perl doesn't do the same in Emacs:
     (replace-regexp-in-string "_\\([a-z0-9]\\)" "\\U\\1" (downcase const) t nil)))
 
 (defun jep:text-toggle-camel-and-snake-case ()
-  "*Toggles between camelCase and snake_case.
-"
+  "*Toggles between camelCase and snake_case."
   (interactive)
   (re-search-backward "[^A-Za-z0-9_]")
   (forward-char 1)

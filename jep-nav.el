@@ -1,8 +1,8 @@
 ;;; jep-nav.el --- navigation configuration
 
-;; Copyright (C) 2013  Jeff
+;; Copyright (C) 2013  Jeff Pace
 
-;; Author: Jeff <jpace@eddie>
+;; Author: Jeff Pace <jeugenepace@gmail.com>
 ;; Keywords: extensions
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -34,31 +34,48 @@
 					; that buffer.
  )
 
-;;
-;;** jep:point-to-top
 (defun jep:point-to-top ()
+  "Put the current position at the top of the displayed window"
   (interactive)
   (recenter 0))
-;;
-;;** jep:point-to-bottom
+
 (defun jep:point-to-bottom ()
+  "Put the current position at the bottom of the displayed window"
   (interactive)
   (recenter -1))
-;;
-;;** jep:move-up
-(defun jep:move-up ()
+
+(defun jep:scroll-up-one-line ()
+  "Scroll up one line"
   (interactive)
   (scroll-up 1))
-;;
-;;** jep:move-up
-(defun jep:move-up ()
-  (interactive)
-  (scroll-up 1))
-;;
-;;** jep:move-down
-(defun jep:move-down ()
+
+(defun jep:scroll-down-one-line ()
+  "Scroll down one line"
   (interactive)
   (scroll-down 1))
+
+(global-set-key "\M-=" 'goto-line)
+(global-set-key "\M-g" 'goto-line)
+
+(global-set-key [home]     'beginning-of-buffer)
+(global-set-key [end]      'end-of-buffer)
+
+;; Putty sends odd characters, so these map them to the same commands:
+(global-set-key (kbd "ESC <home>")  'beginning-of-buffer)
+(global-set-key (kbd "ESC <select>")  'end-of-buffer)
+(global-set-key (kbd "<select>")  'end-of-buffer)
+
+(global-set-key [(meta left)]     'beginning-of-line)
+(global-set-key [(meta right)]    'end-of-line)
+
+(global-set-key "\M->" 'forward-sentence)
+(global-set-key "\M-<" 'backward-sentence)
+
+(global-set-key [(meta up)]   'jep:scroll-up-one-line)
+(global-set-key [(meta down)] 'jep:scroll-down-one-line)
+
+(global-set-key [(control down)]   'forward-paragraph)
+(global-set-key [(control up)]     'backward-paragraph)
 
 (provide 'jep-nav)
 ;;; jep-nav.el ends here

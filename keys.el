@@ -1,30 +1,15 @@
 ;;;; keys.el -- global key bindings
 
-;; meta and control keys
-(global-set-key "\M-="     'goto-line)
-(global-set-key "\M-g"     'goto-line)
-
-;; (global-set-key "\C-l"     'electric-buffer-list)
-;; (global-set-key "\C-x\C-b" 'electric-buffer-list)
-(global-set-key "\C-l"     'ibuffer)
-(global-set-key "\C-x\C-b" 'ibuffer)
-
 (global-set-key "\e#"      'query-replace-regexp)
 (global-set-key "\M-*"     'query-replace-regexp)
 (global-set-key "\M-\C-f"  'font-lock-fontify-buffer)
 (global-set-key "\C-c#"    'comment-region)
-
-(global-set-key "\e!"      'jep:c++-get-companion-file)
-(global-set-key "\e`"      'jep:c++-get-companion-file-nocreate)
-(global-set-key "\e^"      'jep:c++-get-test-file)
 
 (global-set-key "\M-w"     'clipboard-kill-ring-save)
 (global-set-key "\C-w"     'clipboard-kill-region)
 
 (global-set-key "\M-m"     'capitalize-word)
 (global-set-key "\M-M"     'upcase-word)
-(global-set-key "\M->"     'forward-sentence)
-(global-set-key "\M-<"     'backward-sentence)
 (global-set-key "\M-,"     'downcase-word)
 
 (global-set-key "\M-V"     'yank-pop)
@@ -36,38 +21,18 @@
 (global-set-key [f3]       'jep:fill-and-forward)
 (global-set-key [(control f3)]  'jep:reindent-buffer)
 (global-set-key [f4]       'call-last-kbd-macro)
-(global-set-key [f5]       'compile)
-(global-set-key [f6]       'previous-error)
-(global-set-key [f7]       'next-error)
 
 (global-set-key [f8]           'jep:space-indent-and-forward)
 (global-set-key [(control f8)] 'jep:space-indent)
-
-(global-set-key [home]     'beginning-of-buffer)
-(global-set-key [end]      'end-of-buffer)
-
-;; Putty sends odd characters, so these map them to the same commands:
-(global-set-key (kbd "ESC <home>")  'beginning-of-buffer)
-(global-set-key (kbd "ESC <select>")  'end-of-buffer)
-(global-set-key (kbd "<select>")  'end-of-buffer)
-
-(global-set-key [(meta left)]     'beginning-of-line)
-(global-set-key [(meta right)]    'end-of-line)
 
 ;; prior and next mean page up and page down
 (global-set-key [(control prior)] 'enlarge-window)
 (global-set-key [(control next)]  'shrink-window)
 
-(global-set-key [(meta up)]       'jep:move-up)
-(global-set-key [(meta down)]     'jep:move-down)
-
 (define-key global-map [(control backspace)] 'undo)
 
 (global-set-key [(control delete)]   'backward-kill-word)
 (global-set-key [(meta delete)]      'kill-word)
-
-(global-set-key [(control down)]   'forward-paragraph)
-(global-set-key [(control up)]     'backward-paragraph)
 
 (defvar jep:keymap (make-sparse-keymap)
   "Keymap for all personal key bindings")
@@ -96,11 +61,6 @@
 (define-key jep:keymap "f"    'igrep-find)
 (define-key jep:keymap "g"    'igrep)
 
-;; $$$ these should be only in java-mode:
-;; (define-key jep:keymap "i"    'jep:java-insert-print-intro-line)
-;; (define-key jep:keymap "5"    'jep:java-insert-print-break-line)
-;; (define-key jep:keymap "\C-v" 'jep:java-toggle-variable-and-constant)
-
 (define-key jep:keymap "\C-y" 'jep:text-toggle-camel-and-snake-case)
 (define-key jep:keymap "\M-y" 'jep:text-toggle-camel-and-snake-case)
 
@@ -117,10 +77,6 @@
 (define-key jep:keymap ">"    'isearch-forward-regexp)
 
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
-
-;; (define-key jep:keymap [(control tab)]  'jep:toggle-tab-width)
-;; (define-key jep:keymap [(meta tab)]     'jep:toggle-tab-width)
-;; (define-key jep:keymap [(tab)]          'jep:toggle-tab-width)
 
 (define-key jep:keymap "B"    'jep:file-insert-basename)
 

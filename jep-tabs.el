@@ -50,7 +50,7 @@
   "Convert all tabs to spaces in the entire buffer."
   (interactive "*")
   (untabify (point-min) (point-max))
-  (message "TABS converted to SPACES"))
+  (message "tabs converted to spaces"))
 
 (provide 'jep-tabs)
 ;;; jep-tabs.el ends here
