@@ -1,4 +1,4 @@
-;;; xemacs-config.el --- configuration for xemacs
+;;; jep-xemacs.el --- configuration for xemacs
 
 ;; Copyright (C) 2013  Jeff
 
@@ -43,5 +43,5 @@
 (set-specifier default-toolbar-visible-p nil)
 (set-specifier menubar-visible-p nil)
 
-(provide 'xemacs-config)
-;;; xemacs-config.el ends here
+(provide 'jep-xemacs)
+;;; jep-xemacs.el ends here

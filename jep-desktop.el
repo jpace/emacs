@@ -1,4 +1,4 @@
-;;; desktop-config.el --- configuration for desktop
+;;; jep-desktop.el --- configuration for desktop
 
 ;; Copyright (C) 2013  Jeff
 
@@ -37,5 +37,5 @@
 (setq-default save-place t)		; save places in all files
 (setq save-place-file	 "~/.emacsloc")
 
-(provide 'desktop-config)
-;;; desktop-config.el ends here
+(provide 'jep-desktop)
+;;; jep-desktop.el ends here

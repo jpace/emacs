@@ -7,15 +7,15 @@
 (setq jep:this-is-gnuemacs (string-match "GNU Emacs" (emacs-version)))
 
 (if jep:this-is-xemacs
-    (load "xemacs-config")
-  (load "emacs-config"))
+    (load "jep-xemacs")
+  (load "jep-emacs"))
 
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
-(load "cua-config")
+(load "jep-cua")
 
 (load "jep-compilation")
-(load "tabs-config")
-(load "font-config")
+(load "jep-tabs")
+(load "jep-font")
 (load "jep-file")
 (load "jep-java")
 (load "jep-c++")
@@ -31,7 +31,7 @@
 ;; my keybindings override those unset in ergoemacs (cua), so it has to load afterward.
 (load "keys")
 
-(load "modeline-config")		; my modeline
+(load "jep-modeline")		; my modeline
 
 ;; not working with Emacs 24.x:
 ;; (load "color-theme")			; in living color!
@@ -79,7 +79,7 @@
 		)))
 
 (load "jep-groovy")
-(load "electric-buffer-config")
+(load "jep-electric-buffer")
 
 ;;
 ;;** jep:insert-time-stamp
@@ -89,7 +89,7 @@
   (insert (time-stamp-string)))
 
 (load "jep-search")
-(load "nav-config")
+(load "jep-nav")
 
 ;;
 ;;** jep:insert-data-format
@@ -103,7 +103,7 @@
   (interactive "*")
   (insert (format-time-string jep:insert-date-format (current-time))))
 
-(load "desktop-config")
+(load "jep-desktop")
 
 ;;
 ;;* LOCAL VARIABLES
@@ -124,24 +124,27 @@
  '(load-home-init-file t t))
 
 (load "jep-dired")
-(load "snippet-config")
+(load "jep-snippet")
 
 (require 'ido)
 (ido-mode 'both)
 (setq confirm-nonexistent-file-or-buffer nil)
 
 (load (system-name) 'noerror)
+(load (concat system-name "-" user-real-login-name) 'noerror)
+
+(defvar jep:background-color
+  (if window-system
+      "#040408"
+    "black"))
+
+(defvar jep:foreground-color
+  (if window-system
+      "#E8E3E3"
+    "white"))
 
 (if window-system
     (custom-set-faces
-     ;; custom-set-faces was added by Custom.
-     ;; If you edit it by hand, you could mess it up, so be careful.
-     ;; Your init file should contain only one such instance.
-     ;; If there is more than one, they won't work right.
-     '(default ((t (:inherit nil :stipple nil :background "#040408" :foreground "#E8E3E3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+     '(default ((t (:inherit nil :stipple nil :background "#0e0e16" :foreground "#E8E3E3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
    '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))))

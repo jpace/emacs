@@ -1,4 +1,4 @@
-;;; nav-config.el --- navigation configuration
+;;; jep-nav.el --- navigation configuration
 
 ;; Copyright (C) 2013  Jeff
 
@@ -60,5 +60,5 @@
   (interactive)
   (scroll-down 1))
 
-(provide 'nav-config)
-;;; nav-config.el ends here
+(provide 'jep-nav)
+;;; jep-nav.el ends here

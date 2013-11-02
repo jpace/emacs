@@ -1,4 +1,4 @@
-;;; electric-buffer-config.el --- electric buffer config
+;;; jep-electric-buffer.el --- electric buffer config
 
 ;; Copyright (C) 2013  Jeff
 
@@ -64,5 +64,5 @@ convenience keys."
 	      (font-lock-mode 1)
 	      (font-lock-fontify-buffer)))
 
-(provide 'electric-buffer-config)
-;;; electric-buffer-config.el ends here
+(provide 'jep-electric-buffer)
+;;; jep-electric-buffer.el ends here

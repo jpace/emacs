@@ -1,4 +1,4 @@
-;;; tabs-config.el --- tabs configuration
+;;; jep-tabs.el --- tabs configuration
 
 ;; Copyright (C) 2013  Jeff
 
@@ -52,5 +52,5 @@
   (untabify (point-min) (point-max))
   (message "TABS converted to SPACES"))
 
-(provide 'tabs-config)
-;;; tabs-config.el ends here
+(provide 'jep-tabs)
+;;; jep-tabs.el ends here

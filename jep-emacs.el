@@ -1,4 +1,4 @@
-;;; emacs-config.el --- General configuration for Emacs
+;;; jep-emacs.el --- General configuration for Emacs
 
 ;; Copyright (C) 2013  Jeff Pace
 
@@ -36,7 +36,6 @@
  default-fill-column           80
  default-major-node            'indented-text-mode
  apropos-do-all                t	; Thorough and slow.
- show-paren-mode               t	; makes parentheses match in color.
  paragraph-separate            "[ 	\f]*$" ; CC mode mucks this up to actual blank lines (no chars)
  transient-mark-mode           t	; show regions as they are highlighted.
  find-file-compare-truenames   t	; Use the truename of the file, not the base name.
@@ -46,6 +45,8 @@
       (append 
        (list "~" "\\.class" "\\.obj" "\\.o")	; backup files, .class files (Java), and object files (C/C++)
        completion-ignored-extensions))
+
+(show-paren-mode t)
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -89,5 +90,5 @@
 
 (server-start)
 
-(provide 'emacs-config)
-;;; emacs-config.el ends here
+(provide 'jep-emacs)
+;;; jep-emacs.el ends here

@@ -1,8 +1,9 @@
-;;; modeline.el --- Controls the mode line.
+;;; jep-modeline.el --- Configuration for Modeline
 
-;; Copyright (C) 2007 by incava.org.
+;; Copyright (C) 2013  Jeff
 
-;; Author: Jeff Pace <jeugenepace at gmail dot com>
+;; Author: Jeff <jpace@eddie>
+;; Keywords: extensions
 
 ;; see http://www.gnu.org/software/emacs/manual/html_node/emacs/Standard-Faces.html
 
@@ -67,6 +68,5 @@
 ;; (line-number-mode 1)
 ;; (column-number-mode 1)
 
-(provide 'modeline)
-
-;;; modeline.el ends here
+(provide 'jep-modeline)
+;;; jep-modeline.el ends here

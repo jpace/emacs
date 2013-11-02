@@ -1,4 +1,4 @@
-;;; snippet-config.el --- yasnippet configuration
+;;; jep-snippet.el --- yasnippet configuration
 
 ;; Copyright (C) 2013  Jeff
 
@@ -36,5 +36,5 @@
                              yas/ido-prompt
                              yas/completing-prompt))
 
-(provide 'snippet-config)
-;;; snippet-config.el ends here
+(provide 'jep-snippet)
+;;; jep-snippet.el ends here

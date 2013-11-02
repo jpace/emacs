@@ -1,4 +1,4 @@
-;;; cua-config.el --- cua-config
+;;; jep-cua.el --- jep-cua
 
 ;; Copyright (C) 2013  Jeff Pace
 
@@ -30,5 +30,5 @@
 (cua-mode)				; ctrl-C (copy), -X (cut), -V (paste), -Z (undo)
 ;; but not ctrl-O (open) or ctrl-S (save)
 
-(provide 'cua-config)
+(provide 'jep-cua)
 ;;; cua.el ends here

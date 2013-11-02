@@ -1,4 +1,4 @@
-;;; font-config.el --- font configuration
+;;; jep-font.el --- font configuration
 
 ;; Copyright (C) 2013  Jeff
 
@@ -52,5 +52,5 @@
       ;; I'm using files that are too big, apparently
       (if font-lock-maximum-decoration (* 70 2048) (* 150 2048)))
 
-(provide 'font-config)
-;;; font-config.el ends here
+(provide 'jep-font)
+;;; jep-font.el ends here
