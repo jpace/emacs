@@ -13,7 +13,7 @@
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (load "cua-config")
 
-(load "compilation-config")
+(load "jep-compilation")
 (load "tabs-config")
 (load "font-config")
 (load "jep-file")
@@ -39,8 +39,8 @@
 ;; (color-theme-soren)
 
 (load "jep-buffer")
-(load "xml-config")
-(load "html-config")
+(load "jep-xml")
+(load "jep-html")
 
 ;;$$$ todo: add erb-mode, inheriting text-mode, without auto-fill
 
@@ -78,7 +78,7 @@
 		(""		. text-mode) ; default
 		)))
 
-(load "groovy-config")
+(load "jep-groovy")
 (load "electric-buffer-config")
 
 ;;
@@ -123,7 +123,7 @@
  ;; If there is more than one, they won't work right.
  '(load-home-init-file t t))
 
-(load "dired-config")
+(load "jep-dired")
 (load "snippet-config")
 
 (require 'ido)

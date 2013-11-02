@@ -1,4 +1,4 @@
-;;; html-config.el --- html configuration
+;;; jep-compilation.el --- configuration for compilation
 
 ;; Copyright (C) 2013  Jeff
 
@@ -24,14 +24,17 @@
 
 ;;; Code:
 
-(add-hook 'html-mode-hook 'turn-on-auto-fill nil)
+(setq special-display-buffer-names	; treat the compilation buffer as special
+      (append `("*compilation*")))
 
-;; Just to keep from getting prompted every time I invoke HTML:
-(setq html-helper-address-string "<a href=\"mailto:jpace *at* incava *.* org\">Jeffrey E. Pace</a>")
+;; This fontifies the compilation buffer when compilation exits.
+(defun my-compilation-finish-function (buf msg)
+  "This is called after the compilation exits.  Currently just
+highlights the compilation messages."
+  (save-excursion
+    (set-buffer buf)
+    (font-lock-fontify-buffer)))
+(setq compilation-finish-function 'my-compilation-finish-function)
 
-(add-to-list 'auto-mode-alist '("\.html?$" . html-mode))
-(add-to-list 'auto-mode-alist '("\.dsp$" . html-mode))
-(add-to-list 'auto-mode-alist '("\.php$" . html-mode))
-
-(provide 'html-config)
-;;; html-config.el ends here
+(provide 'jep-compilation)
+;;; jep-compilation.el ends here

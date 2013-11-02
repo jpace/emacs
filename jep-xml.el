@@ -1,4 +1,4 @@
-;;; groovy-config.el --- Configuration for Groovy
+;;; jep-xml.el --- xml configuration
 
 ;; Copyright (C) 2013  Jeff
 
@@ -24,11 +24,10 @@
 
 ;;; Code:
 
-(autoload 'groovy-mode "groovy-mode" "Groovy editing mode." t)
+(add-hook 'xml-mode-hook 
+          (lambda () (auto-fill-mode -1)))
 
-(add-to-list 'auto-mode-alist        '("\.groovy$" . groovy-mode))
-(add-to-list 'auto-mode-alist        '("\.gradle$" . groovy-mode))
-(add-to-list 'interpreter-mode-alist '("groovy"    . groovy-mode))
+(add-to-list 'auto-mode-alist '("\.xml$" . xml-mode))
 
-(provide 'groovy-config)
-;;; groovy-config.el ends here
+(provide 'jep-xml)
+;;; jep-xml.el ends here

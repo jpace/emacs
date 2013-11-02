@@ -1,4 +1,4 @@
-;;; dired-config.el --- configuration for dired
+;;; jep-dired.el --- configuration for dired
 
 ;; Copyright (C) 2013  Jeff
 
@@ -43,5 +43,5 @@
   (lambda ()
     (set-variable 'dired-use-ls-dired nil)))
 
-(provide 'dired-config)
-;;; dired-config.el ends here
+(provide 'jep-dired)
+;;; jep-dired.el ends here
