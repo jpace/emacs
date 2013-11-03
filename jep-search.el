@@ -41,5 +41,9 @@
 (define-key jep:keymap ">"    'isearch-forward-regexp)
 (define-key jep:keymap "l"    'list-matching-lines)
 
+(global-set-key "\M-w"     'clipboard-kill-ring-save)
+(global-set-key "\C-w"     'clipboard-kill-region)
+(global-set-key "\M-V"     'yank-pop)
+
 (provide 'jep-search)
 ;;; jep-search.el ends here

@@ -12,7 +12,7 @@
 
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (load "jep-cua")
-(load "keys")
+(load "jep-keymap")
 
 (load "jep-compilation")
 (load "jep-tabs")
