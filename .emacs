@@ -12,6 +12,7 @@
 
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (load "jep-cua")
+(load "keys")
 
 (load "jep-compilation")
 (load "jep-tabs")
@@ -27,9 +28,6 @@
 (load "jep-ccmode")			; customization for C* and Java files
 (load "jep-text")
 (load "jep-ibuffer")
-
-;; my keybindings override those unset in ergoemacs (cua), so it has to load afterward.
-(load "keys")
 
 (load "jep-modeline")		; my modeline
 
@@ -80,39 +78,9 @@
 
 (load "jep-groovy")
 (load "jep-electric-buffer")
-
-;;
-;;** jep:insert-time-stamp
-;;============================================================
-(defun jep:insert-time-stamp ()
-  (interactive)
-  (insert (time-stamp-string)))
-
 (load "jep-search")
 (load "jep-nav")
-
-;;
-;;** jep:insert-data-format
-(defvar jep:insert-date-format "%A, %d %B %Y"
-  "*Format for \\[jep:insert-date].")
-
-;;
-;;** jep:insert-date
-(defun jep:insert-date ()
-  "Insert the current date, using jep:insert-date."
-  (interactive "*")
-  (insert (format-time-string jep:insert-date-format (current-time))))
-
 (load "jep-desktop")
-
-;;
-;;* LOCAL VARIABLES
-;; ============================
-;; Local Variables:
-;; mode: Emacs-Lisp
-;; outline-regexp: ";;\\*+"
-;; End:
-;; ============================
 
 (setq minibuffer-max-depth nil)
 
@@ -133,18 +101,18 @@
 (load (system-name) 'noerror)
 (load (concat system-name "-" user-real-login-name) 'noerror)
 
-(defvar jep:background-color
-  (if window-system
-      "#040408"
-    "black"))
-
-(defvar jep:foreground-color
-  (if window-system
-      "#E8E3E3"
-    "white"))
-
 (if window-system
     (custom-set-faces
      '(default ((t (:inherit nil :stipple nil :background "#040412" :foreground "#E8E3E3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (custom-set-faces
    '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))))
+
+;;
+;;* LOCAL VARIABLES
+;; ============================
+;; Local Variables:
+;; mode: Emacs-Lisp
+;; outline-regexp: ";;\\*+"
+;; End:
+;; ============================
+

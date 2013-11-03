@@ -77,5 +77,8 @@
 (global-set-key [(control down)]   'forward-paragraph)
 (global-set-key [(control up)]     'backward-paragraph)
 
+(define-key jep:keymap "\M-p" 'jep:point-to-top)
+(define-key jep:keymap "\M-b" 'jep:point-to-bottom)
+
 (provide 'jep-nav)
 ;;; jep-nav.el ends here

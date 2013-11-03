@@ -32,16 +32,13 @@
   (fill-paragraph nil)
   (forward-paragraph))
 
-(defun jep:reindent-buffer ()
+(defun jep:text-refill-buffer ()
   "*Reindent each paragraph."
   (interactive)
-  (while (not (eobp))
-    (jep:fill-and-forward)))
-
-(defun previous-window (arg)
-  "Switch to previous window."
-  (interactive "p")
-  (other-window (- arg)))
+  (save-excursion 
+    (goto-char (point-min))
+    (while (not (eobp))
+      (jep:fill-and-forward))))
 
 (defun jep:space-indent ()
   (interactive)
@@ -103,6 +100,9 @@
     (insert repl)))
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill nil)
+(add-hook 'text-mode-hook 
+	  (lambda () 
+	    (local-set-key (kbd "M-I") 'jep:text-refill-buffer)))
 
 (add-to-list 'auto-mode-alist '("\.txt$" . text-mode))
 

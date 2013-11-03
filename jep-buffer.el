@@ -40,5 +40,10 @@
        (turn-on-font-lock)
        ))
 
+(define-key jep:keymap "R" 'revert-buffer)
+
+(define-key jep:keymap [(tab)] 'jep:reindent-buffer)
+(define-key jep:keymap "\t" 'jep:reindent-buffer)
+
 (provide 'jep-buffer)
 ;;; jep-buffer.el ends here

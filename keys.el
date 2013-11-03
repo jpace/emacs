@@ -2,7 +2,6 @@
 
 (global-set-key "\e#"      'query-replace-regexp)
 (global-set-key "\M-*"     'query-replace-regexp)
-(global-set-key "\M-\C-f"  'font-lock-fontify-buffer)
 (global-set-key "\C-c#"    'comment-region)
 
 (global-set-key "\M-w"     'clipboard-kill-ring-save)
@@ -19,7 +18,6 @@
 
 ;; (read-kbd-macro "ESC q <C-down>"))
 (global-set-key [f3]       'jep:fill-and-forward)
-(global-set-key [(control f3)]  'jep:reindent-buffer)
 (global-set-key [f4]       'call-last-kbd-macro)
 
 (global-set-key [f8]           'jep:space-indent-and-forward)
@@ -42,22 +40,14 @@
 (define-key global-map "\M-j" jep:keymap)
 (define-key global-map "\C-j" jep:keymap)
 
-(define-key jep:keymap "O"    'jep:toggle-read-only)
-(define-key jep:keymap "R"    'revert-buffer)
-
-(define-key jep:keymap "\C-a" 'iso-accents-mode)
-(define-key jep:keymap "\M-b" 'jep:point-to-bottom)
 (define-key jep:keymap "\M-c" 'compare-windows)
 (define-key jep:keymap "\C-f" 're-search-forward)
-(define-key jep:keymap "\C-k" 'compile)
-(define-key jep:keymap "\C-l" 'jep:find-file-from-list)
 (define-key jep:keymap "\C-q" 'query-replace-regexp)
 (define-key jep:keymap "\C-r" 'replace-regexp)
 (define-key jep:keymap "\C-^" 'enlarge-window)
 
 (define-key jep:keymap "b"    're-search-backward)
 (define-key jep:keymap "c"    'comment-region)
-(define-key jep:keymap "d"    'ediff-buffers)
 (define-key jep:keymap "f"    'igrep-find)
 (define-key jep:keymap "g"    'igrep)
 
@@ -80,7 +70,5 @@
 
 (define-key jep:keymap "B"    'jep:file-insert-basename)
 
-(define-key jep:keymap [(tab)] 'jep:reindent-buffer)
-(define-key jep:keymap "\t" 'jep:reindent-buffer)
 
 ;;;; end of keys.el

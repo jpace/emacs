@@ -24,10 +24,10 @@
 
 ;;; Code:
 
-(add-hook 'xml-mode-hook 
+(add-hook 'nxml-mode-hook 
           (lambda () (auto-fill-mode -1)))
 
-(add-to-list 'auto-mode-alist '("\.xml$" . xml-mode))
+(add-to-list 'auto-mode-alist '("\.xml$" . nxml-mode))
 
 (provide 'jep-xml)
 ;;; jep-xml.el ends here

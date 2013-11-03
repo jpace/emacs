@@ -80,21 +80,6 @@ unlike file-name-sans-extension, which includes that."
   (message "")
   (toggle-read-only))
 
-;; $$$ this is apparently unused
-(defun jep:find-file-from-list ()
-  (interactive)
-  (let* ((bol (or (beginning-of-line) (point)))
-	 (eol (or (end-of-line) (point)))
-	 (line (buffer-substring bol eol))
-	 (file (or (and (string-match "^\\([^:]+\\):" line)
-			(substring line (match-beginning 1) (match-end 1)))
-		   line)))
-    (next-line 1)
-    (beginning-of-line)
-    (if (and file
-	     (file-readable-p file))
-	(find-file file))))
-
 ;;*** find-file advice
 ;; Prompt for a file that does not exist.
 (defadvice find-file (around confirm-new-file)
@@ -128,5 +113,7 @@ unlike file-name-sans-extension, which includes that."
 	      '(((perl-mode . "Perl Mode") . jep:perl-new-file))
 	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file))
 	      auto-insert-alist))
+
+(define-key jep:keymap "O" 'jep:toggle-read-only)
 
 (provide 'jep:file)
