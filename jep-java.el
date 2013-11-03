@@ -164,40 +164,34 @@
 
 (defun jep:java-find-counterpart (fname)
   "*Toggles between a test and source Java file."
-  
-  (interactive)
+    (interactive)
   (jep:file-get-counterpart fname jep:java-test-source-patterns))
 
 (defun jep:java-show-counterpart ()
   "*Toggles between a test and source Java file."
-  
   (interactive)
   (let ((other (jep:java-find-counterpart (buffer-file-name))))
     (message (concat "other file " other))))
 
 (defun jep:java-toggle-between-test-and-source ()
   "*Toggles between a test and source Java file."
-
   (interactive)
   (jep:file-toggle-files jep:java-test-source-patterns))
 
 (defun jep:java-variable-to-constant (var)
   "*Converts the variable from camel case to a constant (uppercase and underscores)"
-  
   (let ((case-replace t)
 	(case-fold-search nil))
     (upcase (replace-regexp-in-string "\\(\\(?:[A-Z]\\|[0-9]+\\)\\)" "_\\1" var t nil))))
 
 (defun jep:java-constant-to-variable (const)
   "*Converts the const (uppercase and underscores) to camel case"
-  
   (let ((case-replace t)
 	(case-fold-search nil))
-    (replace-regexp-in-string "_\\([a-z0-9]\\)" "\\U\\1" (downcase const) t nil)))
+    (replace-regexp-in-string "_\\([a-z0-9]\\)" 'capitalize (downcase const) t nil)))
 
 (defun jep:java-toggle-variable-and-constant ()
-  "*Toggles between a variable and a constant.
-"
+  "*Toggles between a variable and a constant."
   (interactive)
   (re-search-backward "[^A-Za-z0-9_]")
   (forward-char-command 1)
@@ -214,8 +208,7 @@
     (insert repl)))
 
 (defun jep:java-if-stmt-add-braces ()
-  "*Goes to next if statement and adds braces.
-"
+  "*Goes to next if statement and adds braces."
   (interactive)
   (re-search-forward "\\(if\\|for\\) *(.*) *$")
   (insert " {")

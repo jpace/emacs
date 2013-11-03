@@ -75,12 +75,15 @@
 	(case-fold-search nil))
     (downcase (replace-regexp-in-string "\\(\\(?:[A-Z]\\|[0-9]+\\)\\)" "_\\1" var t nil))))
 
+(defun jep:upchar (ch)
+  (upcase ch))
+
 (defun jep:text-snake-to-camel-case (const)
   "*Converts the variable from snake_case to camelCase"
   (let ((case-replace t)
 	(case-fold-search nil))
-    ; this is broken; "\U\1" from Perl doesn't do the same in Emacs:
-    (replace-regexp-in-string "_\\([a-z0-9]\\)" "\\U\\1" (downcase const) t nil)))
+    (replace-regexp-in-string "_" "" 
+			      (replace-regexp-in-string "[^_]\\([a-z0-9]\\)" 'capitalize (downcase const) t nil))))
 
 (defun jep:text-toggle-camel-and-snake-case ()
   "*Toggles between camelCase and snake_case."
