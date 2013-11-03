@@ -119,6 +119,11 @@
 (global-set-key "\M-M"     'upcase-word)
 (global-set-key "\M-U"     'jep:text-upcase-char)
 (global-set-key "\M-L"     'jep:text-downcase-char)
+(global-set-key [(control delete)]   'backward-kill-word)
+(global-set-key [(meta delete)]      'kill-word)
+(define-key global-map [(control backspace)] 'undo)
+(define-key jep:keymap "c"    'comment-region)
+(define-key jep:keymap "\M-f" 'auto-fill-mode)
 
 (provide 'text-functions)
 ;;; text-functions.el ends here

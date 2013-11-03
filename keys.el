@@ -12,11 +12,6 @@
 (global-set-key [(control prior)] 'enlarge-window)
 (global-set-key [(control next)]  'shrink-window)
 
-(define-key global-map [(control backspace)] 'undo)
-
-(global-set-key [(control delete)]   'backward-kill-word)
-(global-set-key [(meta delete)]      'kill-word)
-
 (defvar jep:keymap (make-sparse-keymap)
   "Keymap for all personal key bindings")
 
@@ -28,12 +23,7 @@
 (define-key jep:keymap "\M-c" 'compare-windows)
 (define-key jep:keymap "\C-^" 'enlarge-window)
 
-(define-key jep:keymap "c"    'comment-region)
-
 (define-key jep:keymap "k"    'delete-frame)
-(define-key jep:keymap "l"    'list-matching-lines)
 (define-key jep:keymap "o"    'jep:other-frame)
-
-(define-key jep:keymap "\M-f" 'auto-fill-mode)
 
 ;;;; end of keys.el

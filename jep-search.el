@@ -39,6 +39,7 @@
 (define-key jep:keymap "r"    'replace-string)
 (define-key jep:keymap "<"    'isearch-backward-regexp)
 (define-key jep:keymap ">"    'isearch-forward-regexp)
+(define-key jep:keymap "l"    'list-matching-lines)
 
 (provide 'jep-search)
 ;;; jep-search.el ends here
