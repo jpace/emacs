@@ -6,14 +6,13 @@
 (setq jep:this-is-xemacs (not (null (string-match "XEmacs" (emacs-version)))))
 (setq jep:this-is-gnuemacs (string-match "GNU Emacs" (emacs-version)))
 
-(if jep:this-is-xemacs
-    (load "jep-xemacs")
-  (load "jep-emacs"))
+(load (if jep:this-is-xemacs
+	  "jep-xemacs"
+	"jep-emacs"))
 
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (load "jep-cua")
 (load "jep-keymap")
-
 (load "jep-compilation")
 (load "jep-tabs")
 (load "jep-font")
@@ -23,19 +22,11 @@
 (load "jep-c")
 (load "jep-perl")
 (load "jep-ruby")
-(load "jep-debug")			; for inserting debugging statements.
-(load "work-env" t)			; environment at work
-(load "jep-ccmode")			; customization for C* and Java files
+(load "jep-debug")
+(load "jep-ccmode")
 (load "jep-text")
 (load "jep-ibuffer")
-
-(load "jep-modeline")		; my modeline
-
-;; not working with Emacs 24.x:
-;; (load "color-theme")			; in living color!
-;; (load "color-theme-soren")		; my theme
-;; (color-theme-soren)
-
+(load "jep-modeline")
 (load "jep-buffer")
 (load "jep-xml")
 (load "jep-html")
@@ -73,7 +64,7 @@
 
 		("\\.quotes$"   . quip-mode) ; quip
 
-		(""		. text-mode) ; default
+		(""		. text-mode) ; default -- this must be last.
 		)))
 
 (load "jep-groovy")
@@ -100,6 +91,11 @@
 
 (load (system-name) 'noerror)
 (load (concat system-name "-" user-real-login-name) 'noerror)
+
+;; not working with Emacs 24.x:
+;; (load "color-theme")			; in living color!
+;; (load "color-theme-soren")		; my theme
+;; (color-theme-soren)
 
 (if window-system
     (custom-set-faces
