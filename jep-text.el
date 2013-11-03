@@ -26,7 +26,7 @@
 
 ;; fills the current paragraph and moves down
 
-(defun jep:fill-and-forward ()
+(defun jep:text-fill-and-forward ()
   "Fill the current paragraph and move to the next one."
   (interactive)
   (fill-paragraph nil)
@@ -40,14 +40,14 @@
     (while (not (eobp))
       (jep:fill-and-forward))))
 
-(defun jep:space-indent ()
+(defun jep:text-space-indent ()
   (interactive)
   (beginning-of-line-text)
   (insert "    ")
   (end-of-line)
   (forward-char))
 
-(defun jep:space-indent-and-forward ()
+(defun jep:text-space-indent-and-forward ()
   (interactive)
   (beginning-of-line-text)
   (insert "    "))
@@ -59,21 +59,25 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 
-(defun jep:upcase-char ()
+(defun jep:text-upcase-char ()
   "Capitalizes the current character and moves right."
   (interactive)
   (let ((start (point)))
     (forward-char 1)
     (upcase-region start (point))))
 
+(defun jep:text-downcase-char ()
+  "Downcases the current character and moves right."
+  (interactive)
+  (let ((start (point)))
+    (forward-char 1)
+    (downcase-region start (point))))
+
 (defun jep:text-camel-to-snake-case (var)
   "*Converts the variable from camelCase to snake_case"
   (let ((case-replace t)
 	(case-fold-search nil))
     (downcase (replace-regexp-in-string "\\(\\(?:[A-Z]\\|[0-9]+\\)\\)" "_\\1" var t nil))))
-
-(defun jep:upchar (ch)
-  (upcase ch))
 
 (defun jep:text-snake-to-camel-case (const)
   "*Converts the variable from snake_case to camelCase"
@@ -102,9 +106,19 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill nil)
 (add-hook 'text-mode-hook 
 	  (lambda () 
-	    (local-set-key (kbd "M-I") 'jep:text-refill-buffer)))
+	    (local-set-key (kbd "M-I") 'jep:text-refill-buffer)
+	    (local-set-key (kbd "M-j M-t") 'jep:text-fill-and-forward)))
 
 (add-to-list 'auto-mode-alist '("\.txt$" . text-mode))
+
+(define-key jep:keymap "\C-y" 'jep:text-toggle-camel-and-snake-case)
+(define-key jep:keymap "\M-y" 'jep:text-toggle-camel-and-snake-case)
+(define-key jep:keymap "s"    'sort-lines)
+
+(global-set-key "\M-m"     'capitalize-word)
+(global-set-key "\M-M"     'upcase-word)
+(global-set-key "\M-U"     'jep:text-upcase-char)
+(global-set-key "\M-L"     'jep:text-downcase-char)
 
 (provide 'text-functions)
 ;;; text-functions.el ends here

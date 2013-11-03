@@ -31,5 +31,14 @@
       (message "case sensitive search OFF")
     (message "case sensitive search ON")))
 
+(define-key jep:keymap "\C-f" 're-search-forward)
+(define-key jep:keymap "\C-q" 'query-replace-regexp)
+(define-key jep:keymap "\C-r" 'replace-regexp)
+(define-key jep:keymap "b"    're-search-backward)
+(define-key jep:keymap "q"    'query-replace)
+(define-key jep:keymap "r"    'replace-string)
+(define-key jep:keymap "<"    'isearch-backward-regexp)
+(define-key jep:keymap ">"    'isearch-forward-regexp)
+
 (provide 'jep-search)
 ;;; jep-search.el ends here
