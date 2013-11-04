@@ -1,4 +1,4 @@
-;;; text-functions.el --- extensions for processing text files
+;;; jep-text.el --- extensions for processing text files
 
 ;; Copyright (C) 2011  Jeffrey E. Pace
 
@@ -38,7 +38,7 @@
   (save-excursion 
     (goto-char (point-min))
     (while (not (eobp))
-      (jep:fill-and-forward))))
+      (jep:text-fill-and-forward))))
 
 (defun jep:text-space-indent ()
   (interactive)
