@@ -11,14 +11,21 @@
   (substring (system-name) 0
              (string-match "\\..+" (system-name))))
 
+(defvar jep:modeline-subs
+  '(("/home/jpace/" . "~/")
+    (".*/Projects/com/softwareag/is/" . "~is/")
+    ("/$" . "")
+    ))
+
+(defun jep:modeline-dir-abbrev ()
+  (jep:text-replace-many default-directory jep:modeline-subs))
+
 (setq default-mode-line-format
       (list ""
             'mode-line-modified
             "%25b--"
-	    (system-name)
-	    ":"
             " ["
-            'default-directory
+            '(:eval (jep:modeline-dir-abbrev))
             "] "
             "%[(" 
             'mode-name 

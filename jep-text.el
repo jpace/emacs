@@ -103,6 +103,14 @@
 	    (jep:text-snake-to-camel-case var)))
     (insert repl)))
 
+(defun jep:text-replace-many (str pats)
+  (if (null pats)
+      str
+    (let* ((pat (car pats))
+	   (lhs (car pat))
+	   (rhs (cdr pat)))
+      (replace-regexp-in-string lhs rhs (jep:text-replace-many str (cdr pats))))))
+
 (add-hook 'text-mode-hook 'turn-on-auto-fill nil)
 (add-hook 'text-mode-hook 
 	  (lambda () 
