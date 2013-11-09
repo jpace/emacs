@@ -10,9 +10,12 @@
 	  "jep-xemacs"
 	"jep-emacs"))
 
+(load "str")
+
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (load "jep-cua")
 (load "jep-keymap")
+
 (load "jep-compilation")
 (load "jep-tabs")
 (load "jep-font")

@@ -5,6 +5,7 @@
 ;; originally stolen from http://emacs-fu.blogspot.com/2010/02/dealing-with-many-buffers-ibuffer.html
 
 (require 'ibuffer) 
+(require 'str)
 
 ;; Enable ibuffer-filter-by-filename to filter on directory names too.
 (eval-after-load "ibuf-ext"
@@ -27,13 +28,14 @@
 (defvar jep:filename-subs 
   '(("/home/jpace" . "~")
     (".*/Projects/com/softwareag/is/" . "~is/")
+    ("/proj/org/incava/" . "~incava/")
     ("/$" . "")))
 
 (define-ibuffer-column dirname
   (:name "Directory"
 	 :inline nil)
   (if (buffer-file-name buffer)
-      (jep:text-replace-many (file-name-directory (buffer-file-name buffer)) jep:filename-subs)
+      (str-replace-all (file-name-directory (buffer-file-name buffer)) jep:filename-subs)
     (or dired-directory
 	"")))
 

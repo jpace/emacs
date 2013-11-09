@@ -1,11 +1,13 @@
 ;;; jep-modeline.el --- Configuration for Modeline
 
-;; Copyright (C) 2013  Jeff
+;; Copyright (C) 2013  Jeff Pace
 
-;; Author: Jeff <jpace@eddie>
+;; Author: Jeff <jeugenepace@gmail.com>
 ;; Keywords: extensions
 
 ;; see http://www.gnu.org/software/emacs/manual/html_node/emacs/Standard-Faces.html
+
+(require 'str)
 
 (setq mode-line-system-identification  
   (substring (system-name) 0
@@ -14,11 +16,12 @@
 (defvar jep:modeline-subs
   '(("/home/jpace/" . "~/")
     (".*/Projects/com/softwareag/is/" . "~is/")
+    ("/proj/org/incava/" . "~incava/")
     ("/$" . "")
     ))
 
 (defun jep:modeline-dir-abbrev ()
-  (jep:text-replace-many default-directory jep:modeline-subs))
+  (str-replace-all default-directory jep:modeline-subs))
 
 (setq default-mode-line-format
       (list ""
