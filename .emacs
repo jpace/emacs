@@ -11,6 +11,7 @@
 	"jep-emacs"))
 
 (require 'str)
+(require 'appearance)
 
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (require 'jep-cua)

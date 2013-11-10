@@ -26,15 +26,6 @@
 
 (setq ibuffer-saved-filter-groups
       (quote (("default"      
-	       ;; ("dired" (mode . dired-mode))
-	       ;; ("Org" ;; all org-related buffers
-	       ;;  (mode . org-mode))  
-	       ;; ("Mail"
-	       ;;   (or  ;; mail-related buffers
-	       ;;    (mode . message-mode)
-	       ;;    (mode . mail-mode)
-	       ;;    ;; etc.; all your mail related modes
-	       ;;    ))
 	       ("asciitable"
 		(filename . "org/incava/asciitable"))
 	       ("bin"
@@ -73,17 +64,18 @@
 		(filename . "org/incava/synoption"))
 	       ("zsh"
 		(filename . "System/Zsh"))
-	       ("Programming" ;; prog stuff not already in MyProjectX
-		(or
-		 (mode . c-mode)
-		 (mode . java-mode)
-		 (mode . perl-mode)
-		 (mode . python-mode)
-		 (mode . ruby-mode)
-		 (mode . emacs-lisp-mode)
-		 ;; etc
-		 )) 
-	       ("ERC"   (mode . erc-mode))))))
+	       ("C"
+		(mode . c-mode))
+	       ("Java"
+		(mode . java-mode))
+	       ("Perl"
+		(mode . perl-mode))
+	       ("Python"
+		(mode . python-mode))
+	       ("Ruby"
+		(mode . ruby-mode))
+	       ("Lisp"
+		(mode . emacs-lisp-mode))))))
 
 (add-hook 'ibuffer-mode-hook
   (lambda ()

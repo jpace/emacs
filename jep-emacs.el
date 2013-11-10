@@ -26,8 +26,6 @@
 
 (setq
  enable-local-eval             t
- visible-bell                  nil	; turn off the annoying bell
- inhibit-startup-message       t	; ???
  sentence-end-double-space     nil	; treat ". " as a sentence separator
  sentence-end                  "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*"
  auto-save-interval            2000	; save every 2000 operations
