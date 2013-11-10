@@ -1,4 +1,4 @@
-;;; ccmode_settings -- settings for C, C++, Objective-C, CORBA IDL, and Java
+;;; jep-ccmode -- settings for C, C++, Objective-C, CORBA IDL, and Java
 ;;; files, for usage with CC Mode.
 ;;; author: jeugenepace at gmail dot com
 
@@ -72,4 +72,5 @@
 		("\\.inl$"	. c++-mode) ; inline files (templates)
 		)))
 
+(provide 'jep-ccmode)
 ;;;; end of jep-ccmode.el

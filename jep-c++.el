@@ -2,7 +2,7 @@
 ;;; functions in support of C++ code
 ;;; author: jeugenepace at gmail dot com
 
-(require 'jep:file)
+(require 'jep-file)
 
 (message "Loading C++ extensions...")
 
@@ -258,11 +258,8 @@ denotes whether to create the file, if it does not exist."
 	(jep:c++-new-header-file)
       (jep:c++-new-source-file))))
 
-;; $$$ these shound't be global
-(global-set-key "\e!"      'jep:c++-get-companion-file)
-(global-set-key "\e`"      'jep:c++-get-companion-file-nocreate)
-(global-set-key "\e^"      'jep:c++-get-test-file)
+;; $$$ these shoudn't be global
 
 (message "C++ extensions loaded.")
 
-(provide 'jep:c++)
+(provide 'jep-c++)

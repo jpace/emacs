@@ -34,4 +34,4 @@ the C family of languages (C, C++, Java)."
 		("\\.c$"	. c-mode)
 		) auto-mode-alist))
 
-(provide 'jep:c)
+(provide 'jep-c)

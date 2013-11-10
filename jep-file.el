@@ -117,4 +117,4 @@ unlike file-name-sans-extension, which includes that."
 (define-key jep:keymap "O" 'jep:toggle-read-only)
 (define-key jep:keymap "B" 'jep:file-insert-basename)
 
-(provide 'jep:file)
+(provide 'jep-file)

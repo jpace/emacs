@@ -1,4 +1,4 @@
-;;; debug-statements.el --- Code for inserting debugging statements into files.
+;;; jep-debug.el --- Code for inserting debugging statements into files.
 
 ;; Copyright (C) 2011 by Free Software Foundation, Inc.
 
@@ -68,6 +68,5 @@
   (message "statement: %s" stmt)
   (setq jep:debug-stmt-format stmt))
 
-(provide 'debug-statements)
-
-;;; debug-statements.el ends here
+(provide 'jep-debug)
+;;; jep-debug.el ends here

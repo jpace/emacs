@@ -42,4 +42,4 @@
 
 (add-to-list 'auto-mode-alist '("\.p[lm]$" . perl-mode))
 
-(provide 'jep:perl)
+(provide 'jep-perl)

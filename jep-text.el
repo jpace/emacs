@@ -128,5 +128,5 @@
 (define-key jep:keymap "c"    'comment-region)
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
 
-(provide 'text-functions)
+(provide 'jep-text)
 ;;; text-functions.el ends here

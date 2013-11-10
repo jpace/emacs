@@ -10,29 +10,30 @@
 	  "jep-xemacs"
 	"jep-emacs"))
 
-(load "str")
+(require 'str)
 
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
-(load "jep-cua")
-(load "jep-keymap")
+(require 'jep-cua)
+(require 'jep-keymap)
+(require 'jep-compilation)
 
-(load "jep-compilation")
-(load "jep-tabs")
-(load "jep-font")
-(load "jep-file")
-(load "jep-java")
-(load "jep-c++")
-(load "jep-c")
-(load "jep-perl")
-(load "jep-ruby")
-(load "jep-debug")
-(load "jep-ccmode")
-(load "jep-text")
-(load "jep-ibuffer")
-(load "jep-modeline")
-(load "jep-buffer")
-(load "jep-xml")
-(load "jep-html")
+(require 'jep-tabs)
+(require 'jep-font)
+(require 'jep-file)
+
+(require 'jep-java)
+(require 'jep-c++)
+(require 'jep-c)
+(require 'jep-perl)
+(require 'jep-ruby)
+(require 'jep-debug)
+(require 'jep-ccmode)
+(require 'jep-text)
+(require 'jep-ibuffer)
+(require 'jep-modeline)
+(require 'jep-buffer)
+(require 'jep-xml)
+(require 'jep-html)
 
 ;;$$$ todo: add erb-mode, inheriting text-mode, without auto-fill
 
