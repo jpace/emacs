@@ -39,12 +39,25 @@
     (or dired-directory
 	"")))
 
+;; this is in incubation state; it somewhat does the same as the 'dirname'
+;; column above, replacing the patterns, but it does not strip the filename.w
+(setq ibuffer-directory-abbrev-alist
+      '(("/proj/org/incava/diffj" . "~diffj")
+	("/proj/org/incava/doctorj" . "~doctorj")
+	("/proj/org/incava/glark" . "~glark")
+	("/proj/org/incava" . "~incava")))
+
 (setq ibuffer-formats
       '((mark modified read-only " "
 	      (name 30 30 :left :elide)
 	      " "
 	      (size 9 -1 :right)
 	      " " dirname)
+	(mark modified read-only " "
+	      (name 30 30 :left :elide)
+	      " "
+	      (size 9 -1 :right)
+	      " " filename)
 	(mark modified read-only " "
 	      (name 30 30 :left :elide)
 	      " "
