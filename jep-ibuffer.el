@@ -54,7 +54,6 @@
 	      (name 30 30 :left :elide)
 	      " " filename-and-process)))
 
-	      " "
 (define-ibuffer-sorter filename-or-dired
   "Sort the buffers by their pathname."
   (:description "filenames plus dired")
