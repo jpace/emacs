@@ -92,15 +92,10 @@
 
 (require 'ido)
 (ido-mode 'both)
-(setq confirm-nonexistent-file-or-buffer nil)
 
 (load (system-name) 'noerror)
 (load (concat system-name "-" user-real-login-name) 'noerror)
-
-;; not working with Emacs 24.x:
-;; (load "color-theme")			; in living color!
-;; (load "color-theme-soren")		; my theme
-;; (color-theme-soren)
+(load (user-real-login-name) 'noerror)
 
 (if window-system
     (custom-set-faces

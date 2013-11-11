@@ -97,6 +97,11 @@ unlike file-name-sans-extension, which includes that."
 
 (ad-activate 'find-file)
 
+(setq completion-ignored-extensions		; don't do file name completion on
+      (append 
+       (list "~" "\\.class" "\\.obj" "\\.o")	; backup files, .class files (Java), and object files (C/C++)
+       completion-ignored-extensions))
+
 ;;*** Use crypt++ for automatic switching between Unix and DOS files
 (require 'crypt++)
 

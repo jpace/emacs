@@ -39,13 +39,6 @@
  find-file-compare-truenames   t	; Use the truename of the file, not the base name.
  )
 
-(setq completion-ignored-extensions		; don't do file name completion on
-      (append 
-       (list "~" "\\.class" "\\.obj" "\\.o")	; backup files, .class files (Java), and object files (C/C++)
-       completion-ignored-extensions))
-
-(show-paren-mode t)
-
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 (menu-bar-enable-clipboard)

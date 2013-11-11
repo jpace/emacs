@@ -40,6 +40,8 @@
        (turn-on-font-lock)
        ))
 
+(setq confirm-nonexistent-file-or-buffer nil)
+
 (define-key jep:keymap "R" 'revert-buffer)
 
 (define-key jep:keymap [(tab)] 'jep:reindent-buffer)

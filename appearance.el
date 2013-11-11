@@ -27,5 +27,12 @@
 (setq visible-bell                  nil
       inhibit-startup-message       t)
 
+(show-paren-mode t)
+
+;; not working with Emacs 24.x:
+;; (load "color-theme")			; in living color!
+;; (load "color-theme-soren")		; my theme
+;; (color-theme-soren)
+
 (provide 'appearance)
 ;;; appearance.el ends here
