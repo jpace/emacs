@@ -2,4 +2,4 @@
 # name: thrownew
 # key: thn
 # --
-throw new $0
+throw new $1;$0

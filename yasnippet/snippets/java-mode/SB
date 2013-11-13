@@ -1,0 +1,4 @@
+# name : StringBuffer
+# key: SB
+# --
+StringBuffer ${1:sb} = new StringBuffer();$0

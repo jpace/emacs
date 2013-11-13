@@ -1,5 +1,4 @@
 # name : private final
 # key: prfn
 # --
-private final $1;
-$0
+private final $1;$0
