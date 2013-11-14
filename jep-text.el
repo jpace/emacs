@@ -126,6 +126,7 @@
 (define-key global-map [(control backspace)] 'undo)
 
 (define-key jep:keymap "c"    'comment-region)
+(define-key jep:keymap "u"    'uncomment-region)
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
 
 (provide 'jep-text)
