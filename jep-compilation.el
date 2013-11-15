@@ -40,7 +40,7 @@ highlights the compilation messages."
 (global-set-key [f6] 'previous-error)
 (global-set-key [f7] 'next-error)
 
-(define-key jep:keymap "\C-k" 'compile)
+(define-key jep:keymap (kbd "C-k") 'compile)
 
 (provide 'jep-compilation)
 ;;; jep-compilation.el ends here

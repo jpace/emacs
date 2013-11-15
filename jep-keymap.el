@@ -29,8 +29,8 @@
 
 ;; For ease, both ctrl-y and alt-y use this keymap.
 
-(define-key global-map "\M-j" jep:keymap)
-(define-key global-map "\C-j" jep:keymap)
+(define-key global-map (kbd "M-j") jep:keymap)
+(define-key global-map (kbd "C-j") jep:keymap)
 
 (provide 'jep-keymap)
 ;;; jep-keymap.el ends here

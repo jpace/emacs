@@ -26,12 +26,9 @@ the C family of languages (C, C++, Java)."
 ;;; keys settings
 
 ;; ESC-ALT-/ (for /* ... */)
-(global-set-key "\e\M-/"  'jep:c-comment-out)
+(global-set-key "\e\M-/" 'jep:c-comment-out)
 
 (setq auto-mode-alist
-      (append '(
-		;; C
-		("\\.c$"	. c-mode)
-		) auto-mode-alist))
+      (append '(("\\.c$" . c-mode)) auto-mode-alist))
 
 (provide 'jep-c)

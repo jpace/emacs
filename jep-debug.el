@@ -37,8 +37,7 @@
     (message "format: %s" jep:debug-stmt-format)))
 
 (defun jep:debug-stmt-insert ()
-  "*Inserts a debug statement for the current variable.
-"
+  "*Inserts a debug statement for the current variable."
   (interactive)
   (re-search-backward "[^A-Za-z0-9:\\-_]")
   (forward-char 1)
@@ -62,8 +61,7 @@
     (message "formatted: %s" formatted)))
 
 (defun jep:debug-stmt-set (stmt)
-  "*Sets the statement/format for the current buffer.
-"
+  "*Sets the statement/format for the current buffer."
   (interactive "sStatement: ")
   (message "statement: %s" stmt)
   (setq jep:debug-stmt-format stmt))

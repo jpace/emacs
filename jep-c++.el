@@ -258,8 +258,6 @@ denotes whether to create the file, if it does not exist."
 	(jep:c++-new-header-file)
       (jep:c++-new-source-file))))
 
-;; $$$ these shoudn't be global
-
 (message "C++ extensions loaded.")
 
 (provide 'jep-c++)

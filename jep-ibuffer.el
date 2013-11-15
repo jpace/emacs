@@ -40,7 +40,7 @@
 	"")))
 
 ;; this is in incubation state; it somewhat does the same as the 'dirname'
-;; column above, replacing the patterns, but it does not strip the filename.w
+;; column above, replacing the patterns, but it does not strip the filename.
 (setq ibuffer-directory-abbrev-alist
       '(("/proj/org/incava/diffj" . "~diffj")
 	("/proj/org/incava/doctorj" . "~doctorj")
@@ -85,8 +85,11 @@
 	 "~"))))
 (define-key ibuffer-mode-map (kbd "s p")     'ibuffer-do-sort-by-filename-or-dired)
   
-(global-set-key "\C-l"     'ibuffer)
-(global-set-key "\C-x\C-b" 'ibuffer)
+(global-set-key (kbd "C-l") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-b") 'ibuffer)
+(fset 'quick-switch-buffer [?\C-x ?b return])
+(global-set-key (kbd "M-<return>") 'quick-switch-buffer)
 
 (provide 'jep-ibuffer)
 ;;; jep-ibuffer.el ends here

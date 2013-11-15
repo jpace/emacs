@@ -43,9 +43,7 @@
 (setq confirm-nonexistent-file-or-buffer nil)
 
 (define-key jep:keymap "R" 'revert-buffer)
-
-(define-key jep:keymap [(tab)] 'jep:reindent-buffer)
-(define-key jep:keymap "\t" 'jep:reindent-buffer)
+(define-key jep:keymap (kbd "TAB") 'jep:reindent-buffer)
 
 (provide 'jep-buffer)
 ;;; jep-buffer.el ends here
