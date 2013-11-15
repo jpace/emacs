@@ -89,7 +89,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-b") 'ibuffer)
 (fset 'quick-switch-buffer [?\C-x ?b return])
-(global-set-key (kbd "M-<return>") 'quick-switch-buffer)
+(global-set-key (kbd "M-RET") 'quick-switch-buffer)
 
 (provide 'jep-ibuffer)
 ;;; jep-ibuffer.el ends here

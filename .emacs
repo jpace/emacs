@@ -15,6 +15,7 @@
 
 ;; my keybindings override those unset in ergoemacs (cua), so it must load first:
 (require 'jep-cua)
+
 (require 'jep-keymap)
 (require 'jep-compilation)
 

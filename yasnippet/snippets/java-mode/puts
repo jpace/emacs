@@ -1,4 +1,0 @@
-# name : String.out.println
-# key: puts
-# --
-System.out.println("$0");
