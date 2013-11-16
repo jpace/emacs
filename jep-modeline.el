@@ -42,7 +42,7 @@
 
 (setq
  mode-line-format default-mode-line-format
- display-time-24hr-format t	; military time
+ display-time-24hr-format t	; 24-hour time
  frame-title-format       "%b - Emacs" ; full name (dir + file)
  icon-title-format        "%f - Emacs" ; short name (file only)
  column-number-mode       t
