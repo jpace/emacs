@@ -1,0 +1,4 @@
+# name: info "var: #{var}" (shorter)
+# key: iv
+# --
+info "$1: #{$1}"$0
