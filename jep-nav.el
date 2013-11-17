@@ -54,8 +54,20 @@
   (interactive)
   (scroll-down 1))
 
+;; copied from https://github.com/magnars/.emacs.d
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (call-interactively 'goto-line))
+    (linum-mode -1)))
+
 (global-set-key "\M-=" 'goto-line)
 (global-set-key "\M-g" 'goto-line)
+
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
 
 (global-set-key [home]     'beginning-of-buffer)
 (global-set-key [end]      'end-of-buffer)
