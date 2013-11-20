@@ -44,8 +44,8 @@
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-w" 'clipboard-kill-region)
 
-(global-set-key (kbd "C-.")  'query-replace-regexp)
-(global-set-key (kbd "C-/")  'isearch-forward-regexp)
+(global-set-key (kbd "C-/")  'query-replace-regexp) ; / as in s/foo/bar/g
+(global-set-key (kbd "C-.")  'isearch-forward-regexp) ; . as in foo.*?bar
 (global-set-key (kbd "C-\\") 'isearch-backward-regexp)
 
 (provide 'jep-search)

@@ -54,9 +54,8 @@
   "Creates a new class, with a no-args constructor, and without a main function."
   (let ((name (jep:file-basename)))
     (insert "package ")
-    (insert (jep:java-current-buffer-to-package-name) ";\n")
-    (insert "\n"
-	    "import java.util.*;\n"
+    (insert (jep:java-current-buffer-to-package-name) ";\n\n")
+    (insert "import java.util.*;\n"
 	    "\n"
 	    "public class " name " {\n"
 	    "    public " name "() {\n"
@@ -83,13 +82,12 @@
   "Creates a new class, with a no-args constructor and a main function."
   (let ((name (jep:file-basename)))
     (insert "package ")
-    (insert (jep:java-current-buffer-to-package-name) ";\n")
+    (insert (jep:java-current-buffer-to-package-name) ";\n\n")
     (insert "import java.io.*;\n"
 	    "import java.util.*;\n"
 	    "import junit.framework.TestCase;\n"
 	    "\n"
 	    "public class " name " extends TestCase {\n"
-	    "\n"
 	    "    public " name "(String name) {\n"
 	    "        super(name);\n"
 	    "    }\n"
