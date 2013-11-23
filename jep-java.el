@@ -275,5 +275,7 @@
 
 (message "Java extensions loaded.")
 
+;; (require 'jep-eclim)
+
 (provide 'jep-java)
 ;;; jep-java.el ends here

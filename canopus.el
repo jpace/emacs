@@ -81,13 +81,10 @@
   (lambda ()
     (ibuffer-switch-to-saved-filter-groups "default")))
 
-;; scala
-(add-to-list 'load-path "~/.emacs.d/lisp/scala-mode")
-(add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
+;; no scala for now; it uses ensime, which uses auto-complete, which breaks how
+;; I use yassnippet, adding many secondary "abbreviations" to the list
 
-(require 'scala-mode-auto)
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+;; (require 'jep-scala)
 
 (provide 'canopus)
 ;;; canopus.el ends here
