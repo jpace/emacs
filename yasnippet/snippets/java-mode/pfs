@@ -1,4 +1,0 @@
-# name : public final static
-# key: pfs
-# --
-public final static $1 $2;$0
