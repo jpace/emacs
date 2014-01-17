@@ -62,6 +62,10 @@
 		(filename . "org/incava/svnx"))
 	       ("synoption"
 		(filename . "org/incava/synoption"))
+	       ("whake"
+		(filename . "org/incava/whake"))
+	       ("xumoqi"
+		(filename . "org/incava/xumoqi"))
 	       ("zsh"
 		(filename . "System/Zsh"))
 	       ("C"

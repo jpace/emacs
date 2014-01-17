@@ -1,0 +1,4 @@
+# name: Logue::Log.info "var: #{var}" (shorter)
+# key: lv
+# --
+Logue::Log.info "$1: #{$1}"$0
