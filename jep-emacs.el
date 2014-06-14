@@ -1,6 +1,6 @@
 ;;; jep-emacs.el --- General configuration for Emacs
 
-;; Copyright (C) 2013  Jeff Pace
+;; Copyright (C) 2014  Jeff Pace
 
 ;; Author: Jeff Pace <jpace@canopus>
 ;; Keywords: extensions
