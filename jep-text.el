@@ -107,7 +107,8 @@
 (add-hook 'text-mode-hook 
 	  (lambda () 
 	    (local-set-key (kbd "M-I") 'jep:text-refill-buffer)
-	    (local-set-key (kbd "M-j M-t") 'jep:text-fill-and-forward)))
+	    (local-set-key (kbd "M-j M-t") 'jep:text-fill-and-forward)
+	    (set (make-local-variable 'require-final-newline) nil)))
 
 (add-to-list 'auto-mode-alist '("\.txt$" . text-mode))
 
@@ -128,6 +129,8 @@
 (define-key jep:keymap "c"    'comment-region)
 (define-key jep:keymap "u"    'uncomment-region)
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
+
+
 
 (provide 'jep-text)
 ;;; text-functions.el ends here
