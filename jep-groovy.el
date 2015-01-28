@@ -24,11 +24,17 @@
 
 ;;; Code:
 
-(autoload 'groovy-mode "groovy-mode" "Groovy editing mode." t)
+(autoload 'groovy-mode "new-groovy-mode/groovy-mode" "Groovy editing mode." t)
 
 (add-to-list 'auto-mode-alist        '("\.groovy$" . groovy-mode))
 (add-to-list 'auto-mode-alist        '("\.gradle$" . groovy-mode))
 (add-to-list 'interpreter-mode-alist '("groovy"    . groovy-mode))
+
+;;; make Groovy mode electric by default.
+(add-hook 'groovy-mode-hook
+          '(lambda ()
+             (require 'groovy-electric)
+             (groovy-electric-mode)))
 
 (provide 'jep-groovy)
 ;;; jep-groovy.el ends here
