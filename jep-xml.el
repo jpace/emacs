@@ -28,6 +28,7 @@
           (lambda () (auto-fill-mode -1)))
 
 (add-to-list 'auto-mode-alist '("\.xml$" . nxml-mode))
+(add-to-list 'auto-mode-alist '("node.ndf$" . nxml-mode))
 
 (provide 'jep-xml)
 ;;; jep-xml.el ends here
