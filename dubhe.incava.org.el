@@ -1,8 +1,8 @@
-;;; canopus.el --- configuration for home machines
+;;; dubhe.incava.org.el --- configuration for home machines
 
 ;; Copyright (C) 2013  Jeff Pace
 
-;; Author: Jeff Pace <jpace@canopus>
+;; Author: Jeff Pace <jpace@dubhe.incava.org>
 ;; Keywords: 
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -26,5 +26,5 @@
 
 (load "home-machines")
 
-(provide 'canopus)
-;;; canopus.el ends here
+(provide 'dubhe.incava.org)
+;;; dubhe.incava.org.el ends here
