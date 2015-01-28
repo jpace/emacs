@@ -31,7 +31,7 @@
  auto-save-interval            2000	; save every 2000 operations
  auto-save-default             nil	; no autosaving
  gc-cons-threshold             500000	; garbage collection threshold
- default-fill-column           80
+ default-fill-column           100
  default-major-node            'indented-text-mode
  apropos-do-all                t	; Thorough and slow.
  paragraph-separate            "[ 	\f]*$" ; CC mode mucks this up to actual blank lines (no chars)
@@ -79,7 +79,12 @@
 (put 'eval-expression  'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-(server-start)
+(defun restart-server ()
+  "Stops and starts the server."
+  (server-force-delete)
+  (server-start))
+
+(restart-server)
 
 (provide 'jep-emacs)
 ;;; jep-emacs.el ends here
