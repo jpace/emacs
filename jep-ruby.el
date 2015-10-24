@@ -32,6 +32,9 @@
     ("^\\(.*/\\)app/controllers/\\(.*\\).rb"           "\\1test/controllers/\\2_test.rb")
     ("^\\(.*/\\)test/controllers/\\(.*\\)_test.rb"     "\\1app/controllers/\\2.rb")
     
+    ("^\\(.*/\\)app/models/\\(.*\\).rb"           "\\1test/models/\\2_test.rb")
+    ("^\\(.*/\\)test/models/\\(.*\\)_test.rb"     "\\1app/models/\\2.rb")
+    
     ("^\\(.*/\\)lib/\\(.*\\).rb"                       "\\1test/\\2_test.rb")
     ("^\\(.*/\\)test/\\(.*\\)_test.rb"                 "\\1lib/\\2.rb")))
 
