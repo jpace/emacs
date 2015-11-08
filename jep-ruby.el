@@ -6,14 +6,74 @@
 	     (setq 
 	      indent-tabs-mode nil)))
 
-(defun jep:ruby-new-file ()
+(defun jep:ruby-file-to-class-name (filename)
+  (replace-regexp-in-string "_" "" (capitalize filename) t nil))
+
+(defun jep:ruby-new-library ()
   (interactive)
-  (insert "#!/usr/bin/ruby -w\n"
-	  "# -*- ruby -*-\n"
-	  "\n"
-	  "require 'rubygems'\n"
-	  "require 'riel'\n"
-	  "\n"))
+  (let ((name (jep:file-basename)))
+    (insert "#!/usr/bin/ruby -w\n"
+	    "# -*- ruby -*-\n"
+	    "\n"
+	    "require 'pathname'\n"
+	    "\n"
+	    "class " (jep:ruby-file-to-class-name name) "\n"
+	    "  def initialize\n"
+	    "  end\n"
+	    "end\n")))
+
+(defun jep:ruby-new-program ()
+  (interactive)
+  (let ((name (jep:file-basename)))
+    (insert "#!/usr/bin/ruby -w\n"
+	    "# -*- ruby -*-\n"
+	    "\n"
+	    "dir = File.dirname(File.dirname(File.expand_path(__FILE__)))\n"
+	    "libpath = dir + \"/lib\"\n"
+	    "$:.unshift libpath\n"
+	    "\n"
+	    "require 'pathname'\n"
+	    "\n"
+	    "class " (jep:ruby-file-to-class-name name) "\n"
+	    "  def initialize args\n"
+	    "  end\n"
+	    "end\n"
+	    "\n"
+	    (capitalize name) ".new ARGV\n")))
+
+(defun jep:ruby-file-to-class-name (filename)
+  (replace-regexp-in-string "_" "" (capitalize filename) t nil))
+
+(defun jep:ruby-new-test ()
+  (interactive)
+  (let ((name (jep:file-basename)))
+    (insert "#!/usr/bin/ruby -w\n"
+	    "# -*- ruby -*-\n"
+	    "\n"
+	    "require 'minitest/autorun'\n"
+	    "require 'pathname'\n"
+	    "\n"
+	    "class " (jep:ruby-file-to-class-name name) " < Minitest::Test\n"
+	    "  def test_something\n"
+	    "  \n"
+	    "  end\n"
+	    "end\n")))
+
+(defun jep:ruby-new-file ()
+  "Creates a new Ruby file."
+  "    standard - Does not contain a main function."
+  "    application - Contains a main function. The default."
+  "    JUnit - Derived from junit.framework.TestCase. Does not contain a main function."
+  (interactive)
+  (let (type)
+    (setq type (read-from-minibuffer "Type [l(ibrary), p(rogram), t(est)]: "))
+    (if (or (= (length type) 0)
+	    (string-match type "l"))
+	(jep:ruby-new-library)
+      (if (string-match type "p")
+	  (jep:ruby-new-program)
+	(if (string-match type "t")
+	    (jep:ruby-new-test))))))
 
 (defvar jep:ruby-test-source-patterns 
   '(("^\\(/Depot/work/project/trunk\\)/tests/junit\\(.*\\)Test.java" "\\1\\2.java")

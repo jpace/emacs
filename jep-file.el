@@ -116,6 +116,7 @@ unlike file-name-sans-extension, which includes that."
       (append '(((java-mode . "Java Mode") . jep:java-new-file))
 	      '(((c++-mode  . "C++ Mode")  . jep:c++-new-file))
 	      '(((perl-mode . "Perl Mode") . jep:perl-new-file))
+	      '((("\\.erb"  . "ERB Mode")  nil  ""))
 	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file))
 	      auto-insert-alist))
 
