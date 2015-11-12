@@ -97,6 +97,11 @@ unlike file-name-sans-extension, which includes that."
 
 (ad-activate 'find-file)
 
+(defun jep:zap-forward-whitespace ()
+  "Remove tabs and spaces, from the current point to the next non-whitespace or end-of-line character."
+  (interactive "*")
+  (delete-region (point) (progn (skip-chars-forward " \t") (point))))
+
 (setq completion-ignored-extensions		; don't do file name completion on
       (append 
        (list "~" "\\.class" "\\.obj" "\\.o")	; backup files, .class files (Java), and object files (C/C++)
@@ -119,7 +124,8 @@ unlike file-name-sans-extension, which includes that."
 	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file))
 	      auto-insert-alist))
 
-(define-key jep:keymap "O" 'jep:toggle-read-only)
-(define-key jep:keymap "B" 'jep:file-insert-basename)
+(define-key jep:keymap "O"  'jep:toggle-read-only)
+(define-key jep:keymap "B"  'jep:file-insert-basename)
+(define-key jep:keymap "\\" 'jep:zap-forward-whitespace)
 
 (provide 'jep-file)
