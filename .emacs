@@ -37,6 +37,7 @@
 (require 'jep-buffer)
 (require 'jep-xml)
 (require 'jep-html)
+(require 'jep-sh)
 
 ;;$$$ todo: add erb-mode, inheriting text-mode, without auto-fill
 
