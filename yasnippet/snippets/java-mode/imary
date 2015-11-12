@@ -1,6 +1,4 @@
-# name : import List and ArrayList
+# name : import java.util.ArrayList
 # key: imary
 # --
-import java.util.ArrayList;
-import java.util.List;
-$0
+import java.util.ArrayList;$0

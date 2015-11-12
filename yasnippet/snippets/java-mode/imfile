@@ -1,0 +1,4 @@
+# name : import java.io.File
+# key: imfile
+# --
+import java.io.File;$0
