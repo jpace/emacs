@@ -260,7 +260,7 @@
 (defun jep:java-path-to-package-name (path)
   (replace-regexp-in-string "/" "." 
 			    (replace-regexp-in-string "/\\w+\.java" "" 
-						      (replace-regexp-in-string "^.*?\\(source\\|src/main/java\\|src/test/java\\)/" "" path))))
+						      (replace-regexp-in-string "^.*?\\(source\\|src/main/java\\|src/integTest/java\\|src/test/java\\)/" "" path))))
 
 (defun jep:java-current-buffer-to-package-name ()
   (jep:java-path-to-package-name (buffer-file-name)))
