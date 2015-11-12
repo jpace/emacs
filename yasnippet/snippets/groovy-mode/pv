@@ -1,0 +1,4 @@
+# name : println "var: " + var
+# key: pv
+# --
+println "$1: " + $1$0
