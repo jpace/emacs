@@ -130,7 +130,5 @@
 (define-key jep:keymap "u"    'uncomment-region)
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
 
-
-
 (provide 'jep-text)
 ;;; text-functions.el ends here
