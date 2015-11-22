@@ -1,0 +1,6 @@
+# name : define_test
+# key: tst
+# --
+test "$1" do
+  $0
+end
