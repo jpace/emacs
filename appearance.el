@@ -34,5 +34,7 @@
 ;; (load "color-theme-soren")		; my theme
 ;; (color-theme-soren)
 
+(tool-bar-mode -1)
+
 (provide 'appearance)
 ;;; appearance.el ends here
