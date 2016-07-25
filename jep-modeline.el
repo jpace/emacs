@@ -47,6 +47,7 @@
  icon-title-format        "%f - Emacs" ; short name (file only)
  column-number-mode       t
  display-time-mode        t
+ line-number-display-limit-width 200000
  )
 
 ;;; modeline fiddling
