@@ -1,0 +1,6 @@
+# name : if (...) 
+# key: ifnn
+# --
+if ($1 != null) {
+    $0
+}

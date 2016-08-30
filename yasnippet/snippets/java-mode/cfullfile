@@ -1,0 +1,38 @@
+# -*- mode: snippet -*-
+# name : C full definition of a file with include guards and functions
+# key : cfullfile
+# --
+#ifndef ${1:$(upcase yas/text)}_${2:`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_H}
+#define ${1:$(upcase yas/text)}_$2
+
+struct ${1:prefix}_${3:`(downcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`} {
+$0
+};
+
+bool $1_$3_init(struct $1_$3 *${4:obj})
+{
+    return true;
+}
+
+struct $1_$3 *$1_$3_create()
+{
+    struct $1_$3 *ret;
+    RF_MALLOC(ret, sizeof(*ret), return NULL);
+    if (!$1_$3_init(ret)) {
+        free(ret);
+        ret = NULL;
+    }
+    return ret;
+}
+
+void $1_$3_deinit(struct $1_$3 *$4)
+{
+
+}
+
+void $1_$3_destroy(struct $1_$3 *$4)
+{
+    $1_$3_deinit($4);
+    free($4);
+}
+#endif /* ${1:$(upcase yas/text)}_$2 */
