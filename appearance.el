@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2013  Jeff Pace
 
-;; Author: Jeff Pace <jpace@canopus>
+;; Author: Jeff Pace <jeugenepace@gmail.com>
 ;; Keywords: extensions
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -35,6 +35,15 @@
 ;; (color-theme-soren)
 
 (tool-bar-mode -1)
+
+(defun jep:reset-mode-line ()
+  "Resets the mode line to the original colors."
+  (interactive)
+  (set-face-attribute 'mode-line nil
+		    :background "gray75"
+		    :foreground "black"))
+
+(jep:reset-mode-line)
 
 (provide 'appearance)
 ;;; appearance.el ends here
