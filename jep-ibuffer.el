@@ -25,10 +25,13 @@
     (ibuffer-jump-to-buffer recent-buffer-name)))
 (ad-activate 'ibuffer)
 
+(defvar jep:projects-directory "/opt/proj/org/incava")
+(defvar jep:projects-incava-directory (concat jep:projects-directory "/opt/proj/org/incava/"))
+
 (defvar jep:filename-subs 
   '(("/home/jpace" . "~")
     (".*/Projects/com/softwareag/is/" . "~is/")
-    ("/proj/org/incava/" . "~incava/")
+    ("/opt/proj/org/incava/" . "~incava/")
     ("/$" . "")))
 
 (define-ibuffer-column dirname
@@ -42,10 +45,10 @@
 ;; this is in incubation state; it somewhat does the same as the 'dirname'
 ;; column above, replacing the patterns, but it does not strip the filename.
 (setq ibuffer-directory-abbrev-alist
-      '(("/proj/org/incava/diffj" . "~diffj")
-	("/proj/org/incava/doctorj" . "~doctorj")
-	("/proj/org/incava/glark" . "~glark")
-	("/proj/org/incava" . "~incava")))
+      '(("/opt/proj/org/incava/diffj" . "~diffj")
+	("/opt/proj/org/incava/doctorj" . "~doctorj")
+	("/opt/proj/org/incava/glark" . "~glark")
+	("/opt/proj/org/incava" . "~incava")))
 
 (setq ibuffer-formats
       '((mark modified read-only " "

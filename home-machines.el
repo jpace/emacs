@@ -26,12 +26,16 @@
 
 (setq ibuffer-saved-filter-groups
       (quote (("default"      
+	       ("aforalias"
+		(filename . "org/incava/aforalias"))
 	       ("asciitable"
 		(filename . "org/incava/asciitable"))
 	       ("bin"
 		(filename . "home/jpace/bin"))
 	       ("blog"
 		(filename . "org/incava/blog"))
+	       ("cnb"
+		(filename . "org/incava/cnb"))
 	       ("diffj"
 		(filename . "org/incava/diffj"))
 	       ("doctorj"
@@ -40,12 +44,18 @@
 		(or
 		 (filename . ".emacs.d/lisp")
 		 (filename . "System/Emacs")))
+	       ("fdprocessor"
+		(filename . "org/incava/fdprocessor"))
+	       ("gems"
+		(filename . ".rvm/gems/ruby-2.0.0-p598/gems"))
 	       ("glark"
 		(filename . "org/incava/glark"))
 	       ("ijdk"
 		(filename . "org/incava/ijdkproj"))
 	       ("jagol"
 		(filename . "org/incava/jagolproj"))
+	       ("java1.6"
+		(filename . "/srv/u/jpace/Projects/java/1.6.14/"))
 	       ("jdk"
 		(filename . "com/sun/java"))
 	       ("logue"
@@ -54,18 +64,22 @@
 		(filename . "org/incava/pvn"))
 	       ("ragol"
 		(filename . "org/incava/ragol"))
-	       ("rails"
-		(filename . "org/incava/rails"))
+	       ("rails-sampleapp"
+		(filename . "org/incava/railstutorial/sample_app"))
 	       ("riel"
 		(filename . "org/incava/riel"))
 	       ("svnx"
 		(filename . "org/incava/svnx"))
 	       ("synoption"
 		(filename . "org/incava/synoption"))
+	       ("tresync"
+		(filename . "org/incava/tresync"))
 	       ("whake"
 		(filename . "org/incava/whake"))
 	       ("xumoqi"
 		(filename . "org/incava/xumoqi"))
+	       ("ycp"
+		(filename . "org/incava/ycp"))
 	       ("zsh"
 		(filename . "System/Zsh"))
 	       ("C"
