@@ -264,11 +264,8 @@
 	  (lambda ()
 	    (local-set-key (kbd "C-j t") 'jep:java-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j t") 'jep:java-toggle-between-test-and-source)
-
 	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
-
 	    (local-set-key (kbd "C-j C-l") 'jep:java-add-log-current-word)
-
 	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)))
 
 (defun jep:java-path-to-package-name (path)
