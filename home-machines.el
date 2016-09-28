@@ -50,18 +50,24 @@
 		(filename . ".rvm/gems/ruby-2.0.0-p598/gems"))
 	       ("glark"
 		(filename . "org/incava/glark"))
+	       ("grace"
+		(filename . "com/sag/grace"))
 	       ("ijdk"
-		(filename . "org/incava/ijdkproj"))
+		(filename . "org/incava/ijdk"))
 	       ("jagol"
-		(filename . "org/incava/jagolproj"))
+		(filename . "org/incava/jagol"))
 	       ("java1.6"
 		(filename . "/srv/u/jpace/Projects/java/1.6.14/"))
 	       ("jdk"
 		(filename . "com/sun/java"))
+	       ("joda"
+		(filename . "org/incava/joda-schedule"))
 	       ("logue"
 		(filename . "org/incava/logue"))
 	       ("pvn"
 		(filename . "org/incava/pvn"))
+	       ("qualog"
+		(filename . "org/incava/qualog"))
 	       ("ragol"
 		(filename . "org/incava/ragol"))
 	       ("rails-sampleapp"

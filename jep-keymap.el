@@ -32,5 +32,8 @@
 (define-key global-map (kbd "M-j") jep:keymap)
 (define-key global-map (kbd "C-j") jep:keymap)
 
+;; CUA settings muck up ctrl-x, so use an alternative, alt-j alt-j:
+(define-key jep:keymap (kbd "M-j") 'repeat-complex-command)
+
 (provide 'jep-keymap)
 ;;; jep-keymap.el ends here
