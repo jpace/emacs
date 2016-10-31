@@ -30,8 +30,10 @@
 
 (defvar jep:filename-subs 
   '(("/home/jpace" . "~")
-    (".*/Projects/com/softwareag/is/" . "~is/")
-    ("/opt/org/incava/" . "~incava/")
+    ("/opt/sag/is" . "~is")
+    ("/opt/incava" . "~incava")
+    ("/home/jpace/.emacs.d/lisp" . "~lisp")
+    ("/home/jpace/.config/zsh" . "~zsh")
     ("/$" . "")))
 
 (define-ibuffer-column dirname
@@ -51,6 +53,7 @@
 	("/opt/org/incava/ijdk" . "~ijdk")
 	("/opt/org/incava/qualog" . "~qualog")
 	("/opt/org/incava/blog" . "~blog")
+	("/opt/sag" . "~SAG")
 	("/opt/org/incava/joda-schedule" . "~joda")
 	("/opt/org/incava" . "~incava")))
 

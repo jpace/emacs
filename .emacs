@@ -104,25 +104,13 @@
 (load (concat system-name "-" user-real-login-name) 'noerror)
 (load (user-real-login-name) 'noerror)
 
+;; Some bizarre orange theme with screen; so LC_CONNFROM controls whether to set the colors
+
 (if window-system
     (custom-set-faces
      '(default ((t (:inherit nil :stipple nil :background "#040412" :foreground "#E8E3E3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (custom-set-faces
-   '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))))
-
-;;
-;;* LOCAL VARIABLES
-;; ============================
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#040404" :foreground "#E8E3E3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-;; Local Variables:
-;; mode: Emacs-Lisp
-;; outline-regexp: ";;\\*+"
-;; End:
-;; ============================
+  (if (equal "two" (getenv "LC_CONNFROM"))
+    (custom-set-faces
+     '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))))
 
 (set-cursor-color "#fafa33")

@@ -13,10 +13,13 @@
   (substring (system-name) 0
              (string-match "\\..+" (system-name))))
 
+;;; for i in /opt/sag/is /opt/incava ~/.emacs.d/lisp ~/.config/zsh; do n=$i:t; echo "(\"$i\" . \"~$n\")"; done 
 (defvar jep:modeline-subs
   '(("/home/jpace/" . "~/")
-    (".*/Projects/com/softwareag/is/" . "~is/")
-    ("/proj/org/incava/" . "~incava/")
+    ("/opt/sag/is" . "~is")
+    ("/opt/incava" . "~incava")
+    ("/home/jpace/.emacs.d/lisp" . "~lisp")
+    ("/home/jpace/.config/zsh" . "~zsh")
     ("/$" . "")
     ))
 
