@@ -125,15 +125,25 @@
   (interactive)
   (jep:file-toggle-files jep:ruby-integration-test-source-patterns))
 
-(defun jep:ruby-puts-current-word ()
+(defun jep:ruby-output-current-word (str)
   "Inserts a line that writes the word to standard output."
   (interactive)
   (let ((word (current-word)))
     (move-end-of-line nil)
     (newline)
     (ruby-indent-line)
-    (insert "puts \"" word "\: #{" word "}\"")
+    (insert str " \"" word "\: #{" word "}\"")
     (ruby-indent-line)))
+
+(defun jep:ruby-puts-current-word ()
+  "Inserts a line that writes the word to standard output."
+  (interactive)
+  (jep:ruby-output-current-word "puts"))
+
+(defun jep:ruby-info-current-word ()
+  "Inserts a line that writes the word to info (logging)."
+  (interactive)
+  (jep:ruby-output-current-word "info"))
 
 (add-hook 'ruby-mode-hook
 	  (lambda ()
@@ -141,7 +151,9 @@
 	    (local-set-key (kbd "M-j t") 'jep:ruby-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j i") 'jep:ruby-toggle-between-integration-test-and-source)
 	    (local-set-key (kbd "C-j C-l") 'jep:ruby-puts-current-word)
-	    (local-set-key (kbd "M-j M-l") 'jep:ruby-puts-current-word)))
+	    (local-set-key (kbd "M-j M-l") 'jep:ruby-puts-current-word)
+	    (local-set-key (kbd "C-j C-i") 'jep:ruby-info-current-word)
+	    (local-set-key (kbd "M-j M-i") 'jep:ruby-info-current-word)))
 
 (add-to-list 'auto-mode-alist '("\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
