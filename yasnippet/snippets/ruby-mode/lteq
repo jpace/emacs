@@ -1,0 +1,4 @@
+# name : rails_eq_code
+# key: lteq
+# --
+<% $0 %>

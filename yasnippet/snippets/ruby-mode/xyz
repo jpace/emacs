@@ -1,0 +1,6 @@
+# name : xyz
+# key: xyz
+# --
+xyz $1
+  $0
+end
