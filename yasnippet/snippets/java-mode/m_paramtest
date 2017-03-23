@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name : generates a getter method, v2
+# key : m_paramtest
+# --
+@Test
+@Parameters
+public void ${1:method}(Object expected, Object argument) {
+    $0
+}
+
+private List<Object[]> parametersFor${1:$(upcase-initials yas/text)}() {
+    List<Object[]> params = Common.<Object[]>list();
+
+    params.add(ary(x, y, z));
+    
+    return params;
+}
