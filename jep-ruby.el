@@ -61,9 +61,9 @@
 
 (defun jep:ruby-new-file ()
   "Creates a new Ruby file."
-  "    standard - Does not contain a main function."
-  "    application - Contains a main function. The default."
-  "    JUnit - Derived from junit.framework.TestCase. Does not contain a main function."
+  "    library (the default)"
+  "    program"
+  "    test"
   (interactive)
   (let (type)
     (setq type (read-from-minibuffer "Type [l(ibrary), p(rogram), t(est)]: "))
@@ -74,6 +74,18 @@
 	  (jep:ruby-new-program)
 	(if (string-match type "t")
 	    (jep:ruby-new-test))))))
+
+(defun jep:ruby-new-file-guess ()
+  "Creates a new Ruby file."
+  (interactive)
+  (let ((name (jep:file-basename)))
+    (if (string-match "/lib/" name)
+	(jep:ruby-new-library)
+      (if (string-match "/test/" name)
+	  (message "test")
+	(if (string-match "/bin/" name)
+	    (jep:ruby-new-test)
+	  (jep:ruby-new-file))))))
 
 (defvar jep:ruby-test-source-patterns 
   '(("^\\(/Depot/work/project/trunk\\)/tests/junit\\(.*\\)Test.java" "\\1\\2.java")

@@ -124,7 +124,7 @@ unlike file-name-sans-extension, which includes that."
 	      '(((c++-mode  . "C++ Mode")  . jep:c++-new-file))
 	      '(((perl-mode . "Perl Mode") . jep:perl-new-file))
 	      '((("\\.erb"  . "ERB Mode")  nil  ""))
-	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file))
+	      '(((ruby-mode . "Ruby Mode") . jep:ruby-new-file-guess))
 	      auto-insert-alist))
 
 (define-key jep:keymap "O"  'jep:toggle-read-only)
