@@ -93,15 +93,23 @@
   (let ((name (jep:file-basename)))
     (insert "package ")
     (insert (jep:java-current-buffer-to-package-name) ";\n\n")
-    (insert "import java.io.*;\n"
-	    "import java.util.*;\n"
-	    "import junit.framework.TestCase;\n"
+    (insert "import ijdk.lang.Common;\n"
+	    "import java.util.Arrays;\n"
+	    "import java.util.Collection;\n"
+	    "import junitparams.JUnitParamsRunner;\n"
+	    "import junitparams.Parameters;\n"
+	    "import org.junit.Assert;\n"
+	    "import org.junit.Test;\n"
+	    "import org.junit.runner.RunWith;\n"
 	    "\n"
-	    "public class " name " extends TestCase {\n"
-	    "    public " name "(String name) {\n"
-	    "        super(name);\n"
+	    "import static org.incava.test.Assertions.*;\n"
+	    "import static ijdk.lang.Common.*;\n"
+	    "\n"
+	    "@RunWith(JUnitParamsRunner.class)\n"
+	    "public class " name " {\n"
+	    "    @Test\n"
+	    "    public void abc() {\n"
 	    "    }\n"
-	    "    \n"
 	    "}\n")))
 
 (defun jep:java-new-file ()
