@@ -37,6 +37,7 @@
  paragraph-separate            "[ 	\f]*$" ; CC mode mucks this up to actual blank lines (no chars)
  transient-mark-mode           t	; show regions as they are highlighted.
  find-file-compare-truenames   t	; Use the truename of the file, not the base name.
+ create-lockfiles              nil	; gradle doesn't handle these
  )
 
 ;; Changes all yes/no questions to y/n type
