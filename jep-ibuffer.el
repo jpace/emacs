@@ -54,6 +54,9 @@
 	("/opt/org/incava/qualog" . "~qualog")
 	("/opt/org/incava/blog" . "~blog")
 	("/opt/sag" . "~SAG")
+	("/opt/com/sag/grace" . "~grace")
+	("/opt/com/sag/dcx" . "~dcx")
+	("/opt/com/sag" . "~sag")
 	("/opt/org/incava/joda-schedule" . "~joda")
 	("/opt/org/incava" . "~incava")))
 

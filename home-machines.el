@@ -38,6 +38,8 @@
 		(filename . "org/incava/cnb"))
 	       ("diffj"
 		(filename . "org/incava/diffj"))
+	       ("dcx"
+		(filename . "com/sag/dcx"))
 	       ("doctorj"
 		(filename . "org/incava/doctorj"))
 	       ("emacs"

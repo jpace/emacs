@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name : generates a getter method, v2
+# name : generates parameter test methods
 # key : m_paramtest
 # --
 @Test

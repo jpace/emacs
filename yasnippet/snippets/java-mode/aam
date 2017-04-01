@@ -1,4 +1,4 @@
-# name : assertEquals(msg, x, y);
+# name : assertEqual(x, y, message(a, a));
 # key: aam
 # --
-assertEquals("${3:msg}", ${1:expected}, ${2:actual});$0
+assertEqual(${1:expected}, ${2:result}, message("${3:var}", $3));$0

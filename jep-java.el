@@ -102,7 +102,7 @@
 	    "import org.junit.Test;\n"
 	    "import org.junit.runner.RunWith;\n"
 	    "\n"
-	    "import static org.incava.test.Assertions.*;\n"
+	    "import static com.softwareag.dcx.Assertions.*;\n"
 	    "import static ijdk.lang.Common.*;\n"
 	    "\n"
 	    "@RunWith(JUnitParamsRunner.class)\n"
