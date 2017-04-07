@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name : generates a getter method, v2
-# key : m_get
+# key : mget
 # --
 public ${1:String} get${2:$(upcase-initials yas/text)}() {
     return ${2:variable};

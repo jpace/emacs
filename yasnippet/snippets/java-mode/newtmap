@@ -1,0 +1,4 @@
+# name : create a new tree map
+# key: newtmap
+# --
+Map<${1:String}, ${2:Object}> ${3:map} = new TreeMap<$1, $2>();$0

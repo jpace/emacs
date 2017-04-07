@@ -273,6 +273,36 @@
   (insert "\n}")
   (c-indent-line-or-region))
 
+(defun jep:java-path-to-package-name (path)
+  (replace-regexp-in-string "/" "." 
+			    (replace-regexp-in-string "/\\w+\.java" "" 
+						      (replace-regexp-in-string "^.*?\\(source\\|src/main/java\\|src/integTest/java\\|src/test/java\\)/" "" path))))
+
+(defun jep:java-current-buffer-to-package-name ()
+  (jep:java-path-to-package-name (buffer-file-name)))
+
+(defun jep:java-insert-package-name ()
+  "Adds the package statement, based on the file name."
+  (interactive)
+  (insert "package ")
+  (insert (jep:java-current-buffer-to-package-name) ";\n"))
+
+(defun jep:java-path-to-full-name (path)
+  (replace-regexp-in-string "/" "." 
+			    (replace-regexp-in-string "\.java" "" 
+						      (replace-regexp-in-string "^.*?\\(source\\|src/main/java\\|src/integTest/java\\|src/test/java\\)/" "" path))))
+
+(defun jep:java-current-buffer-to-full-name ()
+  (jep:java-path-to-full-name (buffer-file-name)))
+
+(defun jep:java-insert-full-name ()
+  "Inserts the full Java name for the current file, at the current point."
+  (interactive)
+  (let* ((fn (jep:java-current-buffer-to-full-name)))
+    ;; Not doing a save-excursion, because we want to go to the end of what we
+    ;; inserted.
+    (insert fn)))
+
 ;; from https://raw.github.com/dacap/home/master/.emacs
 (defun jep:java-sort-imports ()
   "* Sorts the imports in the current buffer."
@@ -292,21 +322,8 @@
 	    (local-set-key (kbd "M-j t") 'jep:java-toggle-between-test-and-source)
 	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
 	    (local-set-key (kbd "C-j C-l") 'jep:java-add-log-current-word)
-	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)))
-
-(defun jep:java-path-to-package-name (path)
-  (replace-regexp-in-string "/" "." 
-			    (replace-regexp-in-string "/\\w+\.java" "" 
-						      (replace-regexp-in-string "^.*?\\(source\\|src/main/java\\|src/integTest/java\\|src/test/java\\)/" "" path))))
-
-(defun jep:java-current-buffer-to-package-name ()
-  (jep:java-path-to-package-name (buffer-file-name)))
-
-(defun jep:java-insert-package-name ()
-  "Adds the package statement, based on the file name."
-  (interactive)
-  (insert "package ")
-  (insert (jep:java-current-buffer-to-package-name) ";\n"))
+	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)
+	    (local-set-key (kbd "C-j C-n") 'jep:java-insert-full-name)))
 
 (add-to-list 'auto-mode-alist '("\.java$" . java-mode))
 
