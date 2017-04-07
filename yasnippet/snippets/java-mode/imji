@@ -1,4 +1,4 @@
-# name : import IO
-# key: ijpi
+# name : import java io name
+# key: imji
 # --
 import java.io.$1;$0

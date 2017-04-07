@@ -1,0 +1,4 @@
+# name : StringBuilder
+# key: newsb
+# --
+StringBuilder ${1:sb} = new StringBuilder();$0

@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name : generates a junit4 parameter test
+# key : mptest
+# --
+@Test
+@Parameters
+public void ${1:method}(${2:Object} expected, ${3:Object} ${4:arg}) {
+    Type obj = new Type();
+    $0
+    
+    $2 result = obj.$1($4);
+    assertEqual(expected, result, message("$4", $4));
+}
+
+private List<Object[]> parametersFor${1:$(upcase-initials yas/text)}() {
+    List<Object[]> params = Common.<Object[]>list();
+
+    params.add(ary(x, y, z));
+    
+    return params;
+}

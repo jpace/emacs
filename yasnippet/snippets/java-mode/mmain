@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : generates a main method
+# key: mmain
+# --
+public static void main(String[] args) {
+    $0
+}
