@@ -89,16 +89,31 @@
 	    "}\n")))
 
 (defun jep:java-new-junit-class ()
-  "Creates a new class, with a no-args constructor and a main function."
+  "Creates a new junit class."
   (let ((name (jep:file-basename)))
     (insert "package ")
     (insert (jep:java-current-buffer-to-package-name) ";\n\n")
-    (insert "import ijdk.lang.Common;\n"
-	    "import java.util.Arrays;\n"
-	    "import java.util.Collection;\n"
+    (insert "import ijdk.collect.List;\n"
+	    "import org.junit.Test;\n"
+	    "\n"
+	    "import static com.softwareag.dcx.Assertions.*;\n"
+	    "import static ijdk.lang.Common.*;\n"
+	    "\n"
+	    "public class " name " {\n"
+	    "    @Test\n"
+	    "    public void init() {\n"
+	    "    }\n"
+	    "}\n")))
+
+(defun jep:java-new-junit-params-class ()
+  "Creates a new junit params class."
+  (let ((name (jep:file-basename)))
+    (insert "package ")
+    (insert (jep:java-current-buffer-to-package-name) ";\n\n")
+    (insert "import ijdk.collect.List;\n"
+	    "import ijdk.lang.Common;\n"
 	    "import junitparams.JUnitParamsRunner;\n"
 	    "import junitparams.Parameters;\n"
-	    "import org.junit.Assert;\n"
 	    "import org.junit.Test;\n"
 	    "import org.junit.runner.RunWith;\n"
 	    "\n"
@@ -108,25 +123,28 @@
 	    "@RunWith(JUnitParamsRunner.class)\n"
 	    "public class " name " {\n"
 	    "    @Test\n"
-	    "    public void abc() {\n"
+	    "    public void init() {\n"
 	    "    }\n"
 	    "}\n")))
 
 (defun jep:java-new-file ()
   "Creates a new class. User is prompted for the following:"
-  "    standard - Does not contain a main function."
-  "    application - Contains a main function. The default."
-  "    JUnit - Derived from junit.framework.TestCase. Does not contain a main function."
+  "    s - atandard class."
+  "    a - application"
+  "    ju - JUnit 4 test"
+  "    jp - JUnit params test"
   (interactive)
   (let (type)
-    (setq type (read-from-minibuffer "Type [s, a, j]: "))
+    (setq type (read-from-minibuffer "Type [s, a, ju, jp]: "))
     (if (or (= (length type) 0)
 	    (string-match type "a"))
 	(jep:java-new-class-with-main)
       (if (string-match type "s")
 	  (jep:java-new-class-without-main)
-	(if (string-match type "j")
-	    (jep:java-new-junit-class))))))
+	(if (string-match type "ju")
+	    (jep:java-new-junit-class)
+	  (if (string-match type "jp")
+	      (jep:java-new-junit-params-class)))))))
 
 (defun jep:java-get-file-source-companion (file)
   "If the file is a test file, returns the source file. Otherwise returns nil."
