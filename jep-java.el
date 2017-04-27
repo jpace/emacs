@@ -96,7 +96,7 @@
     (insert "import ijdk.collect.List;\n"
 	    "import org.junit.Test;\n"
 	    "\n"
-	    "import static com.softwareag.dcx.Assertions.*;\n"
+	    "import static com.softwareag.dcx.test.Assertions.*;\n"
 	    "import static ijdk.lang.Common.*;\n"
 	    "\n"
 	    "public class " name " {\n"
@@ -117,7 +117,7 @@
 	    "import org.junit.Test;\n"
 	    "import org.junit.runner.RunWith;\n"
 	    "\n"
-	    "import static com.softwareag.dcx.Assertions.*;\n"
+	    "import static com.softwareag.dcx.test.Assertions.*;\n"
 	    "import static ijdk.lang.Common.*;\n"
 	    "\n"
 	    "@RunWith(JUnitParamsRunner.class)\n"
@@ -316,6 +316,20 @@
 	(forward-line))
       (sort-lines nil (mark) (point)))))
 
+(defun jep:java-comment-tests ()
+  "* Comments @Test lines"
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (query-replace "\\(  \\)@Test" "\\1// @Test")))
+
+(defun jep:java-uncomment-tests ()
+  "* Uncomments // @Test lines"
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (query-replace "// @Test" "@Test")))
+
 (add-hook 'java-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-j t") 'jep:java-toggle-between-test-and-source)
@@ -323,7 +337,9 @@
 	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
 	    (local-set-key (kbd "C-j C-l") 'jep:java-add-log-current-word)
 	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)
-	    (local-set-key (kbd "C-j C-n") 'jep:java-insert-full-name)))
+	    (local-set-key (kbd "C-j C-n") 'jep:java-insert-full-name)
+	    (local-set-key (kbd "C-j C-i") 'jep:java-comment-tests)
+	    (local-set-key (kbd "C-j C-u") 'jep:java-uncomment-tests)))
 
 (add-to-list 'auto-mode-alist '("\.java$" . java-mode))
 
