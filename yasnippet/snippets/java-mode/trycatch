@@ -1,0 +1,9 @@
+# name : try/catch
+# key: trycatch
+# --
+try {
+    $4
+}
+catch (${1:Exception} ${2:ex}) {
+    $3
+}
