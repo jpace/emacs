@@ -4,14 +4,15 @@
 # --
 @Test
 @Parameters
-public void ${1:method}(Object expected, Object argument) {
-    $0
+public void ${1:method}(${2:Object} expected, Object arguments) {
+    ${3:Object} obj = new $3(${4:arguments});
+    $2 result = obj.$1(${5:arguments});
+    assertEqual(expected, result);
 }
 
 private List<Object[]> parametersFor${1:$(upcase-initials yas/text)}() {
-    List<Object[]> params = Common.<Object[]>list();
-
-    params.add(ary(x, y, z));
+    List<Object[]> params = List.<Object[]>of(objary(x, y, z),
+                                              objary(x, y, z));
     
     return params;
 }
