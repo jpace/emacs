@@ -11,8 +11,6 @@ public void ${1:method}(${2:Object} expected, Object arguments) {
 }
 
 private List<Object[]> parametersFor${1:$(upcase-initials yas/text)}() {
-    List<Object[]> params = List.<Object[]>of(objary(x, y, z),
-                                              objary(x, y, z));
-    
-    return params;
+    return paramsList(params(x, y, z),
+                      params(x, y, z));
 }
