@@ -114,6 +114,7 @@
 	    "import ijdk.lang.Common;\n"
 	    "import junitparams.JUnitParamsRunner;\n"
 	    "import junitparams.Parameters;\n"
+	    "import junitparams.naming.TestCaseName;\n"
 	    "import org.junit.Test;\n"
 	    "import org.junit.runner.RunWith;\n"
 	    "\n"
@@ -338,8 +339,8 @@
 	    (local-set-key (kbd "C-j C-l") 'jep:java-add-log-current-word)
 	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)
 	    (local-set-key (kbd "C-j C-n") 'jep:java-insert-full-name)
-	    (local-set-key (kbd "C-j C-i") 'jep:java-comment-tests)
-	    (local-set-key (kbd "C-j C-u") 'jep:java-uncomment-tests)))
+	    (local-set-key (kbd "C-j C-t") 'jep:java-comment-tests)
+	    (local-set-key (kbd "C-j C-T") 'jep:java-uncomment-tests)))
 
 (add-to-list 'auto-mode-alist '("\.java$" . java-mode))
 

@@ -4,6 +4,7 @@
 # --
 @Test
 @Parameters
+@TestCaseName("{method} {index} {params}")
 public void ${1:method}(${2:Object} expected, Object arguments) {
     ${3:Object} obj = new $3(${4:arguments});
     $2 result = obj.$1(${5:arguments});
