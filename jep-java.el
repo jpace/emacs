@@ -216,9 +216,13 @@
   '(("^\\(/Depot/work/project/trunk\\)/tests/junit\\(.*\\)Test.java" "\\1\\2.java")
     ("^\\(/Depot/work/project/trunk\\)/\\(.*\\).java"                "\\1/tests/junit/\\2Test.java")
 
-    ; maven laytout, src/main/java/.../Foo.java <=> src/test/java/.../TestFoo.java:
+    ; maven layout, src/main/java/.../Foo.java <=> src/test/java/.../TestFoo.java:
     ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+.java\\)$"             "\\1test\\2/Test\\3")
-    ("^\\(.*/src/\\)test\\(/java/.*\\)/Test\\(\\w+.java\\)$"         "\\1main\\2/\\3")))
+    ("^\\(.*/src/\\)test\\(/java/.*\\)/Test\\(\\w+.java\\)$"         "\\1main\\2/\\3")
+
+    ; maven layout, src/main/java/.../Foo.java <=> src/test/java/.../FooTest.java:
+    ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+\\).java$"             "\\1test\\2/\\3Test.java")
+    ("^\\(.*/src/\\)test\\(/java/.*\\)/\\(\\w+\\)Test.java$"         "\\1main\\2/\\3.java")))
 
 (defun jep:java-find-counterpart (fname)
   "*Toggles between a test and source Java file."
