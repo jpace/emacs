@@ -110,23 +110,22 @@
   (let ((name (jep:file-basename)))
     (insert "package ")
     (insert (jep:java-current-buffer-to-package-name) ";\n\n")
-    (insert "import ijdk.collect.List;\n"
-	    "import ijdk.lang.Common;\n"
-	    "import junitparams.JUnitParamsRunner;\n"
-	    "import junitparams.Parameters;\n"
-	    "import junitparams.naming.TestCaseName;\n"
-	    "import org.junit.Test;\n"
-	    "import org.junit.runner.RunWith;\n"
-	    "\n"
-	    "import static com.softwareag.dcx.test.Assertions.*;\n"
-	    "import static ijdk.lang.Common.*;\n"
-	    "\n"
-	    "@RunWith(JUnitParamsRunner.class)\n"
-	    "public class " name " {\n"
-	    "    @Test\n"
-	    "    public void init() {\n"
-	    "    }\n"
-	    "}\n")))
+    (insert  "import java.util.List;\n"
+	     "import junitparams.Parameters;\n"
+	     "import junitparams.naming.TestCaseName;\n"
+	     "import org.incava.attest.Parameterized;\n"
+	     "import org.incava.ijdk.collect.Array;\n"
+	     "import org.junit.Test;\n"
+	     "\n"
+	     "import static org.hamcrest.MatcherAssert.assertThat;\n"
+	     "import static org.hamcrest.Matchers.equalTo;\n"
+	     "import static org.incava.attest.Assertions.message;\n"
+	     "\n"
+	     "public class " name " extends Parameterized {\n"
+	     "    @Test\n"
+	     "    public void init() {\n"
+	     "    }\n"
+	     "}\n")))
 
 (defun jep:java-new-file ()
   "Creates a new class. User is prompted for the following:"
@@ -217,8 +216,8 @@
     ("^\\(/Depot/work/project/trunk\\)/\\(.*\\).java"                "\\1/tests/junit/\\2Test.java")
 
     ; maven layout, src/main/java/.../Foo.java <=> src/test/java/.../TestFoo.java:
-    ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+.java\\)$"             "\\1test\\2/Test\\3")
-    ("^\\(.*/src/\\)test\\(/java/.*\\)/Test\\(\\w+.java\\)$"         "\\1main\\2/\\3")
+    ;; ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+.java\\)$"             "\\1test\\2/Test\\3")
+    ;; ("^\\(.*/src/\\)test\\(/java/.*\\)/Test\\(\\w+.java\\)$"         "\\1main\\2/\\3")
 
     ; maven layout, src/main/java/.../Foo.java <=> src/test/java/.../FooTest.java:
     ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+\\).java$"             "\\1test\\2/\\3Test.java")

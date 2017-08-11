@@ -1,0 +1,4 @@
+# name : assertThat(x, equalTo(y));
+# key: asthat
+# --
+assertThat(${1:result}, equalTo(${2:expected}));$0

@@ -2,16 +2,15 @@
 # name : generates parameter test methods
 # key : m_paramtest
 # --
-@Test
-@Parameters
-@TestCaseName("{method} {index} {params}")
+@Test @Parameters @TestCaseName("{method} {index} {params}")
 public void ${1:method}(${2:Object} expected, Object arguments) {
     ${3:Object} obj = new $3(${4:arguments});
     $2 result = obj.$1(${5:arguments});
-    assertEqual(expected, result);
+    assertThat(result, equalTo(expected));
 }
 
 private List<Object[]> parametersFor${1:$(upcase-initials yas/text)}() {
-    return paramsList(params(x, y, z),
-                      params(x, y, z));
+    return paramsList(
+        params(x, y, z),
+        params(x, y, z));
 }

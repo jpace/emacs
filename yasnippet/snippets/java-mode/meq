@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name : generates an equals method
+# key : meq
+# --
+public boolean equals(${2:Object} ${1:other}) {
+    if (this == other) {
+        return true;
+    }
+    $0
+    return false;
+}
