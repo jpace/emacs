@@ -1,0 +1,6 @@
+# name : for (String str : StringList.of()) 
+# key: fesl
+# --
+for (String ${1:str} : ${2:StringList.of($0)}) {
+    $0
+}

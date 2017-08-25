@@ -1,0 +1,6 @@
+# name : for (String str : coll) 
+# key: fes
+# --
+for (String ${1:str} : ${2:collection}) {
+    $0
+}
