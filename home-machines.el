@@ -30,6 +30,8 @@
 		(filename . "org/incava/aforalias"))
 	       ("asciitable"
 		(filename . "org/incava/asciitable"))
+	       ("attest"
+		(filename . "org/incava/attest"))
 	       ("bin"
 		(filename . "home/jpace/bin"))
 	       ("blog"
@@ -56,6 +58,8 @@
 		(filename . "com/sag/grace"))
 	       ("ijdk"
 		(filename . "org/incava/ijdk"))
+	       ("incr-sanity"
+		(filename . "org/incava/incr-sanity"))
 	       ("jagol"
 		(filename . "org/incava/jagol"))
 	       ("java1.6"
@@ -66,6 +70,8 @@
 		(filename . "org/incava/joda-schedule"))
 	       ("logue"
 		(filename . "org/incava/logue"))
+	       ("pmdx"
+		(filename . "org/incava/pmdx"))
 	       ("pvn"
 		(filename . "org/incava/pvn"))
 	       ("qualog"
@@ -89,7 +95,7 @@
 	       ("ycp"
 		(filename . "org/incava/ycp"))
 	       ("zsh"
-		(filename . "System/Zsh"))
+		(filename . "org/incava/zsh"))
 	       ("C"
 		(mode . c-mode))
 	       ("Java"

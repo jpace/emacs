@@ -47,10 +47,12 @@
 ;; this is in incubation state; it somewhat does the same as the 'dirname'
 ;; column above, replacing the patterns, but it does not strip the filename.
 (setq ibuffer-directory-abbrev-alist
-      '(("/opt/org/incava/diffj" . "~diffj")
+      '(("/opt/org/incava/attest" . "~attest")
+	("/opt/org/incava/diffj" . "~diffj")
 	("/opt/org/incava/doctorj" . "~doctorj")
 	("/opt/org/incava/glark" . "~glark")
 	("/opt/org/incava/ijdk" . "~ijdk")
+	("/opt/org/incava/pmdx" . "~pmdx")
 	("/opt/org/incava/qualog" . "~qualog")
 	("/opt/org/incava/blog" . "~blog")
 	("/opt/sag" . "~SAG")
