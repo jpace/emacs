@@ -13,7 +13,7 @@ public boolean equals(${2:Object} ${1:obj}) {
 	`(file-name-nondirectory
          (file-name-sans-extension
 	  (or (buffer-file-name)
-	   (buffer-name (current-buffer)))))` other = (gre
+	   (buffer-name (current-buffer)))))`
         return true;
     }
     if (this == obj) {
