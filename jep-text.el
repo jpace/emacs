@@ -103,6 +103,18 @@
 	    (jep:text-snake-to-camel-case var)))
     (insert repl)))
 
+;; from https://www.emacswiki.org/emacs/DeletingWhitespace:
+(defun whack-whitespace (arg)
+  "Delete all white space from point to the next word.  With prefix ARG
+    delete across newlines as well.  The only danger in this is that you
+    don't have to actually be at the end of a word to make it work.  It
+    skips over to the next whitespace and then whacks it all to the next
+    word."
+  (interactive "P")
+  (let ((regexp (if arg "[ \t\n]+" "[ \t]+")))
+    (re-search-forward regexp nil t)
+    (replace-match "" nil nil)))
+
 ;; from https://www.emacswiki.org/emacs/ZapUpToChar
 (defadvice zap-to-char (after my-zap-to-char-advice (arg char) activate)
   "Kill up to the ARG'th occurence of CHAR, and leave CHAR. If
@@ -130,6 +142,7 @@
 (global-set-key "\M-L"     'jep:text-downcase-char)
 (global-set-key "\M-/"     'hippie-expand)
 
+
 (global-set-key [(control delete)]   'backward-kill-word)
 (global-set-key [(meta delete)]      'kill-word)
 (define-key global-map [(control backspace)] 'undo)
@@ -137,6 +150,7 @@
 (define-key jep:keymap "c"    'comment-region)
 (define-key jep:keymap "u"    'uncomment-region)
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
+(define-key jep:keymap "\C-w" 'whack-whitespace)
 
 (provide 'jep-text)
 ;;; text-functions.el ends here

@@ -24,7 +24,10 @@
 
 ;;; Code:
 
-(add-hook 'html-mode-hook 'turn-on-auto-fill nil)
+(add-hook 'html-mode-hook
+	  (lambda ()
+	    (auto-fill-mode -1)
+	    (setq indent-tabs-mode nil)))
 
 ;; Just to keep from getting prompted every time I invoke HTML:
 (setq html-helper-address-string "<a href=\"mailto:jpace *at* incava *.* org\">Jeffrey E. Pace</a>")

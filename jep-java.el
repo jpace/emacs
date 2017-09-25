@@ -337,7 +337,7 @@
 	    (local-set-key (kbd "M-j t") 'jep:java-toggle-between-test-and-source)
 	    (local-set-key (kbd "C-j l") 'jep:java-if-stmt-add-braces)
 	    (local-set-key (kbd "C-j C-l") 'jep:java-add-log-current-word)
-	    (local-set-key (kbd "C-j C-i") 'jep:java-sort-imports)
+	    (local-set-key (kbd "C-j i") 'jep:java-sort-imports)
 	    (local-set-key (kbd "C-j C-n") 'jep:java-insert-full-name)
 	    (local-set-key (kbd "C-j C-t") 'jep:java-comment-tests)
 	    (local-set-key (kbd "C-j C-T") 'jep:java-uncomment-tests)))
