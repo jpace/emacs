@@ -212,10 +212,7 @@
       fn)))
 
 (defvar jep:java-test-source-patterns 
-  '(("^\\(/Depot/work/project/trunk\\)/tests/junit\\(.*\\)Test.java" "\\1\\2.java")
-    ("^\\(/Depot/work/project/trunk\\)/\\(.*\\).java"                "\\1/tests/junit/\\2Test.java")
-
-    ; maven layout, src/main/java/.../Foo.java <=> src/test/java/.../TestFoo.java:
+  '(; maven layout, src/main/java/.../Foo.java <=> src/test/java/.../TestFoo.java:
     ;; ("^\\(.*/src/\\)main\\(/java/.*\\)/\\(\\w+.java\\)$"             "\\1test\\2/Test\\3")
     ;; ("^\\(.*/src/\\)test\\(/java/.*\\)/Test\\(\\w+.java\\)$"         "\\1main\\2/\\3")
 

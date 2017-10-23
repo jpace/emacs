@@ -9,8 +9,8 @@ public void ${1:method}(${2:Object} expected, Object arguments) {
     assertThat(result, equalTo(expected));
 }
 
-private List<Object[]> parametersFor${1:$(upcase-initials yas/text)}() {
-    return paramsList(
-        params(x, y, z),
-        params(x, y, z));
+private ParamsArray parametersFor${1:$(upcase-initials yas/text)}() {
+    return paramsArray(
+        ary(x, y, z),
+        ary(x, y, z));
 }

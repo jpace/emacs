@@ -123,6 +123,16 @@
   (insert char)
   (if (< 0 arg) (forward-char -1)))
 
+(defun jep:text-align-comma ()
+  "Aligns the current region on commas."
+  (interactive)
+  (align-regexp (region-beginning) (region-end) ",\\(\\s-*\\)" 1 1 t))
+
+(defun jep:text-align-equals ()
+  "Aligns the current region on equals."
+  (interactive)
+  (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)=" 1 1 t))
+
 (add-hook 'text-mode-hook 'turn-on-auto-fill nil)
 (add-hook 'text-mode-hook 
 	  (lambda () 
@@ -142,7 +152,6 @@
 (global-set-key "\M-L"     'jep:text-downcase-char)
 (global-set-key "\M-/"     'hippie-expand)
 
-
 (global-set-key [(control delete)]   'backward-kill-word)
 (global-set-key [(meta delete)]      'kill-word)
 (define-key global-map [(control backspace)] 'undo)
@@ -151,6 +160,9 @@
 (define-key jep:keymap "u"    'uncomment-region)
 (define-key jep:keymap "\M-f" 'auto-fill-mode)
 (define-key jep:keymap "\C-w" 'whack-whitespace)
+
+(define-key jep:keymap "," 'jep:text-align-comma)
+(define-key jep:keymap "=" 'jep:text-align-equals)
 
 (provide 'jep-text)
 ;;; text-functions.el ends here

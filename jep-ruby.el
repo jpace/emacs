@@ -164,6 +164,8 @@
 	    ;; (local-set-key (kbd "C-j t") 'jep:ruby-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j t") 'jep:ruby-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j i") 'jep:ruby-toggle-between-integration-test-and-source)
+	    (local-set-key (kbd "C-j C-p") 'jep:ruby-puts-current-word)
+	    (local-set-key (kbd "M-j M-p") 'jep:ruby-puts-current-word)
 	    (local-set-key (kbd "C-j C-l") 'jep:ruby-puts-current-word)
 	    (local-set-key (kbd "M-j M-l") 'jep:ruby-puts-current-word)
 	    (local-set-key (kbd "C-j C-i") 'jep:ruby-info-current-word)
