@@ -54,7 +54,9 @@
 	    "require 'pathname'\n"
 	    "\n"
 	    "class " (jep:ruby-file-to-class-name name) " < Test::Unit::TestCase\n"
-	    "  def test_something\n"
+	    "  def test_init\n"
+	    "    x = " (jep:ruby-file-to-class-name name) ".new args\n"
+	    "    assert_equal expected, result\n"
 	    "  \n"
 	    "  end\n"
 	    "end\n")))
