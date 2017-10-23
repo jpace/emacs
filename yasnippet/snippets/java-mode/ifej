@@ -1,0 +1,6 @@
+# name : if equals (condition) 
+# key: ifej
+# --
+if (${1:lhs}.equals(${2:rhs})) {
+    $0
+}
