@@ -42,24 +42,43 @@ unlike file-name-sans-extension, which includes that."
     ;; inserted.
     (insert fn)))
 
-(defun jep:file-get-counterpart (fname patterns)
-  (let (pattern lhs rhs)
+(defun jep:file-to-counterpart (fname pattern)
+  (let (lhs rhs)
     (progn 
-      (if (null patterns)
+      (if (null pattern)
 	  nil
-	(setq pattern (car patterns))
 	(setq lhs     (nth 0 pattern))
 	(setq rhs     (nth 1 pattern))
 	(setq other   (and (string-match lhs fname) (replace-regexp-in-string lhs rhs fname)))
-	(message (concat "other>> " other " <<"))
+	(message (concat "other:: " other " ::"))
+	(if (not (null other))
+	    other
+	  nil)))))
+
+(defun jep:file-find-counterpart (fname patterns)
+  (let (pattern counter)
+    (progn 
+      (if (null patterns)
+	  nil
+	(setq other (jep:file-to-counterpart fname (car patterns)))
 	(if (or (null other) (not (file-exists-p other)))
-	    (jep:file-get-counterpart fname (cdr patterns))
+	    (jep:file-find-counterpart fname (cdr patterns))
+	  other)))))
+
+(defun jep:file-get-counterpart-name (fname patterns)
+  (let (pattern counter)
+    (progn 
+      (if (null patterns)
+	  nil
+	(setq other (jep:file-to-counterpart fname (car patterns)))
+	(if (or (null other))
+	    (jep:file-to-counterpart fname (cdr patterns))
 	  other)))))
 
 (defun jep:file-toggle-files (patterns)
   "*Toggles between the current buffer and another file, based on the given patterns."
   
-  (let ((other (jep:file-get-counterpart (buffer-file-name) patterns)))
+  (let ((other (jep:file-find-counterpart (buffer-file-name) patterns)))
     (if (null other)
 	(message "no companion file")
       (if (setq buf (get-buffer other))

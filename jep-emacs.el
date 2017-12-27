@@ -47,7 +47,7 @@
 (setq auto-mode-alist
       (append auto-mode-alist
 	      '(("\.emacs" . emacs-lisp-mode)
-		("\.el"    . emacs-lisp-mode)
+		("\.el$"   . emacs-lisp-mode)
 		("\.lisp$" . lisp-mode))))
 
 ;;** Confirm close
