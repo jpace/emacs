@@ -46,9 +46,9 @@
 
 (setq auto-mode-alist
       (append auto-mode-alist
-	      '(("\.emacs" . emacs-lisp-mode)
-		("\.el$"   . emacs-lisp-mode)
-		("\.lisp$" . lisp-mode))))
+	      '(("\\.emacs" . emacs-lisp-mode)
+		("\\.el$"   . emacs-lisp-mode)
+		("\\.lisp$" . lisp-mode))))
 
 ;;** Confirm close
 ;; Add Emacs close confirmation, since ctrl-x ctrl-c is too easy to hit
