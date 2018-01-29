@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name : generates a main method
-# key: mmain
+# key: m_main
 # --
 public static void main(String[] args) {
     $0

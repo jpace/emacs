@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name : generates a toString method
-# key : mtostr
+# key : m_tostring
 # --
 public String toString() {
     return ${1:variable};

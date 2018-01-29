@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name : generates a setter method, v2
-# key : mset
+# key : m_set
 # --
 public void set${1:$(upcase-initials yas/text)}(${2:Object} $1) {
     this.${1:variable} = $1;

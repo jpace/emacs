@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name : generates an equals method
-# key : meq
+# key : m_equals
 # --
 public boolean equals(${2:Object} ${1:obj}) {
     if (this == obj) {
