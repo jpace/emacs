@@ -98,6 +98,7 @@
 
 (load "jep-dired")
 (load "jep-snippet")
+(load "jep-markdown")
 
 (require 'ido)
 (ido-mode 'both)
