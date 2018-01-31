@@ -138,6 +138,11 @@
   (interactive)
   (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)//" 1 1 t))
 
+(defun jep:text-align-colon ()
+  "Aligns the current region on colons."
+  (interactive)
+  (align-regexp (region-beginning) (region-end) ":\\(\\s-*\\)" 1 1 t))
+
 (add-hook 'text-mode-hook 'turn-on-auto-fill nil)
 (add-hook 'text-mode-hook 
 	  (lambda () 
@@ -169,6 +174,7 @@
 (define-key jep:keymap "," 'jep:text-align-comma)
 (define-key jep:keymap "=" 'jep:text-align-equals)
 (define-key jep:keymap "/" 'jep:text-align-comment)
+(define-key jep:keymap ":" 'jep:text-align-colon)
 
 (provide 'jep-text)
 ;;; text-functions.el ends here

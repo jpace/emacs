@@ -223,7 +223,7 @@
 (defun jep:java-find-counterpart (fname)
   "*Toggles between a test and source Java file."
     (interactive)
-  (jep:file-get-counterpart fname jep:java-test-source-patterns))
+  (jep:file-find-counterpart fname jep:java-test-source-patterns))
 
 (defun jep:java-show-counterpart ()
   "*Toggles between a test and source Java file."
@@ -231,10 +231,20 @@
   (let ((other (jep:java-find-counterpart (buffer-file-name))))
     (message (concat "other file " other))))
 
-(defun jep:java-toggle-between-test-and-source ()
+(defun jep:java-create-counterpart ()
   "*Toggles between a test and source Java file."
-  (interactive)
-  (jep:file-toggle-files jep:java-test-source-patterns))
+    (interactive)
+    (let ((other (jep:file-get-counterpart-name (buffer-file-name) jep:java-test-source-patterns)))
+      (if other
+	  (switch-to-buffer (find-file-noselect other))
+	(message (concat "no other file " other)))))
+
+(defun jep:java-toggle-between-test-and-source (arg)
+  "*Toggles between a test and source Java file."
+  (interactive "P")
+  (if arg
+      (jep:java-create-counterpart)
+    (jep:file-toggle-files jep:java-test-source-patterns)))
 
 (defun jep:java-variable-to-constant (var)
   "*Converts the variable from camel case to a constant (uppercase and underscores)"
