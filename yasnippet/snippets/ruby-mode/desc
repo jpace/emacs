@@ -1,5 +1,4 @@
-# name : describe
-# key: desc
+# key: j/desc
 # --
 describe "$1" do
   $0

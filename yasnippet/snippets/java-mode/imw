@@ -1,4 +1,3 @@
-# name : import WM
-# key: imw
+# key: j/imw
 # --
 import com.wm.$1;$0

@@ -1,4 +1,3 @@
-# name : rails_call_code
-# key: code
+# key: j/code
 # --
 <% $0 %>

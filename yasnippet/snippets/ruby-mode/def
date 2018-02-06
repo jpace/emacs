@@ -1,5 +1,4 @@
-# name : define_method
-# key: def
+# key: j/def
 # --
 def $1
   $0

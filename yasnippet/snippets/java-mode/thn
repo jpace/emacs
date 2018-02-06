@@ -1,5 +1,3 @@
-# -*- mode: snippet -*-
-# name: thrownew
-# key: thn
+# key: j/thn
 # --
 throw new $1;$0

@@ -1,4 +1,3 @@
-# name : private final 2
-# key: prfn
+# key: j/prfn
 # --
 private final $1;$0

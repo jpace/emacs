@@ -1,4 +1,3 @@
-# name : import java.util.List
-# key: imlist
+# key: j/imlist
 # --
 import java.util.List;$0

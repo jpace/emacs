@@ -1,4 +1,3 @@
-# name : rails_eq_code
-# key: lteq
+# key: j/lteq
 # --
 <% $0 %>

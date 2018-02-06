@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name : generates a is (boolean) method
-# key : mis
+# key : j/is
 # --
 public ${1:Boolean} is${2:$(upcase-initials yas/text)}() {
     return ${2:variable};

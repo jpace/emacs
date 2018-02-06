@@ -1,4 +1,3 @@
-# name: info "var: #{var}" (longer)
-# key: infvar
+# key: j/infvar
 # --
 info "$1: #{$1}"$0

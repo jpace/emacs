@@ -1,4 +1,4 @@
 # name : assertEqual(x, y);
-# key: aa
+# key: j/aa
 # --
 assertEqual(${1:expected}, ${2:actual});$0

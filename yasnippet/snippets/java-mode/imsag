@@ -1,4 +1,3 @@
-# name : import SAG
-# key: imsag
+# key: j/imsag
 # --
 import com.softwareag.$1;$0

@@ -1,5 +1,3 @@
-# -*- mode: snippet -*-
-# name : "name", variable, comma
-# key : nvc
+# key : j/nvc
 # --
 "${1:var}", $1, $0

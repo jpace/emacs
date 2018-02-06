@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
-# name : instance field
-# key : field
+# key : j/field
 # --
 private final ${1:Object} ${2:name};
 $0

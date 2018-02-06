@@ -1,5 +1,4 @@
-# name : if ==
-# key: if=j
+# key: j/if=
 # --
 if (${1:lhs} == ${2:rhs}) {
     $0

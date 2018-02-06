@@ -1,4 +1,3 @@
-# name : public static final
-# key: psf
+# key: j/psf
 # --
 public static final $1 $2;$0

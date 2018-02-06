@@ -1,5 +1,4 @@
-# name : assert_equal
-# key: aeq
+# key: j/aeq
 # --
 assert_equal ${2:expected}, ${1:actual}
 $0

@@ -1,5 +1,4 @@
-# name : try/catch
-# key: trycatch
+# key: j/trycatch
 # --
 try {
     $4

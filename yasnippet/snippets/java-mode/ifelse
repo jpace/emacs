@@ -1,5 +1,4 @@
-# name : if else
-# key: ifelse
+# key: j/ifelse
 # --
 if (${1:condition}) {
     $2

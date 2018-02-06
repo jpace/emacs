@@ -1,5 +1,4 @@
-# name : for (String str : coll) 
-# key: fes
+# key: j/fes
 # --
 for (String ${1:str} : ${2:collection}) {
     $0

@@ -1,5 +1,4 @@
-# name : define_test
-# key: tst
+# key: j/tst
 # --
 test "$1" do
   $0

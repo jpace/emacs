@@ -1,5 +1,5 @@
 # name : if (condition) 
-# key: if
+# key: j/if
 # --
 if (${1:condition}) {
     $0

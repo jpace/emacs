@@ -1,4 +1,3 @@
-# name : private final
-# key: pf
+# key: j/pf
 # --
 private final ${1:$$(yas/choose-value '("String" "Integer" "List<Type>" "Map<KeyType, ElementType>" "Object"))} ${2:name};$0

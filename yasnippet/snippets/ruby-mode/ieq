@@ -1,4 +1,3 @@
-# name :assign_instance_variable
-# key: ieq
+# key: j/ieq
 # --
 @$1 = $1

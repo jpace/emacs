@@ -1,6 +1,0 @@
-# name : ifj (condition) 
-# key: ifj
-# --
-if ${1:condition}
-  $0
-end

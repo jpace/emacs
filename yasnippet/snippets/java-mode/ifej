@@ -1,5 +1,5 @@
 # name : if equals (condition) 
-# key: ifej
+# key: j/ifeq
 # --
 if (${1:lhs}.equals(${2:rhs})) {
     $0

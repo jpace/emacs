@@ -1,6 +1,4 @@
-# name: constructor
-# contributor: jeugenepace@gmail.com
-# key: init
+# key: j/init
 # --
 public `(file-name-nondirectory
          (file-name-sans-extension

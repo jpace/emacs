@@ -1,4 +1,3 @@
-# name : tr.Ace.setVerbose
-# key: trsv
+# key: j/trsv
 # --
 tr.Ace.setVerbose(true);

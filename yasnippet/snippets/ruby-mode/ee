@@ -1,5 +1,4 @@
-# name: each do |...| ... end
-# key: ee
+# key: j/ee
 # --
 each do |${e}|
   $0

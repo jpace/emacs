@@ -1,5 +1,4 @@
-# name : import Map and HashMap
-# key: imhmap
+# key: j/imhmap
 # --
 import java.util.HashMap;
 import java.util.Map;

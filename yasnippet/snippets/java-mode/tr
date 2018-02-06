@@ -1,4 +1,3 @@
-# name : tr.Ace.log
-# key: tr
+# key: j/tr
 # --
 tr.Ace.${2:log}("${1:var}", $1);$3

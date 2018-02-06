@@ -1,5 +1,4 @@
-# name : if (obj != null)
-# key: ifnn
+# key: j/ifnn
 # --
 if (${1:obj} != null) {
     $0

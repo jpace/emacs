@@ -1,5 +1,4 @@
-# name : assert_equal_msg
-# key: aam
+# key: j/aam
 # --
 assert_equal ${2:expected}, ${1:actual}, "${3:msg}"
 $0

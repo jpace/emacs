@@ -1,6 +1,6 @@
 # name: method declaration
 # contributor: jeugenepace@gmail.com
-# key: def
+# key: j/def
 # --
 ${1:public} ${2:void} ${3:methodName}(${4:parameters}) {
     $0

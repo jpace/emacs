@@ -1,4 +1,3 @@
-# name : set_variable_from_hash
-# key: svh
+# key: j/svh
 # --
 @$1 = args[:$1]

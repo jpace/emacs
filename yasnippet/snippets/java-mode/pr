@@ -1,4 +1,3 @@
-# name : String.out.println("str");
-# key: pr
+# key: j/pr
 # --
 System.out.println("$1");$0

@@ -1,4 +1,3 @@
-# name : println "str"
-# key: pr
+# key: j/pr
 # --
 println "$1"$0

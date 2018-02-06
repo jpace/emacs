@@ -1,4 +1,3 @@
-# name : import java io name
-# key: imji
+# key: j/imji
 # --
 import java.io.$1;$0

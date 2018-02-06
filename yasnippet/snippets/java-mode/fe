@@ -1,5 +1,4 @@
-# name : for (Object it : coll) 
-# key: fe
+# key: j/fe
 # --
 for (${1:Object} ${2:it} : ${3:collection}) {
     $0
