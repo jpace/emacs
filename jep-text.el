@@ -133,6 +133,11 @@
   (interactive)
   (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)=" 1 1 t))
 
+(defun jep:text-align-comment ()
+  "Aligns the current region on comment."
+  (interactive)
+  (align-regexp (region-beginning) (region-end) "\\(\\s-*\\)//" 1 1 t))
+
 (defun jep:text-align-colon ()
   "Aligns the current region on colons."
   (interactive)
@@ -168,6 +173,7 @@
 
 (define-key jep:keymap "," 'jep:text-align-comma)
 (define-key jep:keymap "=" 'jep:text-align-equals)
+(define-key jep:keymap "/" 'jep:text-align-comment)
 (define-key jep:keymap ":" 'jep:text-align-colon)
 
 (provide 'jep-text)
