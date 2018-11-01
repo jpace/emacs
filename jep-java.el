@@ -41,15 +41,6 @@
   (insert "System.out.println(\"")
   (insert char))
 
-(defun jep:java-insert-log-variable (str)
-  "Inserts a line that prints a variable to the log."
-  (interactive "sString: ")
-  (insert "tr.Ace.log(\"")
-  (insert str)
-  (insert ": \" + ")
-  (insert str)
-  (insert ");\n"))
-
 (defun jep:java-add-log-current-word ()
   "Inserts a line that prints a variable to the log."
   (interactive)
@@ -58,6 +49,26 @@
     (newline)
     (c-indent-line-or-region)
     (insert "tr.Ace.log(\"" word "\", " word ");")
+    (c-indent-line-or-region)))
+
+(defun jep:java-init-current-word ()
+  "Inserts a this.word = word line."
+  (interactive)
+  (let ((word (current-word)))
+    (move-end-of-line nil)
+    (newline)
+    (c-indent-line-or-region)
+    (insert "this." word " = " word ";")
+    (c-indent-line-or-region)))
+
+(defun jep:java-add-print-word ()
+  "Inserts a line that write a variable to standard output."
+  (interactive)
+  (let ((word (current-word)))
+    (move-end-of-line nil)
+    (newline)
+    (c-indent-line-or-region)
+    (insert "System.out.println(\"" word ": \" + " word ");")
     (c-indent-line-or-region)))
 
 (defun jep:java-new-class-without-main ()
@@ -262,11 +273,11 @@
   "*Toggles between a variable and a constant."
   (interactive)
   (re-search-backward "[^A-Za-z0-9_]")
-  (forward-char-command 1)
+  (forward-char 1)
   (let ((start (point))
 	(case-fold-search nil))
     (re-search-forward "[^A-Za-z0-9_]")
-    (backward-char-command 1)
+    (backward-char 1)
     (kill-region start (point))
     (setq 
      var  (current-kill 0)
@@ -341,6 +352,23 @@
     (goto-char (point-min))
     (query-replace "// @Test" "@Test")))
 
+(defun jep:java-current-name ()
+  "Returns the root name of the current buffer, without \"Test\"."
+  (let* ((bn (jep:file-basename))
+	 (re  "^\\(\\(.*\\)Test\\)\\|\\(.*\\)"))
+    (if (string-match re bn)
+	(if (match-end 1)
+	    (substring bn (match-beginning 2) (match-end 2))
+	  (substring bn (match-beginning 3) (match-end 3))))))
+
+(defun jep:java-insert-current-name ()
+  "Inserts the full Java name for the current file, at the current point."
+  (interactive)
+  (let* ((fn (jep:java-current-name)))
+    ;; Not doing a save-excursion, because we want to go to the end of what we
+    ;; inserted.
+    (insert fn)))
+
 (add-hook 'java-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-j t") 'jep:java-toggle-between-test-and-source)
@@ -350,7 +378,10 @@
 	    (local-set-key (kbd "C-j i") 'jep:java-sort-imports)
 	    (local-set-key (kbd "C-j C-n") 'jep:java-insert-full-name)
 	    (local-set-key (kbd "C-j C-t") 'jep:java-comment-tests)
-	    (local-set-key (kbd "C-j C-T") 'jep:java-uncomment-tests)))
+	    (local-set-key (kbd "C-j C-T") 'jep:java-uncomment-tests)
+	    (local-set-key (kbd "C-j v") 'jep:java-init-current-word)
+	    (local-set-key (kbd "C-j C-p") 'jep:java-add-print-word)
+	    (local-set-key (kbd "C-j N") 'jep:java-insert-current-name)))
 
 (add-to-list 'auto-mode-alist '("\.java$" . java-mode))
 
