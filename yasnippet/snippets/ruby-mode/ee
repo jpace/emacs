@@ -1,4 +1,4 @@
-# key: j/ee
+# key: ee
 # --
 each do |${e}|
   $0
