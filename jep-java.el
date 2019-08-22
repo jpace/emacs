@@ -380,6 +380,7 @@
 	    (local-set-key (kbd "C-j C-t") 'jep:java-comment-tests)
 	    (local-set-key (kbd "C-j C-T") 'jep:java-uncomment-tests)
 	    (local-set-key (kbd "C-j v") 'jep:java-init-current-word)
+	    (local-set-key (kbd "C-j @") 'jep:java-init-current-word)
 	    (local-set-key (kbd "C-j C-p") 'jep:java-add-print-word)
 	    (local-set-key (kbd "C-j N") 'jep:java-insert-current-name)))
 
