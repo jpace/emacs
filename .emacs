@@ -69,14 +69,14 @@
 		("^dot\\."      . sh-mode)
 		("^dot\\."      . sh-mode)
 
-		("\\.sql"       . sql-mode)  ; SQL
+		("\\.sql"       . sql-mode)
 
 		("\\.quotes$"   . quip-mode) ; quip
 
 		(""		. text-mode) ; default -- this must be last.
 		)))
 
-(load "jep-groovy")
+;; (load "jep-groovy")
 (load "jep-electric-buffer")
 (load "jep-search")
 (load "jep-nav")
