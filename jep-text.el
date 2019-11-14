@@ -143,6 +143,16 @@
   (interactive)
   (align-regexp (region-beginning) (region-end) ":\\(\\s-*\\)" 1 1 t))
 
+(defun jep:text-align-before (arg)
+  "Aligns the current region up to the argument."
+  (interactive "sString: ")
+  (align-regexp (region-beginning) (region-end) (concat arg "\\(\\s-*\\)") 1 1 t))
+
+(defun jep:text-align-after (arg)
+  "Aligns the current region starting with the argument."
+  (interactive "sString: ")
+  (align-regexp (region-beginning) (region-end) (concat "\\(\\s-*\\)" arg) 1 1 t))
+
 (add-hook 'text-mode-hook 'turn-on-auto-fill nil)
 (add-hook 'text-mode-hook 
 	  (lambda () 

@@ -190,8 +190,8 @@
 	    (local-set-key (kbd "C-j @") 'jep:ruby-assign-current-variable)
 	    (local-set-key (kbd "M-j @") 'jep:ruby-assign-current-variable)))
 
-(add-to-list 'auto-mode-alist '("\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\.rb$"    . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile"  . ruby-mode))
 
 (provide 'jep-ruby)

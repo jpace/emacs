@@ -76,7 +76,7 @@
 		(""		. text-mode) ; default -- this must be last.
 		)))
 
-(load "jep-groovy")
+;; (load "jep-groovy")
 (load "jep-electric-buffer")
 (load "jep-search")
 (load "jep-nav")

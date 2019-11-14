@@ -1,0 +1,6 @@
+# name : for (int idx ... idx < collection.size())
+# key: j/fisize
+# --
+for (int idx = 0; idx < ${1:collection}.${2:size()}; ++idx) {
+    $0
+}
