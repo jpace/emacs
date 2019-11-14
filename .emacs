@@ -69,7 +69,7 @@
 		("^dot\\."      . sh-mode)
 		("^dot\\."      . sh-mode)
 
-		("\\.sql"       . sql-mode)  ; SQL
+		("\\.sql"       . sql-mode)
 
 		("\\.quotes$"   . quip-mode) ; quip
 
