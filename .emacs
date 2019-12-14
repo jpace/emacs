@@ -40,6 +40,8 @@
 (require 'jep-sh)
 (require 'jep-json)
 
+(require 'assoc)
+
 ;;$$$ todo: add erb-mode, inheriting text-mode, without auto-fill
 
 ;; Filename extensions for modes
@@ -103,9 +105,13 @@
 (require 'ido)
 (ido-mode 'both)
 
+(message "<<< loading system/user files ...")
+
 (load (system-name) 'noerror)
 (load (concat system-name "-" user-real-login-name) 'noerror)
 (load (user-real-login-name) 'noerror)
+
+(message "<<< done loading user-real-login-name")
 
 ;; Some bizarre orange theme with screen; so LC_CONNFROM controls whether to set the colors
 
@@ -123,3 +129,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;; '(default ((t (:inherit nil :stipple nil :background "#040412" :foreground "#E8E3E3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+
+(message "<<< end of .emacs")

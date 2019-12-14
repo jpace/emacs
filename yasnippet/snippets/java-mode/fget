@@ -1,0 +1,10 @@
+# name : field/get method ... { ... }
+# key: j/fget
+# --
+# --
+private final ${1:String} ${2:value};
+
+public $1 get${2:$(capitalize text)}() {
+    return $2;
+}
+$0
