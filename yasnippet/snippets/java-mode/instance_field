@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# key : j/f/decl
+# --
+private final ${1:Object} ${2:name};
+$0

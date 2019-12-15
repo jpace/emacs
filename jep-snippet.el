@@ -29,6 +29,8 @@
 
 ;; snippet uses assoc, an obsolete package that results in Emacs suspending on initialization
 (setq warning-minimum-level :emergency)
+(setq warning-minimum-log-level :emergency)
+(message "running here")
 (require 'yasnippet) ;; not yasnippet-bundle
 (setq warning-minimum-level :warning)
 

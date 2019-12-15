@@ -1,6 +1,5 @@
-
-
-# key: j/fes
+# name: foreach_string
+# key: j/fe/s
 # --
 for (String ${1:str} : ${2:collection}) {
     $0

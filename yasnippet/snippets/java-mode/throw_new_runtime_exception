@@ -1,0 +1,4 @@
+# key: j/d/n/rte
+# --
+throw new RuntimeException(${1:ex});
+$0

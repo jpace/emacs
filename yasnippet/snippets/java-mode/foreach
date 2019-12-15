@@ -1,4 +1,5 @@
-# key: j/fe
+# name: foreach
+# key: j/fe/o
 # --
 for (${1:Object} ${2:it} : ${3:collection}) {
     $0

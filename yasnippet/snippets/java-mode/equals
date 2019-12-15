@@ -1,4 +1,4 @@
-# key : j/equals
+# key : j/m/equals
 # --
 public boolean equals(${2:Object} ${1:obj}) {
     if (this == obj) {
