@@ -25,8 +25,8 @@
     (ibuffer-jump-to-buffer recent-buffer-name)))
 (ad-activate 'ibuffer)
 
-(defvar jep:projects-directory "/opt/org/incava")
-(defvar jep:projects-incava-directory (concat jep:projects-directory "/opt/org/incava/"))
+(defvar jep:projects-directory "/opt/incava")
+(defvar jep:projects-incava-directory (concat jep:projects-directory "/opt/incava/"))
 
 (defvar jep:filename-subs 
   '(("/home/jpace" . "~")
@@ -47,20 +47,25 @@
 ;; this is in incubation state; it somewhat does the same as the 'dirname'
 ;; column above, replacing the patterns, but it does not strip the filename.
 (setq ibuffer-directory-abbrev-alist
-      '(("/opt/org/incava/attest" . "~attest")
-	("/opt/org/incava/diffj" . "~diffj")
-	("/opt/org/incava/doctorj" . "~doctorj")
-	("/opt/org/incava/glark" . "~glark")
-	("/opt/org/incava/ijdk" . "~ijdk")
-	("/opt/org/incava/pmdx" . "~pmdx")
-	("/opt/org/incava/qualog" . "~qualog")
-	("/opt/org/incava/blog" . "~blog")
-	("/opt/sag" . "~SAG")
-	("/opt/com/sag/grace" . "~grace")
-	("/opt/com/sag/dcx" . "~dcx")
-	("/opt/com/sag" . "~sag")
-	("/opt/org/incava/joda-schedule" . "~joda")
-	("/opt/org/incava" . "~incava")))
+      '(
+	("/opt/sag" . "~sag")
+	("/opt/sag/dcx" . "~dcx")
+	("/opt/sag/dcc2" . "~dcc2")
+	("/opt/sag/grace" . "~grace")
+	("/opt/sag/sown" . "~sown")
+	("/opt/sag/yenkins" . "~yenkins")
+	("/opt/sag/yira" . "~yira")
+	("/opt/incava" . "~incava")
+	("/opt/incava/attest" . "~attest")
+	("/opt/incava/blog" . "~blog")
+	("/opt/incava/diffj" . "~diffj")
+	("/opt/incava/doctorj" . "~doctorj")
+	("/opt/incava/glark" . "~glark")
+	("/opt/incava/ijdk" . "~ijdk")
+	("/opt/incava/joda-schedule" . "~joda")
+	("/opt/incava/pmdx" . "~pmdx")
+	("/opt/incava/qualog" . "~qualog")
+	))
 
 (setq ibuffer-formats
       '((mark modified read-only " "

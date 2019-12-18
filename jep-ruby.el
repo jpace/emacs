@@ -139,15 +139,21 @@
   (interactive)
   (jep:file-toggle-files jep:ruby-integration-test-source-patterns))
 
+(defun jep:ruby-add-line (str)
+  "Inserts a string as a separate, indented line."
+  (interactive)
+  (move-end-of-line nil)
+  (newline)
+  (ruby-indent-line)
+  (insert str)
+  (ruby-indent-line))
+
 (defun jep:ruby-output-current-word (str)
   "Inserts a line that writes the word to standard output."
   (interactive)
-  (let ((word (current-word)))
-    (move-end-of-line nil)
-    (newline)
-    (ruby-indent-line)
-    (insert str " \"" word "\: #{" word "}\"")
-    (ruby-indent-line)))
+  (let* ((word (current-word))
+	 (line (concat str " \"" word "\: #{" word "}\"")))
+    (jep:ruby-add-line line)))
 
 (defun jep:ruby-puts-current-word ()
   "Inserts a line that writes the word to standard output."
@@ -159,17 +165,30 @@
   (interactive)
   (jep:ruby-output-current-word "info"))
 
+(defun jep:ruby-assign-current-variable ()
+  "Inserts a line that assigns as @var = var."
+  (interactive)
+  (let* ((word (current-word))
+	 (line (concat "@" word " = " word)))
+    (jep:ruby-add-line line)))
+
 (add-hook 'ruby-mode-hook
 	  (lambda ()
 	    ;; (local-set-key (kbd "C-j t") 'jep:ruby-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j t") 'jep:ruby-toggle-between-test-and-source)
 	    (local-set-key (kbd "M-j i") 'jep:ruby-toggle-between-integration-test-and-source)
+	    
 	    (local-set-key (kbd "C-j C-p") 'jep:ruby-puts-current-word)
 	    (local-set-key (kbd "M-j M-p") 'jep:ruby-puts-current-word)
+	    
 	    (local-set-key (kbd "C-j C-l") 'jep:ruby-puts-current-word)
 	    (local-set-key (kbd "M-j M-l") 'jep:ruby-puts-current-word)
+	    
 	    (local-set-key (kbd "C-j C-i") 'jep:ruby-info-current-word)
-	    (local-set-key (kbd "M-j M-i") 'jep:ruby-info-current-word)))
+	    (local-set-key (kbd "M-j M-i") 'jep:ruby-info-current-word)
+
+	    (local-set-key (kbd "C-j @") 'jep:ruby-assign-current-variable)
+	    (local-set-key (kbd "M-j @") 'jep:ruby-assign-current-variable)))
 
 (add-to-list 'auto-mode-alist '("\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
