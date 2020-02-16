@@ -1,4 +1,4 @@
-# name : public final static 
-# key: j/const
+# name : field_const
+# key: j/f/const
 # --
 public static final ${1:String} ${2:name} = ${3:"value"};$0

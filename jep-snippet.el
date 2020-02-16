@@ -26,7 +26,14 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/vendor/yasnippet")
 (setq yas/snippet-dirs (list "~/.emacs.d/lisp/yasnippet/snippets" "~/.emacs.d/lisp/vendor/yasnippet/snippets"))
+
+;; snippet uses assoc, an obsolete package that results in Emacs suspending on initialization
+(setq warning-minimum-level :emergency)
+(setq warning-minimum-log-level :emergency)
+(message "running here")
 (require 'yasnippet) ;; not yasnippet-bundle
+(setq warning-minimum-level :warning)
+
 (yas/global-mode 1)
 
 (add-to-list 'auto-mode-alist '("yasnippet/snippets" . snippet-mode))

@@ -1,0 +1,5 @@
+# key: j/test
+# --
+def test_$1
+  $0
+end

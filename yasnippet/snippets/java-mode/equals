@@ -1,0 +1,22 @@
+# key : j/m/equals
+# --
+public boolean equals(${2:Object} ${1:obj}) {
+    if (this == obj) {
+        return true;
+    }
+    else if (obj instanceof `(file-name-nondirectory
+         (file-name-sans-extension
+	  (or (buffer-file-name)
+	   (buffer-name (current-buffer)))))`) {
+	`(file-name-nondirectory
+         (file-name-sans-extension
+	  (or (buffer-file-name)
+	   (buffer-name (current-buffer)))))`
+        return true;
+    }
+    if (this == obj) {
+        return true;
+    }
+    $0
+    return false;
+}

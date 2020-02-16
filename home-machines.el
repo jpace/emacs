@@ -118,5 +118,6 @@
 
 ;; (require 'jep-scala)
 
+(message "in home machines")
 (provide 'home-machines)
 ;;; home-machines.el ends here

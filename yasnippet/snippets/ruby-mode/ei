@@ -1,4 +1,4 @@
-# key: j/ei
+# key: ei
 # --
 each_with_index do |${1:e}, ${2:idx}|
   $0

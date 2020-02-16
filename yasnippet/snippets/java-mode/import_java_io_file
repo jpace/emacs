@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# key: j/i/file
+# --
+import java.io.File;$0

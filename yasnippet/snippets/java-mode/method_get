@@ -1,0 +1,6 @@
+# key : j/m/get
+# --
+public ${1:String} get${2:$(upcase-initials yas/text)}() {
+    return ${2:variable};
+}
+$0

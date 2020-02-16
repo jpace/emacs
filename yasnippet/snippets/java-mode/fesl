@@ -1,5 +1,0 @@
-# key: j/fesl
-# --
-for (String ${1:str} : ${2:StringList.of($0)}) {
-    $0
-}

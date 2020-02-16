@@ -1,5 +1,5 @@
-# name : for (int idx ...)
-# key: fi
+# name : forint_ary
+# key: j/f/i/a
 # --
 for (int idx = 0; idx < ${1:ary}.${2:$$(yas/choose-value '("size()" "length"))}; ++idx) {
     $0

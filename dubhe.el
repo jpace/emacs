@@ -24,7 +24,9 @@
 
 ;;; Code:
 
+(message "loading home machines")
 (load "home-machines")
+(message "done loading home machines")
 
 (provide 'dubhe.incava.org)
 ;;; dubhe.incava.org.el ends here

@@ -1,0 +1,11 @@
+to avoid ambiguity and for consistency, snippets are of the form j/a/b/c -- always leading with j,
+and where a, b, and c narrow the scope
+
+in Java, the first element is:
+
+    m - method
+    c - class
+    f - field
+    d - code
+    i - import
+
