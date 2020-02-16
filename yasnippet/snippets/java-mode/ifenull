@@ -1,0 +1,7 @@
+# key: j/ifenull
+# --
+if (${1:obj} == null) {
+    $0
+}
+else {
+}

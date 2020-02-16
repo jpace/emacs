@@ -1,0 +1,5 @@
+# key: j/ifnull
+# --
+if (${1:obj} == null) {
+    $0
+}

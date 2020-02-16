@@ -1,0 +1,3 @@
+# key: j/thrnew
+# --
+throw new ${1:RuntimeException}($2);$0

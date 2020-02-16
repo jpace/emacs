@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name : generates a get method
+# key : j/get
+# --
+public ${1:Object} get${2:$(upcase-initials yas/text)}() {
+    return ${2:variable};
+}
+$0

@@ -31,6 +31,7 @@
 (defvar jep:filename-subs 
   '(("/home/jpace" . "~")
     ("/opt/sag/is" . "~is")
+    ("/opt/sag" . "~sag")
     ("/opt/incava" . "~incava")
     ("/home/jpace/.emacs.d/lisp" . "~lisp")
     ("/home/jpace/.config/zsh" . "~zsh")
@@ -49,8 +50,7 @@
 (setq ibuffer-directory-abbrev-alist
       '(
 	("/opt/sag" . "~sag")
-	("/opt/sag/dcx" . "~dcx")
-	("/opt/sag/dcc2" . "~dcc2")
+	("/opt/sag/dcc" . "~dcc")
 	("/opt/sag/grace" . "~grace")
 	("/opt/sag/sown" . "~sown")
 	("/opt/sag/yenkins" . "~yenkins")
