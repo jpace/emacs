@@ -122,7 +122,6 @@
 
 (defun jep:ruby-show-counterpart ()
   "*Shows the other file, for toggling between a test and source Ruby file."
-  
   (interactive)
   (let ((other (jep:file-get-counterpart (buffer-file-name) jep:ruby-test-source-patterns)))
     (message (concat "other file >> " other " <<"))))
@@ -135,7 +134,6 @@
 
 (defun jep:ruby-toggle-between-integration-test-and-source ()
   "*Toggles between a test and source Ruby file."
-  
   (interactive)
   (jep:file-toggle-files jep:ruby-integration-test-source-patterns))
 
@@ -165,10 +163,14 @@
   (interactive)
   (jep:ruby-output-current-word "info"))
 
+(defun jep:current-variable ()
+  "Returns the current word, containing only word characters (A-Za-z0-9)"
+  (current-word nil t))
+
 (defun jep:ruby-assign-current-variable ()
   "Inserts a line that assigns as @var = var."
   (interactive)
-  (let* ((word (current-word))
+  (let* ((word (jep:current-variable))
 	 (line (concat "@" word " = " word)))
     (jep:ruby-add-line line)))
 
