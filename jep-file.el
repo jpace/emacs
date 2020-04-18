@@ -129,7 +129,7 @@ unlike file-name-sans-extension, which includes that."
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
-(setq large-file-warning-threshold '20000000)
+(setq large-file-warning-threshold 100000000)
 
 (add-hook 'find-file-hooks 'auto-insert)
 (load-library "autoinsert")
